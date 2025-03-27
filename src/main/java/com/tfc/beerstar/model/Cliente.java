@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Clientes")
+@Table(name = "Clientes", schema = "beerstar_schema")
 public class Cliente {
 
     @Id

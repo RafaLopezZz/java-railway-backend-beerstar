@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 @Data
 @Entity
-@Table(name = "Proveedores")
+@Table(name = "Proveedores", schema = "beerstar_schema")
 public class Proveedor {
 
     @Id
