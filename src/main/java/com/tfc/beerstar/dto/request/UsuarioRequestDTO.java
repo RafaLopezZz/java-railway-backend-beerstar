@@ -1,7 +1,5 @@
 package com.tfc.beerstar.dto.request;
 
-import com.tfc.beerstar.dto.request.ProveedorRequestDTO;
-import com.tfc.beerstar.dto.request.ClienteRequestDTO;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
