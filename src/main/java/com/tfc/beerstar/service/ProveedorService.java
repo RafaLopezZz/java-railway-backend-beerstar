@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import com.tfc.beerstar.dto.request.ProveedorRequestDTO;
 import com.tfc.beerstar.dto.response.ProveedorResponseDTO;
 import com.tfc.beerstar.dto.response.UsuarioResponseDTO;
+import com.tfc.beerstar.exception.ResourceNotFoundException;
 import com.tfc.beerstar.model.Proveedor;
 import com.tfc.beerstar.model.Usuario;
 import com.tfc.beerstar.repository.ProveedorRepository;
-import com.tfc.beerstar.repository.UsuarioRepository;
 
 @Service
 public class ProveedorService {
@@ -22,12 +22,11 @@ public class ProveedorService {
     @Autowired
     private ProveedorRepository proveedorRepository;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
 
-    public ProveedorResponseDTO crearProveedor(ProveedorRequestDTO pDto) {
-        Usuario usuario = usuarioRepository.findById(pDto.getIdUsuario())
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    public ProveedorResponseDTO crearProveedor(Usuario usuario, ProveedorRequestDTO pDto) {
+        if (pDto == null) {
+            pDto = new ProveedorRequestDTO(); // Valores por defecto si no se proporcionan
+        }
 
         Proveedor proveedor = new Proveedor();
         proveedor.setUsuario(usuario);
@@ -36,13 +35,14 @@ public class ProveedorService {
         proveedor.setTelefono(pDto.getTelefono());
         proveedor.setFechaRegistro(LocalDateTime.now());
 
-        Proveedor saved = proveedorRepository.save(proveedor);
-        return mapearResponseDTO(saved);
+        Proveedor guardado = proveedorRepository.save(proveedor);
+        return mapearResponseDTO(guardado);
     }
 
-    public ProveedorResponseDTO obtenerProveedorPorId(Long id) {
-        Proveedor proveedor = proveedorRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
+    public ProveedorResponseDTO obtenerProveedorPorUsuarioId(Long usuarioId) {
+        Proveedor proveedor = proveedorRepository.findByUsuario_IdUsuario(usuarioId)
+                .orElseThrow(() -> new ResourceNotFoundException("Proveedor no encontrado para el usuario con ID: " + usuarioId));
+        
         return mapearResponseDTO(proveedor);
     }
 
