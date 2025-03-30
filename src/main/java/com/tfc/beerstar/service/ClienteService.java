@@ -14,36 +14,34 @@ import com.tfc.beerstar.exception.ResourceNotFoundException;
 import com.tfc.beerstar.model.Cliente;
 import com.tfc.beerstar.model.Usuario;
 import com.tfc.beerstar.repository.ClienteRepository;
-import com.tfc.beerstar.repository.UsuarioRepository;
 
 @Service
 public class ClienteService {
 
-    
     @Autowired
     private ClienteRepository clienteRepository;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
 
-    public ClienteResponseDTO crearCliente(ClienteRequestDTO cDto) {
-        Usuario usuario = usuarioRepository.findById(cDto.getIdUsuario())
-                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
+    public void crearCliente(Usuario usuario, ClienteRequestDTO cDto) {
+        if (cDto == null) {
+            cDto = new ClienteRequestDTO(); // Inicializar el DTO si es nulo
+        }
 
         Cliente cliente = new Cliente();
         cliente.setUsuario(usuario);
         cliente.setNombre(cDto.getNombre());
-        cliente.setDireccion(cDto.getDireccion());
         cliente.setTelefono(cDto.getTelefono());
+        cliente.setDireccion(cDto.getDireccion());
         cliente.setFechaRegistro(LocalDateTime.now());
 
-        Cliente clienteGuardado = clienteRepository.save(cliente);
-        return mapearResponseDTO(clienteGuardado);
+        clienteRepository.save(cliente);
     }
 
-    public ClienteResponseDTO obtenerClientePorId(Long id) {
-        Cliente cliente = clienteRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
+    public ClienteResponseDTO obtenerClientePorUsuarioId(Long usuarioId) {
+        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(usuarioId)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Cliente no encontrado para el usuario con ID: " + usuarioId));
+
         return mapearResponseDTO(cliente);
     }
 
@@ -54,17 +52,20 @@ public class ClienteService {
                 .collect(Collectors.toList());
     }
 
-    public ClienteResponseDTO actualizarCliente(Long id, ClienteRequestDTO dto) {
-        Cliente cliente = clienteRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
+    public ClienteResponseDTO actualizarCliente(Long clienteId, ClienteRequestDTO clienteDTO) {
+        Cliente cliente = clienteRepository.findById(clienteId)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con ID: " + clienteId));
 
-        // Actualización de campos, se podría validar si se desea cambiar el usuario
-        cliente.setNombre(dto.getNombre());
-        cliente.setDireccion(dto.getDireccion());
-        cliente.setTelefono(dto.getTelefono());
-        
-        Cliente actualizado = clienteRepository.save(cliente);
-        return mapearResponseDTO(actualizado);
+        // Actualizar los campos
+        if (clienteDTO.getNombre() != null)
+            cliente.setNombre(clienteDTO.getNombre());
+        if (clienteDTO.getTelefono() != null)
+            cliente.setTelefono(clienteDTO.getTelefono());
+        if (clienteDTO.getDireccion() != null)
+            cliente.setDireccion(clienteDTO.getDireccion());
+
+        Cliente clienteActualizado = clienteRepository.save(cliente);
+        return mapearResponseDTO(clienteActualizado);
     }
 
     public void eliminarCliente(Long id) {
@@ -72,7 +73,7 @@ public class ClienteService {
                 .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
         clienteRepository.delete(cliente);
     }
-    
+
     private ClienteResponseDTO mapearResponseDTO(Cliente cliente) {
         ClienteResponseDTO dto = new ClienteResponseDTO();
         dto.setIdCliente(cliente.getIdCliente());
@@ -80,7 +81,7 @@ public class ClienteService {
         dto.setDireccion(cliente.getDireccion());
         dto.setTelefono(cliente.getTelefono());
         dto.setFechaRegistro(cliente.getFechaRegistro());
-        
+
         // Mapear el usuario asociado
         Usuario usuario = cliente.getUsuario();
         if (usuario != null) {

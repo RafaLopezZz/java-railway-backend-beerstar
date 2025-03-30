@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tfc.beerstar.dto.request.UsuarioRequestDTO;
 import com.tfc.beerstar.dto.response.UsuarioResponseDTO;
@@ -26,25 +27,47 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    @Autowired
+    private ClienteService clienteService;
+
+    @Autowired
+    private ProveedorService proveedorService;
+
+    @Transactional
     public UsuarioResponseDTO crearUsuario(UsuarioRequestDTO uDto) {
-
         String email = uDto.getEmail().trim().toLowerCase();
-
         if (usuarioRepository.findByEmail(email).isPresent()) {
             throw new EmailAlreadyExistsException("El email ya está en uso");
         }
 
+        // Validar el tipo de usuario
+        String tipoUsuario = uDto.getTipoUsuario();
+        if (tipoUsuario == null) {
+            tipoUsuario = "CLIENTE"; // Valor por defecto
+        } else if (!tipoUsuario.equals("CLIENTE") && !tipoUsuario.equals("PROVEEDOR")) {
+            throw new IllegalArgumentException("Tipo de usuario no válido. Debe ser CLIENTE o PROVEEDOR");
+        }
+
+        // Crear y guardar el usuario
         Usuario usuario = new Usuario();
         usuario.setEmail(email);
         usuario.setPassword(passwordEncoder.encode(uDto.getPassword()));
         usuario.setRol("USER");
-        usuario.setTipoUsuario("CLIENTE");
+        usuario.setTipoUsuario(tipoUsuario);
 
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
+
+        // Dependiendo del tipo, crear registro en la tabla correspondiente
+        if (tipoUsuario.equals("CLIENTE")) {
+            clienteService.crearCliente(usuarioGuardado, uDto.getClienteData());
+        } else if (tipoUsuario.equals("PROVEEDOR")) {
+            proveedorService.crearProveedor(usuarioGuardado, uDto.getProveedorData());
+        }
+
         return mapearResponseDTO(usuarioGuardado);
     }
 
-        public UsuarioResponseDTO obtenerUsuarioPorId(Long id) {
+    public UsuarioResponseDTO obtenerUsuarioPorId(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
         return mapearResponseDTO(usuario);

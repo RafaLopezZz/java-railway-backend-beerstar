@@ -12,6 +12,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     List<Cliente> findByNombre(String nombre);
 
     // Buscar cliente por usuario
+    Optional<Cliente> findByUsuario_IdUsuario(Long idUsuario);
     Optional<Cliente> findByUsuario(Usuario usuario);
 
     // Buscar clientes registrados después de una fecha específica
