@@ -21,7 +21,7 @@ public class ProveedorController {
         @Autowired
     private ProveedorService proveedorService;
 
-    @GetMapping("/usuario/{usuarioId}")
+    @GetMapping("/{usuarioId}")
     public ResponseEntity<ProveedorResponseDTO> obtenerProveedorPorUsuarioId(@PathVariable Long usuarioId) {
         ProveedorResponseDTO proveedor = proveedorService.obtenerProveedorPorUsuarioId(usuarioId);
         return ResponseEntity.ok(proveedor);
