@@ -30,9 +30,9 @@ DELETE -> /beerstar/categorias/eliminarCategoria/{categoriaId}
 GET    -> /beerstar/articulos/listarArticulos
           beerstar/articulos/obtenerArticulo/{articuloId}
 
-POST   -> beerstar/articulos/crearArticulo
+POST   -> /beerstar/articulos/crearArticulo
 
-PUT    -> beerstar/articulos/actualizarArticulo/{articuloId}
+PUT    -> /beerstar/articulos/actualizarArticulo/{articuloId}
           
 DELETE -> /beerstar/articulos/eliminarArticulo/{articuloId}
                   
