@@ -18,7 +18,7 @@ import com.tfc.beerstar.service.ProveedorService;
 @RequestMapping("/beerstar/usuarios/proveedores")
 public class ProveedorController {
 
-        @Autowired
+    @Autowired
     private ProveedorService proveedorService;
 
     @GetMapping("/{usuarioId}")
