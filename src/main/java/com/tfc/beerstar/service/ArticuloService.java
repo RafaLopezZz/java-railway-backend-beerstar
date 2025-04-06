@@ -9,10 +9,12 @@ import com.tfc.beerstar.repository.ArticulosRepository;
 import com.tfc.beerstar.repository.CategoriasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class ArticuloService {
 
@@ -23,6 +25,7 @@ public class ArticuloService {
     private CategoriasRepository categoriasRepository;
 
     public ArticulosResponseDTO crearArticulos(ArticulosRequestDTO dto) {
+        log.info("Creando artículo: {}", dto.getNombre());
         Articulos articulo = new Articulos();
         articulo.setNombre(dto.getNombre());
         articulo.setDescripcion(dto.getDescripcion());
@@ -34,27 +37,35 @@ public class ArticuloService {
         Categorias categoria = categoriasRepository.findById(dto.getIdCategoria())
                 .orElseThrow(() -> new ResourceNotFoundException("Categoría no encontrada"));
         articulo.setCategoria(categoria);
+        log.error("Categoría no encontrada para el id: {}", dto.getIdCategoria());
 
         Articulos guardado = articuloRepository.save(articulo);
+        log.info("Artículo creado con éxito, id: {}", guardado.getIdArticulo());
         return mapearResponseDTO(guardado);
     }
 
     public ArticulosResponseDTO obtenerArticuloPorId(Long id) {
+        log.info("Obteniendo artículo por id: {}", id);
         Articulos articulo = articuloRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Artículo no encontrado"));
+                log.error("Artículo no encontrado para el id: {}", id);
         return mapearResponseDTO(articulo);
     }
 
     public List<ArticulosResponseDTO> obtenerTodosLosArticulos() {
+        log.info("Obteniendo todos los artículos");
         List<Articulos> articulos = articuloRepository.findAll();
+        log.debug("Cantidad de artículos encontrados: {}", articulos.size());
         return articulos.stream()
                 .map(this::mapearResponseDTO)
                 .collect(Collectors.toList());
     }
 
     public ArticulosResponseDTO actualizarArticulo(Long id, ArticulosRequestDTO dto) {
+        log.info("Actualizando artículo id: {}", id);
         Articulos articulo = articuloRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Artículo no encontrado"));
+                log.error("Artículo no encontrado para actualizar, id: {}", id);
 
         articulo.setNombre(dto.getNombre());
         articulo.setDescripcion(dto.getDescripcion());
@@ -72,9 +83,12 @@ public class ArticuloService {
     }
 
     public void eliminarArticulo(Long id) {
+        log.info("Eliminando artículo id: {}", id);
         Articulos articulo = articuloRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Artículo no encontrado"));
+                log.error("Artículo no encontrado para eliminar, id: {}", id);
         articuloRepository.delete(articulo);
+        log.info("Artículo eliminado, id: {}", id);
     }
 
     private ArticulosResponseDTO mapearResponseDTO(Articulos articulo) {
