@@ -1,0 +1,39 @@
+2025-04-06T09:12:08.642+02:00  INFO 5032 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Starting BeerstarApplication using Java 17.0.8 with PID 5032 (E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar\target\classes started by rlpmu in E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar)
+2025-04-06T09:12:08.647+02:00  INFO 5032 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : The following 1 profile is active: "${MYENV}"
+2025-04-06T09:12:09.198+02:00  INFO 5032 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-06T09:12:09.259+02:00  INFO 5032 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 5 JPA repository interfaces.
+2025-04-06T09:12:09.737+02:00  INFO 5032 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-06T09:12:09.750+02:00  INFO 5032 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-06T09:12:09.750+02:00  INFO 5032 --- [beerstar] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-06T09:12:09.806+02:00  INFO 5032 --- [beerstar] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-06T09:12:09.807+02:00  INFO 5032 --- [beerstar] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1120 ms
+2025-04-06T09:12:09.966+02:00  INFO 5032 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-06T09:12:10.042+02:00  INFO 5032 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-06T09:12:10.082+02:00  INFO 5032 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-06T09:12:10.346+02:00  INFO 5032 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-06T09:12:10.375+02:00  INFO 5032 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-06T09:12:10.540+02:00  INFO 5032 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7de3206d
+2025-04-06T09:12:10.541+02:00  INFO 5032 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-06T09:12:10.573+02:00  WARN 5032 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-06T09:12:10.593+02:00  INFO 5032 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-06T09:12:11.383+02:00  INFO 5032 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-06T09:12:11.609+02:00  INFO 5032 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-06T09:12:11.981+02:00  WARN 5032 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-06T09:12:12.014+02:00 DEBUG 5032 --- [beerstar] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-04-06T09:12:12.065+02:00  INFO 5032 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configurando seguridad HTTP
+2025-04-06T09:12:12.066+02:00  INFO 5032 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configurando CORS
+2025-04-06T09:12:12.163+02:00 DEBUG 5032 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 21 mappings in 'requestMappingHandlerMapping'
+2025-04-06T09:12:12.252+02:00 DEBUG 5032 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-06T09:12:12.259+02:00  INFO 5032 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configuración de seguridad HTTP completada
+2025-04-06T09:12:12.291+02:00 DEBUG 5032 --- [beerstar] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-06T09:12:12.364+02:00 DEBUG 5032 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-06T09:12:12.413+02:00 DEBUG 5032 --- [beerstar] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-06T09:12:12.968+02:00  INFO 5032 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-06T09:12:12.975+02:00  INFO 5032 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Started BeerstarApplication in 4.688 seconds (process running for 4.986)
