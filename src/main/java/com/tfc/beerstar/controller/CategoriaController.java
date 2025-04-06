@@ -33,8 +33,8 @@ public class CategoriaController {
     }
 
     @GetMapping("/obtenerCategoria/{categoriaId}")
-    public ResponseEntity<CategoriasResponseDTO> obtenerCategoriaPorId(@RequestBody Long id) {
-        CategoriasResponseDTO response = categoriaService.obtenerCategoriaPorId(id);
+    public ResponseEntity<CategoriasResponseDTO> obtenerCategoriaPorId(@PathVariable Long categoriaId) {
+        CategoriasResponseDTO response = categoriaService.obtenerCategoriaPorId(categoriaId);
         return ResponseEntity.ok(response);
     }
 
@@ -45,14 +45,14 @@ public class CategoriaController {
     }
 
     @PutMapping("/actualizarCategoria/{categoriaId}")
-    public ResponseEntity<CategoriasResponseDTO> actualizarCategoria(@RequestBody Long id, @Valid @RequestBody CategoriasRequestDTO categoriasRequestDTO) {
-        CategoriasResponseDTO response = categoriaService.actualizarCategoria(id, categoriasRequestDTO);
+    public ResponseEntity<CategoriasResponseDTO> actualizarCategoria(@PathVariable Long categoriaId, @Valid @RequestBody CategoriasRequestDTO categoriasRequestDTO) {
+        CategoriasResponseDTO response = categoriaService.actualizarCategoria(categoriaId, categoriasRequestDTO);
         return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/eliminarCategoria/{categoriaId}")
-    public ResponseEntity<String> eliminarCategoria(@PathVariable("categoriaId") Long id) {
-        categoriaService.eliminarCategoria(id);
+    public ResponseEntity<String> eliminarCategoria(@PathVariable("categoriaId") Long categoriaId) {
+        categoriaService.eliminarCategoria(categoriaId);
         return ResponseEntity.ok("Categoria eliminada correctamente");
 
     }
