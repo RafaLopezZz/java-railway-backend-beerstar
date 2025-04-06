@@ -32,8 +32,8 @@ public class ArticuloController {
     }
 
     @GetMapping("/obtenerArticulo/{articuloId}")
-    public ResponseEntity<ArticulosResponseDTO> obtenerArticuloPorId(@PathVariable Long id) {
-        ArticulosResponseDTO response = articuloService.obtenerArticuloPorId(id);
+    public ResponseEntity<ArticulosResponseDTO> obtenerArticuloPorId(@PathVariable Long articuloId) {
+        ArticulosResponseDTO response = articuloService.obtenerArticuloPorId(articuloId);
         return ResponseEntity.ok(response);
     }
 
@@ -44,14 +44,14 @@ public class ArticuloController {
     }
 
     @PutMapping("/actualizarArticulo/{articuloId}")
-    public ResponseEntity<ArticulosResponseDTO> actualizarArticulo(@PathVariable Long id, @Valid @RequestBody ArticulosRequestDTO articuloRequestDTO) {
-        ArticulosResponseDTO response = articuloService.actualizarArticulo(id, articuloRequestDTO);
+    public ResponseEntity<ArticulosResponseDTO> actualizarArticulo(@PathVariable Long articuloId, @Valid @RequestBody ArticulosRequestDTO articuloRequestDTO) {
+        ArticulosResponseDTO response = articuloService.actualizarArticulo(articuloId, articuloRequestDTO);
         return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/eliminarArticulo/{articuloId}")
-    public ResponseEntity<String> eliminarArticulo(@PathVariable("articuloId") Long id) {
-        articuloService.eliminarArticulo(id);
+    public ResponseEntity<String> eliminarArticulo(@PathVariable("articuloId") Long articuloId) {
+        articuloService.eliminarArticulo(articuloId);
         return ResponseEntity.ok("Artículo eliminado correctamente");
     }
 
