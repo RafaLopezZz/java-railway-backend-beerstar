@@ -22,7 +22,6 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/beerstar/categorias")
 public class CategoriaController {
-// TODO: Implementar los métodos del controlador para manejar las solicitudes HTTP relacionadas con las categorías
 
     @Autowired
     private CategoriaService categoriaService;

@@ -23,7 +23,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/beerstar/usuarios")
 public class UsuarioController {
 
-     @Autowired
+    @Autowired
     private UsuarioService usuarioService;
 
     // Crear un nuevo usuario

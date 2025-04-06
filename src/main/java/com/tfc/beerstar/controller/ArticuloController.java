@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @RequestMapping("beerstar/articulos")
 public class ArticuloController {
-// TODO: Implementar los métodos del controlador para manejar las solicitudes HTTP relacionadas con los artículos
 
     @Autowired
     private ArticuloService articuloService;
