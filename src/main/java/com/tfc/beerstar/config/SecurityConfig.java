@@ -38,8 +38,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         log.info("Configurando seguridad HTTP");     
         http.cors(cors -> {
-            CorsConfigurationSource source = corsConfigurationSource();
-            cors.configurationSource(source);
+            cors.configurationSource(corsConfigurationSource);
         });
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
@@ -57,7 +56,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*"));
+        configuration.setAllowedOrigins(List.of("http://localhost:4200", "http://localhost:8080", "https://java-railway-backend-beerstar-production.up.railway.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With"));
         configuration.setAllowCredentials(true);
@@ -66,31 +65,6 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-    
-    /* 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        log.info("Configurando CORS");
-
-        CorsConfiguration configuration = new CorsConfiguration();
-
-        List<String> allowedOrigins = Arrays.asList(
-            "http://localhost:4200",
-            "https://java-railway-backend-beerstar-production.up.railway.app"
-        );
-        configuration.setAllowedOrigins(allowedOrigins);
-
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setAllowCredentials(true); // importante: no pongas '*' en allowedOrigins si esto está en true
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-
-        log.debug("CORS configurado con orígenes: {}", allowedOrigins);
-        return source;
-    }
-    */
 
     /* 
     @Bean
