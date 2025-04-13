@@ -1,6 +1,6 @@
 package com.tfc.beerstar.config;
 
-import java.util.Arrays;
+//import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,20 +10,28 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 //import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+//import org.springframework.web.cors.CorsConfiguration;
+//import org.springframework.web.cors.CorsConfigurationSource;
+//import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration
 public class SecurityConfig {
 
+    /* 
+    private final CorsConfigurationSource corsConfigurationSource;
+
+    SecurityConfig(CorsConfigurationSource corsConfigurationSource) {
+        this.corsConfigurationSource = corsConfigurationSource;
+    }
+*/
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        log.info("Configurando seguridad HTTP");
-        http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
-        
+        log.info("Configurando seguridad HTTP");     
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/beerstar/**").permitAll()
@@ -37,6 +45,7 @@ public class SecurityConfig {
 
     
     // Configuración de CORS
+    /* 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         log.info("Configurando CORS");
@@ -52,7 +61,22 @@ public class SecurityConfig {
         log.debug("CORS configurado para todos los endpoints");
         return source;
     }
+*/
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:*")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
+            }
+        };
+    }
+    
     
     @Bean
     public PasswordEncoder passwordEncoder() {
