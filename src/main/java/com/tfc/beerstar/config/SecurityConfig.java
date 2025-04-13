@@ -40,10 +40,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         log.info("Configurando seguridad HTTP");  
-        http.cors(cors -> {
-            CorsConfigurationSource source = corsConfigurationSource();
-            cors.configurationSource(source);
-        });   
+        http.cors(cors -> cors.configurationSource(this.corsConfigurationSource)); 
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/beerstar/**").permitAll()
