@@ -26,15 +26,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        log.info("Configurando seguridad HTTP");  
-        http.cors(cors -> cors.configurationSource(corsConfigurationSource())); 
+        log.info("Configurando seguridad HTTP");           
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/beerstar/**").permitAll()
                 .anyRequest().permitAll()
                 //.requestMatchers("/beerstar/proveedores/**").authenticated() // Para autenticar usuarios con login
             )
-            .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+            .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()));
             log.info("Configuración de seguridad HTTP completada");
         return http.build();
     }
