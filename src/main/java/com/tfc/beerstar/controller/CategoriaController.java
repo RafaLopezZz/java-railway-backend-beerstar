@@ -20,7 +20,7 @@ import java.util.List;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
 @RequestMapping("/beerstar/categorias")
 public class CategoriaController {

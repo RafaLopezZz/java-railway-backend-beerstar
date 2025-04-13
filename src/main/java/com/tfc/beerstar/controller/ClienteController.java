@@ -14,7 +14,7 @@ import com.tfc.beerstar.dto.request.ClienteRequestDTO;
 import com.tfc.beerstar.dto.response.ClienteResponseDTO;
 import com.tfc.beerstar.service.ClienteService;
 
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
 @RequestMapping("/beerstar/usuarios/clientes")
 public class ClienteController {
