@@ -20,7 +20,7 @@ import com.tfc.beerstar.service.UsuarioService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
 @RequestMapping("/beerstar/usuarios")
 public class UsuarioController {
