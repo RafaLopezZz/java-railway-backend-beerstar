@@ -51,16 +51,27 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         log.info("Configurando CORS");
-        CorsConfiguration configuration = new CorsConfiguration();
-        // Puedes usar setAllowedOriginPatterns para admitir orígenes dinámicos
-        configuration.setAllowedOriginPatterns(Arrays.asList("http://localhost:4200", "http://localhost:8080"));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
-        configuration.setAllowCredentials(true);
 
+        CorsConfiguration configuration = new CorsConfiguration();
+    
+        // ⚠️ ¡Esto es solo para desarrollo!
+        String localhostFrontend = "http://localhost:4200";
+        String railwayFrontend = "https://tu-frontend-en-railway.app"; // <-- reemplaza esto si tienes frontend
+    
+        configuration.setAllowedOriginPatterns(Arrays.asList(
+            localhostFrontend,
+            railwayFrontend,
+            "https://*.railway.app" // permite subdominios si es necesario
+        ));
+    
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
+        configuration.setAllowCredentials(true);
+    
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-        log.debug("CORS configurado para todos los endpoints");
+    
+        log.debug("CORS configurado para: {}, {}", localhostFrontend, railwayFrontend);
         return source;
     }
 
