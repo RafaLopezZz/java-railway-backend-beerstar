@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.tfc.beerstar.dto.request.UsuarioRequestDTO;
 import com.tfc.beerstar.dto.response.UsuarioResponseDTO;
@@ -20,7 +19,6 @@ import com.tfc.beerstar.service.UsuarioService;
 
 import jakarta.validation.Valid;
 
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
 @RequestMapping("/beerstar/usuarios")
 public class UsuarioController {

@@ -8,13 +8,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.tfc.beerstar.dto.request.ProveedorRequestDTO;
 import com.tfc.beerstar.dto.response.ProveedorResponseDTO;
 import com.tfc.beerstar.service.ProveedorService;
 
-@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true")
 @RestController
 @RequestMapping("/beerstar/usuarios/proveedores")
 public class ProveedorController {
