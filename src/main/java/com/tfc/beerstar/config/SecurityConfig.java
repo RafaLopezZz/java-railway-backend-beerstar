@@ -38,8 +38,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         log.info("Configurando seguridad HTTP");     
+        http.cors(cors -> {
+            CorsConfigurationSource source = corsConfigurationSource();
+            cors.configurationSource(source);
+        });
         http.csrf(csrf -> csrf.disable())
-            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/beerstar/**").permitAll()
                 .anyRequest().permitAll()
@@ -52,7 +55,7 @@ public class SecurityConfig {
 
     
     // Configuración de CORS
-        @Bean
+    @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("http://localhost:4200"));
@@ -64,7 +67,7 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
+    
     /* 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
