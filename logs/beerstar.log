@@ -729,3 +729,172 @@ Caused by: java.lang.NullPointerException: Cannot invoke "org.springframework.se
 2025-04-13T12:10:09.658+02:00  INFO 30872 --- [beerstar] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-04-13T12:10:09.660+02:00  INFO 30872 --- [beerstar] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-04-13T12:10:09.663+02:00  INFO 30872 --- [beerstar] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-13T19:18:56.165+02:00  INFO 29940 --- [beerstar] [main] c.tfc.beerstar.BeerstarApplicationTests  : Starting BeerstarApplicationTests using Java 17.0.8 with PID 29940 (started by rlpmu in E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar)
+2025-04-13T19:18:56.166+02:00  INFO 29940 --- [beerstar] [main] c.tfc.beerstar.BeerstarApplicationTests  : The following 1 profile is active: "prod"
+2025-04-13T19:18:56.188+02:00 DEBUG 29940 --- [beerstar] [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@3113a37
+2025-04-13T19:18:56.667+02:00  INFO 29940 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-13T19:18:56.721+02:00  INFO 29940 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 5 JPA repository interfaces.
+2025-04-13T19:18:57.095+02:00  INFO 29940 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-13T19:18:57.156+02:00  INFO 29940 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-13T19:18:57.187+02:00  INFO 29940 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-13T19:18:57.488+02:00  INFO 29940 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-13T19:18:57.515+02:00  INFO 29940 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-13T19:18:57.648+02:00  INFO 29940 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1f26b992
+2025-04-13T19:18:57.649+02:00  INFO 29940 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-13T19:18:57.675+02:00  WARN 29940 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-13T19:18:57.692+02:00  INFO 29940 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-13T19:18:58.374+02:00  INFO 29940 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-13T19:18:58.601+02:00  INFO 29940 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-13T19:18:59.001+02:00  WARN 29940 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-13T19:18:59.018+02:00 DEBUG 29940 --- [beerstar] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-04-13T19:18:59.173+02:00 DEBUG 29940 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 21 mappings in 'requestMappingHandlerMapping'
+2025-04-13T19:18:59.329+02:00 DEBUG 29940 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-13T19:18:59.340+02:00  INFO 29940 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configurando seguridad HTTP
+2025-04-13T19:18:59.360+02:00  INFO 29940 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : ConfiguraciÃ³n de seguridad HTTP completada
+2025-04-13T19:18:59.396+02:00 DEBUG 29940 --- [beerstar] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-13T19:18:59.569+02:00 DEBUG 29940 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-13T19:18:59.629+02:00 DEBUG 29940 --- [beerstar] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-13T19:18:59.893+02:00  INFO 29940 --- [beerstar] [main] c.tfc.beerstar.BeerstarApplicationTests  : Started BeerstarApplicationTests in 3.963 seconds (process running for 4.631)
+2025-04-13T19:19:00.185+02:00 DEBUG 29940 --- [beerstar] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@3113a37, started on Sun Apr 13 19:18:56 CEST 2025
+2025-04-13T19:19:00.188+02:00  INFO 29940 --- [beerstar] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-13T19:19:00.191+02:00  INFO 29940 --- [beerstar] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-13T19:19:00.194+02:00  INFO 29940 --- [beerstar] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-13T19:19:07.644+02:00  INFO 24924 --- [beerstar] [main] c.tfc.beerstar.BeerstarApplicationTests  : Starting BeerstarApplicationTests using Java 17.0.8 with PID 24924 (started by rlpmu in E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar)
+2025-04-13T19:19:07.645+02:00  INFO 24924 --- [beerstar] [main] c.tfc.beerstar.BeerstarApplicationTests  : The following 1 profile is active: "prod"
+2025-04-13T19:19:07.671+02:00 DEBUG 24924 --- [beerstar] [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@213e3629
+2025-04-13T19:19:08.200+02:00  INFO 24924 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-13T19:19:08.258+02:00  INFO 24924 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 5 JPA repository interfaces.
+2025-04-13T19:19:08.631+02:00  INFO 24924 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-13T19:19:08.682+02:00  INFO 24924 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-13T19:19:08.713+02:00  INFO 24924 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-13T19:19:08.987+02:00  INFO 24924 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-13T19:19:09.022+02:00  INFO 24924 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-13T19:19:09.177+02:00  INFO 24924 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@67fac095
+2025-04-13T19:19:09.179+02:00  INFO 24924 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-13T19:19:09.206+02:00  WARN 24924 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-13T19:19:09.229+02:00  INFO 24924 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-13T19:19:09.958+02:00  INFO 24924 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-13T19:19:10.184+02:00  INFO 24924 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-13T19:19:10.599+02:00  WARN 24924 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-13T19:19:10.615+02:00 DEBUG 24924 --- [beerstar] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-04-13T19:19:10.851+02:00 DEBUG 24924 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 21 mappings in 'requestMappingHandlerMapping'
+2025-04-13T19:19:11.023+02:00 DEBUG 24924 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-13T19:19:11.035+02:00  INFO 24924 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configurando seguridad HTTP
+2025-04-13T19:19:11.050+02:00  INFO 24924 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : ConfiguraciÃ³n de seguridad HTTP completada
+2025-04-13T19:19:11.085+02:00 DEBUG 24924 --- [beerstar] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-13T19:19:11.300+02:00 DEBUG 24924 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-13T19:19:11.368+02:00 DEBUG 24924 --- [beerstar] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-13T19:19:11.832+02:00  INFO 24924 --- [beerstar] [main] c.tfc.beerstar.BeerstarApplicationTests  : Started BeerstarApplicationTests in 4.452 seconds (process running for 5.127)
+2025-04-13T19:19:12.219+02:00 DEBUG 24924 --- [beerstar] [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@213e3629, started on Sun Apr 13 19:19:07 CEST 2025
+2025-04-13T19:19:12.223+02:00  INFO 24924 --- [beerstar] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-13T19:19:12.226+02:00  INFO 24924 --- [beerstar] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-13T19:19:12.230+02:00  INFO 24924 --- [beerstar] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-13T19:21:04.784+02:00  INFO 33092 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Starting BeerstarApplication using Java 17.0.8 with PID 33092 (E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar\target\classes started by rlpmu in E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar)
+2025-04-13T19:21:04.787+02:00  INFO 33092 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : The following 1 profile is active: "prod"
+2025-04-13T19:21:05.373+02:00  INFO 33092 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-13T19:21:05.441+02:00  INFO 33092 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 5 JPA repository interfaces.
+2025-04-13T19:21:05.993+02:00  INFO 33092 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-13T19:21:06.007+02:00  INFO 33092 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-13T19:21:06.007+02:00  INFO 33092 --- [beerstar] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-13T19:21:06.082+02:00  INFO 33092 --- [beerstar] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-13T19:21:06.083+02:00  INFO 33092 --- [beerstar] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1257 ms
+2025-04-13T19:21:06.269+02:00  INFO 33092 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-13T19:21:06.323+02:00  INFO 33092 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-13T19:21:06.361+02:00  INFO 33092 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-13T19:21:06.622+02:00  INFO 33092 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-13T19:21:06.656+02:00  INFO 33092 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-13T19:21:06.903+02:00  INFO 33092 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@56d822dc
+2025-04-13T19:21:06.904+02:00  INFO 33092 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-13T19:21:06.928+02:00  WARN 33092 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-13T19:21:06.944+02:00  INFO 33092 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-13T19:21:07.615+02:00  INFO 33092 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-13T19:21:07.848+02:00  INFO 33092 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-13T19:21:08.204+02:00  WARN 33092 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-13T19:21:08.220+02:00 DEBUG 33092 --- [beerstar] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-04-13T19:21:08.370+02:00 DEBUG 33092 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 21 mappings in 'requestMappingHandlerMapping'
+2025-04-13T19:21:08.513+02:00 DEBUG 33092 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-13T19:21:08.528+02:00  INFO 33092 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configurando seguridad HTTP
+2025-04-13T19:21:08.558+02:00  INFO 33092 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configuración de seguridad HTTP completada
+2025-04-13T19:21:08.600+02:00 DEBUG 33092 --- [beerstar] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-13T19:21:08.732+02:00 DEBUG 33092 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-13T19:21:08.794+02:00 DEBUG 33092 --- [beerstar] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-13T19:21:09.198+02:00  WARN 33092 --- [beerstar] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-04-13T19:21:09.201+02:00  INFO 33092 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-13T19:21:09.203+02:00  INFO 33092 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-13T19:21:09.208+02:00  INFO 33092 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-13T19:21:09.225+02:00  INFO 33092 --- [beerstar] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-04-13T19:21:09.245+02:00 ERROR 33092 --- [beerstar] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-04-13T19:21:46.792+02:00  INFO 29916 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Starting BeerstarApplication using Java 17.0.8 with PID 29916 (E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar\target\classes started by rlpmu in E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar)
+2025-04-13T19:21:46.795+02:00  INFO 29916 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : The following 1 profile is active: "prod"
+2025-04-13T19:21:47.364+02:00  INFO 29916 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-13T19:21:47.431+02:00  INFO 29916 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 5 JPA repository interfaces.
+2025-04-13T19:21:47.986+02:00  INFO 29916 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-13T19:21:48.001+02:00  INFO 29916 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-13T19:21:48.001+02:00  INFO 29916 --- [beerstar] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-13T19:21:48.084+02:00  INFO 29916 --- [beerstar] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-13T19:21:48.085+02:00  INFO 29916 --- [beerstar] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1253 ms
+2025-04-13T19:21:48.260+02:00  INFO 29916 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-13T19:21:48.309+02:00  INFO 29916 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-13T19:21:48.347+02:00  INFO 29916 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-13T19:21:48.591+02:00  INFO 29916 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-13T19:21:48.617+02:00  INFO 29916 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-13T19:21:48.769+02:00  INFO 29916 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@8bc0696
+2025-04-13T19:21:48.772+02:00  INFO 29916 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-13T19:21:48.800+02:00  WARN 29916 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-13T19:21:48.819+02:00  INFO 29916 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-13T19:21:49.537+02:00  INFO 29916 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-13T19:21:49.772+02:00  INFO 29916 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-13T19:21:50.178+02:00  WARN 29916 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-13T19:21:50.200+02:00 DEBUG 29916 --- [beerstar] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-04-13T19:21:50.345+02:00 DEBUG 29916 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 21 mappings in 'requestMappingHandlerMapping'
+2025-04-13T19:21:50.443+02:00 DEBUG 29916 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-13T19:21:50.452+02:00  INFO 29916 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configurando seguridad HTTP
+2025-04-13T19:21:50.469+02:00  INFO 29916 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configuración de seguridad HTTP completada
+2025-04-13T19:21:50.491+02:00 DEBUG 29916 --- [beerstar] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-13T19:21:50.589+02:00 DEBUG 29916 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-13T19:21:50.644+02:00 DEBUG 29916 --- [beerstar] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-13T19:21:51.124+02:00  INFO 29916 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-13T19:21:51.132+02:00  INFO 29916 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Started BeerstarApplication in 4.743 seconds (process running for 5.028)
