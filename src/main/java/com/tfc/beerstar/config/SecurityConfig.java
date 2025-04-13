@@ -15,8 +15,8 @@ import org.springframework.security.web.SecurityFilterChain;
 //import org.springframework.web.cors.CorsConfiguration;
 //import org.springframework.web.cors.CorsConfigurationSource;
 //import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+//import org.springframework.web.servlet.config.annotation.CorsRegistry;
+//import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,7 +36,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         log.info("Configurando seguridad HTTP");     
         http.csrf(csrf -> csrf.disable())
-            //.cors(null)
+            .cors(null)
             //.cors(cors -> cors.configurationSource(this.corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/beerstar/**").permitAll()
@@ -50,7 +50,7 @@ public class SecurityConfig {
 
     
     // Configuración de CORS
-/* 
+    /* 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         log.info("Configurando CORS");
@@ -73,8 +73,9 @@ public class SecurityConfig {
         log.debug("CORS configurado con orígenes: {}", allowedOrigins);
         return source;
     }
-        */
+    */
 
+    /* 
     @Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
@@ -88,7 +89,7 @@ public class SecurityConfig {
 			}
 		};
 	}
-    
+    */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
