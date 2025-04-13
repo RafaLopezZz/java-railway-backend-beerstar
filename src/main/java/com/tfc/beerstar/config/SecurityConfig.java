@@ -1,6 +1,7 @@
 package com.tfc.beerstar.config;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,34 +49,31 @@ public class SecurityConfig {
     
     // Configuración de CORS
 
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         log.info("Configurando CORS");
 
         CorsConfiguration configuration = new CorsConfiguration();
-    
-        // ⚠️ ¡Esto es solo para desarrollo!
-        String localhostFrontend = "http://localhost:4200";
-        String railwayFrontend = "https://tu-frontend-en-railway.app"; // <-- reemplaza esto si tienes frontend
-    
-        configuration.setAllowedOriginPatterns(Arrays.asList(
-            localhostFrontend,
-            railwayFrontend,
-            "https://*.railway.app" // permite subdominios si es necesario
-        ));
-    
+
+        // NO uses '*' si tienes allowCredentials en true
+        List<String> allowedOrigins = Arrays.asList(
+            "http://localhost:4200",
+            "https://java-railway-backend-beerstar-production.up.railway.app"
+        );
+        configuration.setAllowedOrigins(allowedOrigins);
+
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
-        configuration.setAllowCredentials(true);
-    
+        configuration.setAllowCredentials(true); // importante: no pongas '*' en allowedOrigins si esto está en true
+
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-    
-        log.debug("CORS configurado para: {}, {}", localhostFrontend, railwayFrontend);
+
+        log.debug("CORS configurado con orígenes: {}", allowedOrigins);
         return source;
     }
-
-     /* 
+      /*
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
