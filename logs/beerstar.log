@@ -1,21 +1,22 @@
-2025-04-14T07:15:53.278+02:00  INFO 7140 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Starting BeerstarApplication using Java 17.0.8 with PID 7140 (E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar\target\classes started by rlpmu in E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar)
-2025-04-14T07:15:53.285+02:00  INFO 7140 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : The following 1 profile is active: "prod"
-2025-04-14T07:15:53.874+02:00  INFO 7140 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-14T07:15:53.938+02:00  INFO 7140 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 5 JPA repository interfaces.
-2025-04-14T07:15:54.452+02:00  INFO 7140 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-04-14T07:15:54.466+02:00  INFO 7140 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-04-14T07:15:54.467+02:00  INFO 7140 --- [beerstar] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
-2025-04-14T07:15:54.540+02:00  INFO 7140 --- [beerstar] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-04-14T07:15:54.541+02:00  INFO 7140 --- [beerstar] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1220 ms
-2025-04-14T07:15:54.737+02:00  INFO 7140 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-14T07:15:54.808+02:00  INFO 7140 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
-2025-04-14T07:15:54.887+02:00  INFO 7140 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-04-14T07:15:55.228+02:00  INFO 7140 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-14T07:15:55.271+02:00  INFO 7140 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-04-14T07:15:55.473+02:00  INFO 7140 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5d27b4c1
-2025-04-14T07:15:55.474+02:00  INFO 7140 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-04-14T07:15:55.529+02:00  WARN 7140 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-04-14T07:15:55.549+02:00  INFO 7140 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-04-15T21:28:09.830+02:00  INFO 26904 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Starting BeerstarApplication using Java 17.0.8 with PID 26904 (E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar\target\classes started by rlpmu in E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar)
+2025-04-15T21:28:09.836+02:00  INFO 26904 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : The following 1 profile is active: "prod"
+2025-04-15T21:28:10.821+02:00  INFO 26904 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-15T21:28:10.881+02:00  INFO 26904 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 5 JPA repository interfaces.
+2025-04-15T21:28:11.688+02:00  INFO 26904 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-15T21:28:11.706+02:00  INFO 26904 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-15T21:28:11.706+02:00  INFO 26904 --- [beerstar] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-15T21:28:11.773+02:00  INFO 26904 --- [beerstar] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-15T21:28:11.774+02:00  INFO 26904 --- [beerstar] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1903 ms
+2025-04-15T21:28:11.986+02:00 DEBUG 26904 --- [beerstar] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2025-04-15T21:28:12.150+02:00  INFO 26904 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-15T21:28:12.221+02:00  INFO 26904 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-15T21:28:12.261+02:00  INFO 26904 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-15T21:28:12.597+02:00  INFO 26904 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-15T21:28:12.656+02:00  INFO 26904 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-15T21:28:12.869+02:00  INFO 26904 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4a6ef712
+2025-04-15T21:28:12.871+02:00  INFO 26904 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-15T21:28:12.935+02:00  WARN 26904 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-15T21:28:12.955+02:00  INFO 26904 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 17.2
@@ -23,119 +24,58 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-14T07:15:56.283+02:00  INFO 7140 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-14T07:15:56.536+02:00  INFO 7140 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-14T07:15:56.960+02:00  WARN 7140 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-14T07:15:56.978+02:00 DEBUG 7140 --- [beerstar] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
-2025-04-14T07:15:57.135+02:00 DEBUG 7140 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 21 mappings in 'requestMappingHandlerMapping'
-2025-04-14T07:15:57.215+02:00 DEBUG 7140 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2025-04-14T07:15:57.226+02:00  WARN 7140 --- [beerstar] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Unsatisfied dependency expressed through method 'setFilterChains' parameter 0: Error creating bean with name 'securityFilterChain' defined in class path resource [com/tfc/beerstar/config/SecurityConfig.class]: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
-
-2025-04-14T07:15:57.228+02:00  INFO 7140 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-14T07:15:57.231+02:00  INFO 7140 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-04-14T07:15:57.234+02:00  INFO 7140 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-04-14T07:15:57.237+02:00  INFO 7140 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2025-04-14T07:15:57.251+02:00  INFO 7140 --- [beerstar] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2025-04-15T21:28:13.864+02:00  INFO 26904 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-15T21:28:14.131+02:00  INFO 26904 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T21:28:14.792+02:00  WARN 26904 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-15T21:28:14.823+02:00 DEBUG 26904 --- [beerstar] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-04-15T21:28:15.065+02:00 DEBUG 26904 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 21 mappings in 'requestMappingHandlerMapping'
+2025-04-15T21:28:15.221+02:00 DEBUG 26904 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-15T21:28:15.485+02:00  INFO 26904 --- [beerstar] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2025-04-15T21:28:15.519+02:00  INFO 26904 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configurando seguridad HTTP
+2025-04-15T21:28:15.539+02:00  INFO 26904 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configuración de seguridad HTTP completada
+2025-04-15T21:28:15.587+02:00 DEBUG 26904 --- [beerstar] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-15T21:28:15.732+02:00 DEBUG 26904 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-15T21:28:15.805+02:00 DEBUG 26904 --- [beerstar] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-15T21:28:16.343+02:00  WARN 26904 --- [beerstar] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-04-15T21:28:16.348+02:00  INFO 26904 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T21:28:16.351+02:00  INFO 26904 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-15T21:28:16.355+02:00  INFO 26904 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-15T21:28:16.381+02:00  INFO 26904 --- [beerstar] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2025-04-14T07:15:57.266+02:00 ERROR 7140 --- [beerstar] [main] o.s.boot.SpringApplication               : Application run failed
+2025-04-15T21:28:16.396+02:00 ERROR 26904 --- [beerstar] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Unsatisfied dependency expressed through method 'setFilterChains' parameter 0: Error creating bean with name 'securityFilterChain' defined in class path resource [com/tfc/beerstar/config/SecurityConfig.class]: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
+***************************
+APPLICATION FAILED TO START
+***************************
 
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:896) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:849) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1445) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.5.jar:6.2.5]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.5.jar:6.2.5]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.4.jar:3.4.4]
-	at com.tfc.beerstar.BeerstarApplication.main(BeerstarApplication.java:10) ~[classes/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'securityFilterChain' defined in class path resource [com/tfc/beerstar/config/SecurityConfig.class]: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
+Description:
 
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1919) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1883) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeanCollection(DefaultListableBeanFactory.java:1773) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1741) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1616) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:888) ~[spring-beans-6.2.5.jar:6.2.5]
-	... 22 common frames omitted
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
+Web server failed to start. Port 8080 was already in use.
 
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.5.jar:6.2.5]
-	... 39 common frames omitted
-Caused by: java.lang.Error: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
+Action:
 
-	at com.tfc.beerstar.config.SecurityConfig.securityFilterChain(SecurityConfig.java:36) ~[classes/:na]
-	at com.tfc.beerstar.config.SecurityConfig$$SpringCGLIB$$0.CGLIB$securityFilterChain$1(<generated>) ~[classes/:na]
-	at com.tfc.beerstar.config.SecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
-	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.2.5.jar:6.2.5]
-	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:370) ~[spring-context-6.2.5.jar:6.2.5]
-	at com.tfc.beerstar.config.SecurityConfig$$SpringCGLIB$$0.securityFilterChain(<generated>) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171) ~[spring-beans-6.2.5.jar:6.2.5]
-	... 42 common frames omitted
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
 
-2025-04-14T07:16:42.034+02:00  INFO 4472 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Starting BeerstarApplication using Java 17.0.8 with PID 4472 (E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar\target\classes started by rlpmu in E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar)
-2025-04-14T07:16:42.036+02:00  INFO 4472 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : The following 1 profile is active: "prod"
-2025-04-14T07:16:42.595+02:00  INFO 4472 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-04-14T07:16:42.666+02:00  INFO 4472 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 5 JPA repository interfaces.
-2025-04-14T07:16:43.171+02:00  INFO 4472 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-04-14T07:16:43.185+02:00  INFO 4472 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-04-14T07:16:43.185+02:00  INFO 4472 --- [beerstar] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
-2025-04-14T07:16:43.263+02:00  INFO 4472 --- [beerstar] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-04-14T07:16:43.264+02:00  INFO 4472 --- [beerstar] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1191 ms
-2025-04-14T07:16:43.414+02:00  INFO 4472 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-04-14T07:16:43.470+02:00  INFO 4472 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
-2025-04-14T07:16:43.500+02:00  INFO 4472 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-04-14T07:16:43.731+02:00  INFO 4472 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-04-14T07:16:43.758+02:00  INFO 4472 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-04-14T07:16:44.005+02:00  INFO 4472 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4948daec
-2025-04-14T07:16:44.006+02:00  INFO 4472 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-04-14T07:16:44.036+02:00  WARN 4472 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-04-14T07:16:44.055+02:00  INFO 4472 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-04-15T21:28:39.389+02:00  INFO 28716 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Starting BeerstarApplication using Java 17.0.8 with PID 28716 (E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar\target\classes started by rlpmu in E:\Proyectos_2025\BeerStar_PROYECTO fdg_DAM\TFC_BEERSTAR-main\BACKEND\beerstar)
+2025-04-15T21:28:39.394+02:00  INFO 28716 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : The following 1 profile is active: "prod"
+2025-04-15T21:28:40.230+02:00  INFO 28716 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-15T21:28:40.293+02:00  INFO 28716 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 5 JPA repository interfaces.
+2025-04-15T21:28:41.008+02:00  INFO 28716 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-15T21:28:41.020+02:00  INFO 28716 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-15T21:28:41.021+02:00  INFO 28716 --- [beerstar] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-15T21:28:41.089+02:00  INFO 28716 --- [beerstar] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-15T21:28:41.090+02:00  INFO 28716 --- [beerstar] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1645 ms
+2025-04-15T21:28:41.292+02:00 DEBUG 28716 --- [beerstar] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2025-04-15T21:28:41.438+02:00  INFO 28716 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-15T21:28:41.490+02:00  INFO 28716 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-15T21:28:41.549+02:00  INFO 28716 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-15T21:28:41.803+02:00  INFO 28716 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-15T21:28:41.855+02:00  INFO 28716 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-15T21:28:42.042+02:00  INFO 28716 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@13c18bba
+2025-04-15T21:28:42.045+02:00  INFO 28716 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-15T21:28:42.085+02:00  WARN 28716 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-15T21:28:42.111+02:00  INFO 28716 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 17.2
@@ -143,98 +83,50 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-04-14T07:16:44.733+02:00  INFO 4472 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-04-14T07:16:44.952+02:00  INFO 4472 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-04-14T07:16:45.338+02:00  WARN 4472 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-04-14T07:16:45.355+02:00 DEBUG 4472 --- [beerstar] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
-2025-04-14T07:16:45.510+02:00 DEBUG 4472 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 21 mappings in 'requestMappingHandlerMapping'
-2025-04-14T07:16:45.600+02:00 DEBUG 4472 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2025-04-14T07:16:45.613+02:00  WARN 4472 --- [beerstar] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Unsatisfied dependency expressed through method 'setFilterChains' parameter 0: Error creating bean with name 'securityFilterChain' defined in class path resource [com/tfc/beerstar/config/SecurityConfig.class]: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
-
-2025-04-14T07:16:45.615+02:00  INFO 4472 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-04-14T07:16:45.618+02:00  INFO 4472 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-04-14T07:16:45.622+02:00  INFO 4472 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2025-04-14T07:16:45.626+02:00  INFO 4472 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2025-04-14T07:16:45.641+02:00  INFO 4472 --- [beerstar] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2025-04-14T07:16:45.658+02:00 ERROR 4472 --- [beerstar] [main] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Unsatisfied dependency expressed through method 'setFilterChains' parameter 0: Error creating bean with name 'securityFilterChain' defined in class path resource [com/tfc/beerstar/config/SecurityConfig.class]: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
-
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:896) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:849) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1445) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1155) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1121) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1056) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.5.jar:6.2.5]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.5.jar:6.2.5]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.4.jar:3.4.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.4.jar:3.4.4]
-	at com.tfc.beerstar.BeerstarApplication.main(BeerstarApplication.java:10) ~[classes/:na]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'securityFilterChain' defined in class path resource [com/tfc/beerstar/config/SecurityConfig.class]: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
-
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1361) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:563) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:523) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:347) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1919) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1883) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeanCollection(DefaultListableBeanFactory.java:1773) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1741) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1616) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1555) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:888) ~[spring-beans-6.2.5.jar:6.2.5]
-	... 22 common frames omitted
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
-
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:199) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiateWithFactoryMethod(SimpleInstantiationStrategy.java:88) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:168) ~[spring-beans-6.2.5.jar:6.2.5]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-6.2.5.jar:6.2.5]
-	... 39 common frames omitted
-Caused by: java.lang.Error: Unresolved compilation problems: 
-	Syntax error, insert ")" to complete MethodInvocation
-	Syntax error, insert ";" to complete Statement
-
-	at com.tfc.beerstar.config.SecurityConfig.securityFilterChain(SecurityConfig.java:36) ~[classes/:na]
-	at com.tfc.beerstar.config.SecurityConfig$$SpringCGLIB$$0.CGLIB$securityFilterChain$1(<generated>) ~[classes/:na]
-	at com.tfc.beerstar.config.SecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
-	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.2.5.jar:6.2.5]
-	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:370) ~[spring-context-6.2.5.jar:6.2.5]
-	at com.tfc.beerstar.config.SecurityConfig$$SpringCGLIB$$0.securityFilterChain(<generated>) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.lambda$instantiate$0(SimpleInstantiationStrategy.java:171) ~[spring-beans-6.2.5.jar:6.2.5]
-	... 42 common frames omitted
-
+2025-04-15T21:28:43.023+02:00  INFO 28716 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-15T21:28:43.246+02:00  INFO 28716 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-15T21:28:43.814+02:00  WARN 28716 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-15T21:28:43.848+02:00 DEBUG 28716 --- [beerstar] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-04-15T21:28:44.046+02:00 DEBUG 28716 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 21 mappings in 'requestMappingHandlerMapping'
+2025-04-15T21:28:44.185+02:00 DEBUG 28716 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-15T21:28:44.406+02:00  INFO 28716 --- [beerstar] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2025-04-15T21:28:44.436+02:00  INFO 28716 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configurando seguridad HTTP
+2025-04-15T21:28:44.452+02:00  INFO 28716 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configuración de seguridad HTTP completada
+2025-04-15T21:28:44.496+02:00 DEBUG 28716 --- [beerstar] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-04-15T21:28:44.616+02:00 DEBUG 28716 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-15T21:28:44.676+02:00 DEBUG 28716 --- [beerstar] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-15T21:28:45.361+02:00  INFO 28716 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-15T21:28:45.378+02:00  INFO 28716 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Started BeerstarApplication in 6.337 seconds (process running for 6.771)
+2025-04-15T21:28:45.446+02:00  INFO 28716 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-15T21:28:45.447+02:00  INFO 28716 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-15T21:28:45.447+02:00 DEBUG 28716 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-04-15T21:28:45.447+02:00 DEBUG 28716 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-04-15T21:28:45.447+02:00 DEBUG 28716 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-04-15T21:28:45.449+02:00 DEBUG 28716 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@69a8191e
+2025-04-15T21:28:45.450+02:00 DEBUG 28716 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@4057eb76
+2025-04-15T21:28:45.450+02:00 DEBUG 28716 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-04-15T21:28:45.450+02:00  INFO 28716 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-04-15T21:29:01.365+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /actuator/metrics/jvm.memory.used
+2025-04-15T21:29:01.376+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-15T21:29:01.386+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /actuator/metrics/jvm.memory.used
+2025-04-15T21:29:01.390+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/actuator/metrics/jvm.memory.used", parameters={}
+2025-04-15T21:29:01.410+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/octet-stream" to []
+2025-04-15T21:29:01.419+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/vnd.spring-boot.actuator.v3+json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/vnd.spring-boot.actuator.v3+json, application/vnd.spring-boot.actuator.v2+json, application/json]
+2025-04-15T21:29:01.423+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [org.springframework.boot.actuate.metrics.MetricsEndpoint$MetricDescriptor@15081279]
+2025-04-15T21:29:01.454+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-15T21:29:01.616+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /favicon.ico
+2025-04-15T21:29:01.617+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-04-15T21:29:01.618+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /favicon.ico
+2025-04-15T21:29:01.618+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/favicon.ico", parameters={}
+2025-04-15T21:29:01.619+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-15T21:29:01.633+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-04-15T21:29:01.636+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-04-15T21:29:01.636+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-04-15T21:29:01.643+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-04-15T21:29:01.644+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-04-15T21:29:01.644+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2025-04-15T21:29:01.645+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2025-04-15T21:29:01.649+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2025-04-15T21:29:01.650+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Tue Apr 15 21:29:01 CEST 2025, status=404, error=Not Found, path=/favicon.ico}]
+2025-04-15T21:29:01.654+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-04-15T21:29:01.655+02:00 DEBUG 28716 --- [beerstar] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
