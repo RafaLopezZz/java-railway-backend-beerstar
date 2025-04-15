@@ -35,4 +35,7 @@ build/
 .mvn/
 .env
 postgres/
+logs/
+test/
 *.log
+
