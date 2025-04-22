@@ -1,8 +1,8 @@
 package com.tfc.beerstar.service;
 
 import java.time.LocalDateTime;
-import java.util.stream.Collectors;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +34,7 @@ public class ProveedorService {
         proveedor.setDireccion(pDto.getDireccion());
         proveedor.setTelefono(pDto.getTelefono());
         proveedor.setFechaRegistro(LocalDateTime.now());
+        proveedor.setUrl(pDto.getUrl());
 
         Proveedor guardado = proveedorRepository.save(proveedor);
         return mapearResponseDTO(guardado);
@@ -60,6 +61,7 @@ public class ProveedorService {
         proveedor.setNombre(dto.getNombre());
         proveedor.setDireccion(dto.getDireccion());
         proveedor.setTelefono(dto.getTelefono());
+        proveedor.setUrl(dto.getUrl());
         
         Proveedor actualizado = proveedorRepository.save(proveedor);
         return mapearResponseDTO(actualizado);
@@ -78,6 +80,7 @@ public class ProveedorService {
         dto.setDireccion(proveedor.getDireccion());
         dto.setTelefono(proveedor.getTelefono());
         dto.setFechaRegistro(proveedor.getFechaRegistro());
+        dto.setUrl(proveedor.getUrl());
         
         Usuario usuario = proveedor.getUsuario();
         if (usuario != null) {
