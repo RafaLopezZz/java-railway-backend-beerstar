@@ -13,4 +13,5 @@ public class ProveedorResponseDTO {
     private String direccion;
     private String telefono;
     private LocalDateTime fechaRegistro;
+    private String url;
 }
