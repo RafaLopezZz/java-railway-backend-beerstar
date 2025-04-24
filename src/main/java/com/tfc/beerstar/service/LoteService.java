@@ -1,6 +1,5 @@
 package com.tfc.beerstar.service;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,8 +101,7 @@ public class LoteService {
         dto.setDescripcion(lote.getDescripcion());
         dto.setPrecio(lote.getPrecio());
         dto.setUrl(lote.getUrl());
-        String fechaComoTexto = new SimpleDateFormat("dd-MM-yyyy").format(lote.getFechaValidez());
-        dto.setFechaValidez(fechaComoTexto);
+        //dto.setFechaValidez(lote.getFechaValidez());
         if(lote.getProveedor() != null) {
             dto.setIdProveedor(lote.getProveedor().getId_proveedor());
             dto.setNombreProveedor(lote.getProveedor().getNombre());

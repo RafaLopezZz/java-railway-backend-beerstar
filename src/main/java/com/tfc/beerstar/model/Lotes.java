@@ -1,7 +1,5 @@
 package com.tfc.beerstar.model;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,7 +36,7 @@ public class Lotes {
     @Column(name = "url")
     private String url;
 
-    @Column(name = "fecha_validez")
-    private LocalDateTime fechaValidez = LocalDateTime.now();
+    //@Column(name = "fecha_validez")
+    //private LocalDateTime fechaValidez = LocalDateTime.now();
 
 }
