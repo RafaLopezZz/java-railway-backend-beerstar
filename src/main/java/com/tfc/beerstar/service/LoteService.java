@@ -98,6 +98,7 @@ public class LoteService {
     private LoteResponseDTO mapearResponseDTO(Lotes lote) {
         LoteResponseDTO dto = new LoteResponseDTO();
         dto.setIdLote(lote.getIdLote());
+        dto.setNombreLote(lote.getNombreLote());
         dto.setDescripcion(lote.getDescripcion());
         dto.setPrecio(lote.getPrecio());
         dto.setUrl(lote.getUrl());
