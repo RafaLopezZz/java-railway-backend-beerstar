@@ -12,5 +12,5 @@ public class LoteResponseDTO {
     private String nombreProveedor;
     private Double precio;
     private String url;
-    private String fechaValidez;
+    //private String fechaValidez;
 }
