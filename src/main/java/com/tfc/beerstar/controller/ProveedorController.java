@@ -1,5 +1,7 @@
 package com.tfc.beerstar.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +28,12 @@ public class ProveedorController {
     public ResponseEntity<ProveedorResponseDTO> obtenerProveedorPorUsuarioId(@PathVariable Long usuarioId) {
         ProveedorResponseDTO proveedor = proveedorService.obtenerProveedorPorUsuarioId(usuarioId);
         return ResponseEntity.ok(proveedor);
+    }
+
+    @GetMapping("/listarProveedores")
+    public ResponseEntity<List<ProveedorResponseDTO>> listarProveedores() {
+        List<ProveedorResponseDTO> proveedores = proveedorService.listarProveedores();
+        return ResponseEntity.ok(proveedores);
     }
     
     @PutMapping("/{proveedorId}")
