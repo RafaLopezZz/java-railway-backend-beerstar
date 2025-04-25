@@ -1,9 +1,9 @@
 package com.tfc.beerstar.model;
 
 
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -40,7 +40,7 @@ public class Articulos {
     @Column(name = "graduacion")
     private Double graduacion;
 
-    @Column(name = "imagen")
-    private String imagen;
+    @Column(name = "url")
+    private String url;
 
 }

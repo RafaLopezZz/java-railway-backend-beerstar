@@ -34,7 +34,7 @@ public class ArticuloService {
         articulo.setPrecio(dto.getPrecio());
         articulo.setStock(dto.getStock());
         articulo.setGraduacion(dto.getGraduacion());
-        articulo.setImagen(dto.getImagen());
+        articulo.setUrl(dto.getUrl());
 
         Categorias categoria = categoriasRepository.findById(dto.getIdCategoria())
                 .orElseThrow(() -> new ResourceNotFoundException("Categoría no encontrada"));
@@ -74,7 +74,7 @@ public class ArticuloService {
         articulo.setPrecio(dto.getPrecio());
         articulo.setStock(dto.getStock());
         articulo.setGraduacion(dto.getGraduacion());
-        articulo.setImagen(dto.getImagen());
+        articulo.setUrl(dto.getUrl());
 
         Categorias categoria = categoriasRepository.findById(dto.getIdCategoria())
                 .orElseThrow(() -> new ResourceNotFoundException("Categoría no encontrada"));
@@ -101,7 +101,7 @@ public class ArticuloService {
         dto.setPrecio(articulo.getPrecio());
         dto.setStock(articulo.getStock());
         dto.setGraduacion(articulo.getGraduacion());
-        dto.setImagen(articulo.getImagen());
+        dto.setUrl(articulo.getUrl());
         if (articulo.getCategoria() != null) {
             dto.setIdCategoria(articulo.getCategoria().getIdCategoria());
             dto.setNombreCategoria(articulo.getCategoria().getNombre());

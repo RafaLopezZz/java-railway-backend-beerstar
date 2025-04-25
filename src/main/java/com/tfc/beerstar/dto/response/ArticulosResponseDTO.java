@@ -13,6 +13,6 @@ public class ArticulosResponseDTO {
     private Long idCategoria;
     private String nombreCategoria;
     private Double graduacion;
-    private String imagen;
+    private String url;
 
 }
