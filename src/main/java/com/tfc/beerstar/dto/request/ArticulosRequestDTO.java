@@ -25,6 +25,6 @@ public class ArticulosRequestDTO {
     
     private Double graduacion;
     
-    private String imagen;
+    private String url;
 
 }
