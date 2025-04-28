@@ -38,8 +38,9 @@ public class ArticuloService {
 
         Categorias categoria = categoriasRepository.findById(dto.getIdCategoria())
                 .orElseThrow(() -> new ResourceNotFoundException("Categoría no encontrada"));
+                log.error("Categoría no encontrada para el id: {}", dto.getIdCategoria());
         articulo.setCategoria(categoria);
-        log.error("Categoría no encontrada para el id: {}", dto.getIdCategoria());
+        
 
         Articulos guardado = articuloRepository.save(articulo);
         log.info("Artículo creado con éxito, id: {}", guardado.getIdArticulo());

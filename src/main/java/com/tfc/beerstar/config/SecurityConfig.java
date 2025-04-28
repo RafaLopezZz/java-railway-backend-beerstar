@@ -34,7 +34,6 @@ public class SecurityConfig {
                 //.requestMatchers("/beerstar/proveedores/**").authenticated() // Para autenticar usuarios con login
             )
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-            //.cors(cors -> cors.configurationSource(corsConfigurationSource()));
             log.info("Configuración de seguridad HTTP completada");
         return http.build();
     }
