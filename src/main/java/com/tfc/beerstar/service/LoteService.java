@@ -15,6 +15,19 @@ import com.tfc.beerstar.repository.ProveedorRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Servicio que maneja la lógica de negocio relacionada con los lotes.
+ *
+ * <p>
+ * Este servicio permite crear, actualizar, eliminar y recuperar lotes,
+ * trabajando en conjunto con el repositorio de lotes y de proveedores.</p>
+ *
+ * <p>
+ * Usa DTOs para encapsular datos entre las capas y asegura que las operaciones
+ * estén validadas y registradas con logs.</p>
+ *
+ * @author rafalopezzz
+ */
 @Slf4j
 @Service
 public class LoteService {
@@ -25,6 +38,12 @@ public class LoteService {
     @Autowired
     private ProveedorRepository proveedorRepository;
 
+    /**
+     * Crea un nuevo lote en el sistema.
+     *
+     * @param lDto DTO con los datos del lote a crear.
+     * @return DTO de respuesta con los datos del lote creado.
+     */
     public LoteResponseDTO crearLote(LoteRequestDTO lDto) {
         log.info("Creando lote: {}", lDto.getNombreLote());
         Lotes lote = new Lotes();
@@ -33,23 +52,40 @@ public class LoteService {
         lote.setUrl(lDto.getUrl());
 
         Proveedor proveedor = proveedorRepository.findById(lDto.getIdProveedor())
-                .orElseThrow(() -> new ResourceNotFoundException("Proveedor no encontrado"));
+                .orElseThrow(() -> {
+                    log.error("Proveedor no encontrado para el id: {}", lDto.getIdProveedor());
+                    return new ResourceNotFoundException("Proveedor no encontrado");
+                });
+
         lote.setProveedor(proveedor);
-        log.error("Proveedor no encontrado para el id: {}", lDto.getIdProveedor());
 
         Lotes guardado = loteRepository.save(lote);
         log.info("Lote creado con éxito, id: {}", guardado.getIdLote());
         return mapearResponseDTO(guardado);
     }
 
+    /**
+     * Obtiene un lote por su ID.
+     *
+     * @param id ID del lote a buscar.
+     * @return DTO de respuesta con los datos del lote encontrado.
+     * @throws ResourceNotFoundException si no se encuentra el lote.
+     */
     public LoteResponseDTO obtenerLotePorId(Long id) {
         log.info("Obteniendo lote por id: {}", id);
         Lotes lote = loteRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Lote no encontrado"));
-        log.error("Lote no encontrado para el id: {}", id);
+                .orElseThrow(() -> {
+                    log.error("Lote no encontrado para el id: {}", id);
+                    return new ResourceNotFoundException("Lote no encontrado");
+                });
         return mapearResponseDTO(lote);
     }
 
+    /**
+     * Obtiene todos los lotes registrados en el sistema.
+     *
+     * @return Lista de DTOs de respuesta con los datos de todos los lotes.
+     */
     public List<LoteResponseDTO> obtenerTodosLosLotes() {
         log.info("Obteniendo todos los lotes");
         List<Lotes> lotes = loteRepository.findAll();
@@ -57,11 +93,21 @@ public class LoteService {
         return lotes.stream().map(this::mapearResponseDTO).toList();
     }
 
+    /**
+     * Obtiene todos los lotes asociados a un proveedor específico.
+     *
+     * @param idProveedor ID del proveedor.
+     * @return Lista de DTOs de respuesta con los datos de los lotes del
+     * proveedor.
+     * @throws ResourceNotFoundException si no se encuentra el proveedor.
+     */
     public List<LoteResponseDTO> obtenerLotesPorProveedor(Long idProveedor) {
         log.info("Obteniendo lotes por proveedor id: {}", idProveedor);
         Proveedor proveedor = proveedorRepository.findById(idProveedor)
-                .orElseThrow(() -> new ResourceNotFoundException("Proveedor no encontrado"));
-        log.error("Proveedor no encontrado para el id: {}", idProveedor);
+                .orElseThrow(() -> {
+                    log.error("Proveedor no encontrado para el id: {}", idProveedor);
+                    return new ResourceNotFoundException("Proveedor no encontrado");
+                });
         List<Lotes> lotes = loteRepository.findByProveedor(proveedor);
         return lotes.stream().map(this::mapearResponseDTO).toList();
     }
@@ -69,32 +115,50 @@ public class LoteService {
     public LoteResponseDTO actualizarLote(Long id, LoteRequestDTO lDto) {
         log.info("Actualizando lote id: {}", id);
         Lotes lote = loteRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Lote no encontrado"));
-        log.error("Lote no encontrado para el id: {}", id);
+                .orElseThrow(() -> {
+                    log.error("Lote no encontrado para el id: {}", id);
+                    return new ResourceNotFoundException("Lote no encontrado");
+                });
 
         lote.setDescripcion(lDto.getDescripcion());
         lote.setPrecio(lDto.getPrecio());
         lote.setUrl(lDto.getUrl());
 
         Proveedor proveedor = proveedorRepository.findById(lDto.getIdProveedor())
-                .orElseThrow(() -> new ResourceNotFoundException("Proveedor no encontrado"));
+                .orElseThrow(() -> {
+                    log.error("Proveedor no encontrado para el id: {}", lDto.getIdProveedor());
+                    return new ResourceNotFoundException("Proveedor no encontrado");
+                });
         lote.setProveedor(proveedor);
-        log.error("Proveedor no encontrado para el id: {}", lDto.getIdProveedor());
 
         Lotes guardado = loteRepository.save(lote);
         log.info("Lote actualizado con éxito, id: {}", guardado.getIdLote());
         return mapearResponseDTO(guardado);
     }
 
+    /**
+     * Elimina un lote por su ID.
+     *
+     * @param id ID del lote a eliminar.
+     * @throws ResourceNotFoundException si no se encuentra el lote.
+     */
     public void eliminarLote(Long id) {
         log.info("Eliminando lote id: {}", id);
         Lotes lote = loteRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Lote no encontrado"));
-        log.error("Lote no encontrado para el id: {}", id);
+                .orElseThrow(() -> {
+                    log.error("Lote no encontrado para el id: {}", id);
+                    return new ResourceNotFoundException("Lote no encontrado");
+                });
         loteRepository.delete(lote);
         log.info("Lote eliminado con éxito, id: {}", id);
     }
 
+    /**
+     * Convierte una entidad {@link Lotes} en un {@link LoteResponseDTO}.
+     *
+     * @param lote Entidad de tipo Lotes.
+     * @return DTO de respuesta con los datos del lote.
+     */
     private LoteResponseDTO mapearResponseDTO(Lotes lote) {
         LoteResponseDTO dto = new LoteResponseDTO();
         dto.setIdLote(lote.getIdLote());
@@ -103,7 +167,7 @@ public class LoteService {
         dto.setPrecio(lote.getPrecio());
         dto.setUrl(lote.getUrl());
         //dto.setFechaValidez(lote.getFechaValidez());
-        if(lote.getProveedor() != null) {
+        if (lote.getProveedor() != null) {
             dto.setIdProveedor(lote.getProveedor().getId_proveedor());
             dto.setNombreProveedor(lote.getProveedor().getNombre());
         } else {
