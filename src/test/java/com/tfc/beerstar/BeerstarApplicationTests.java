@@ -9,5 +9,4 @@ class BeerstarApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
