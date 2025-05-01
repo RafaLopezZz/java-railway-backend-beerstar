@@ -1,7 +1,7 @@
 package com.tfc.beerstar.service;
 
-import java.util.stream.Collectors;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,11 +15,28 @@ import com.tfc.beerstar.exception.ResourceNotFoundException;
 import com.tfc.beerstar.model.Usuario;
 import com.tfc.beerstar.repository.UsuarioRepository;
 
+/**
+ * Servicio que encapsula la lógica de negocio para la gestión de usuarios.
+ * 
+ * <p>Permite crear, obtener, listar, actualizar y eliminar usuarios, así como
+ * mapear entre entidades JPA y DTOs de petición/respuesta. Incluye validaciones
+ * como comprobación de email duplicado y manejo de tipos de usuario.</p>
+ * 
+ * <p>En la creación de usuarios, delega la creación de registros en las tablas
+ * correspondientes de Cliente o Proveedor según el tipo de usuario.</p>
+ * 
+ * @author rafalopezzz
+ */
 @Service
 public class UsuarioService {
 
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * Constructor con inyección de {@link PasswordEncoder}.
+     * 
+     * @param passwordEncoder Codificador de contraseñas (BCrypt).
+     */
     public UsuarioService(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
@@ -33,14 +50,28 @@ public class UsuarioService {
     @Autowired
     private ProveedorService proveedorService;
 
+    /**
+     * Crea un nuevo usuario en la base de datos.
+     * 
+     * <p>Valida que el email no exista previamente, asigna un rol por defecto,
+     * codifica la contraseña y crea el registro adicional en Cliente o Proveedor
+     * según el tipo de usuario.</p>
+     * 
+     * @param uDto DTO de petición con los datos del usuario a crear.
+     * @return DTO de respuesta con los datos del usuario recién creado.
+     * @throws EmailAlreadyExistsException si el email ya está registrado.
+     * @throws IllegalArgumentException   si el tipo de usuario no es válido.
+     */
     @Transactional
     public UsuarioResponseDTO crearUsuario(UsuarioRequestDTO uDto) {
+        // Normalizar el email
         String email = uDto.getEmail().trim().toLowerCase();
+        // Comprobar si el email ya existe
         if (usuarioRepository.findByEmail(email).isPresent()) {
             throw new EmailAlreadyExistsException("El email ya está en uso");
         }
 
-        // Validar el tipo de usuario
+        // Validación y asignación del tipo de usuario
         String tipoUsuario = uDto.getTipoUsuario();
         if (tipoUsuario == null) {
             tipoUsuario = "CLIENTE"; // Valor por defecto
@@ -57,7 +88,7 @@ public class UsuarioService {
 
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
 
-        // Dependiendo del tipo, crear registro en la tabla correspondiente
+        // Dependiendo del tipo, crea los registros en la tabla correspondiente
         if (tipoUsuario.equals("CLIENTE")) {
             clienteService.crearCliente(usuarioGuardado, uDto.getClienteData());
         } else if (tipoUsuario.equals("PROVEEDOR")) {
@@ -67,12 +98,26 @@ public class UsuarioService {
         return mapearResponseDTO(usuarioGuardado);
     }
 
+    /**
+     * Obtiene un usuario por su ID.
+     * 
+     * @param id ID del usuario a buscar.
+     * @return DTO de respuesta con los datos del usuario encontrado.
+     * @throws ResourceNotFoundException si el usuario no se encuentra.
+     */
     public UsuarioResponseDTO obtenerUsuarioPorId(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
         return mapearResponseDTO(usuario);
     }
 
+    /**
+     * Obtiene un usuario por su email.
+     * 
+     * @param email Email del usuario a buscar.
+     * @return DTO de respuesta con los datos del usuario encontrado.
+     * @throws ResourceNotFoundException si el usuario no se encuentra.
+     */
     public List<UsuarioResponseDTO> listarUsuarios() {
         return usuarioRepository.findAll()
                 .stream()
@@ -80,6 +125,14 @@ public class UsuarioService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Actualiza un usuario existente.
+     * 
+     * @param id   ID del usuario a actualizar.
+     * @param uDto DTO de petición con los nuevos datos del usuario.
+     * @return DTO de respuesta con los datos del usuario actualizado.
+     * @throws ResourceNotFoundException si el usuario no se encuentra.
+     */
     public UsuarioResponseDTO actualizarUsuario(Long id, UsuarioRequestDTO uDto) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
@@ -95,13 +148,24 @@ public class UsuarioService {
         return mapearResponseDTO(actualizado);
     }
 
+    /**
+     * Elimina un usuario por su ID.
+     * 
+     * @param id ID del usuario a eliminar.
+     * @throws ResourceNotFoundException si el usuario no se encuentra.
+     */
     public void eliminarUsuario(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado"));
         usuarioRepository.delete(usuario);
     }
 
-
+    /**
+     * Mapea un objeto {@link Usuario} a un {@link UsuarioResponseDTO}.
+     * 
+     * @param usuario Entidad JPA de usuario
+     * @return DTO de respuesta con los datos del usuario.
+     */
     private UsuarioResponseDTO mapearResponseDTO(Usuario usuario) {
         UsuarioResponseDTO dto = new UsuarioResponseDTO();
         dto.setIdUsuario(usuario.getIdUsuario());
