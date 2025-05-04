@@ -35,4 +35,7 @@ POST   -> /beerstar/articulos/crearArticulo
 PUT    -> /beerstar/articulos/actualizarArticulo/{articuloId}
           
 DELETE -> /beerstar/articulos/eliminarArticulo/{articuloId}
+
+*** LOGIN ***
+POST   -> /beerstar/auth/login
                   
