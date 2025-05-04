@@ -29,6 +29,7 @@ import com.tfc.beerstar.repository.ClienteRepository;
 @Service
 public class ClienteService {
 
+    
     @Autowired
     private ClienteRepository clienteRepository;
 
@@ -134,7 +135,7 @@ public class ClienteService {
         dto.setDireccion(cliente.getDireccion());
         dto.setTelefono(cliente.getTelefono());
         dto.setFechaRegistro(cliente.getFechaRegistro());
-
+        
         // Mapear el usuario asociado
         Usuario usuario = cliente.getUsuario();
         if (usuario != null) {

@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 import com.tfc.beerstar.dto.request.ProveedorRequestDTO;
 import com.tfc.beerstar.dto.response.ProveedorResponseDTO;
 import com.tfc.beerstar.dto.response.UsuarioResponseDTO;
-import com.tfc.beerstar.exception.ResourceNotFoundException;
 import com.tfc.beerstar.model.Proveedor;
 import com.tfc.beerstar.model.Usuario;
 import com.tfc.beerstar.repository.ProveedorRepository;
+import com.tfc.beerstar.exception.ResourceNotFoundException;
+
 
 /**
  * Servicio para la gestión de proveedores.
@@ -52,8 +53,8 @@ public class ProveedorService {
         proveedor.setFechaRegistro(LocalDateTime.now());
         proveedor.setUrl(pDto.getUrl());
 
-        Proveedor guardado = proveedorRepository.save(proveedor);
-        return mapearResponseDTO(guardado);
+        Proveedor saved = proveedorRepository.save(proveedor);
+        return mapearResponseDTO(saved);
     }
 
     /**
