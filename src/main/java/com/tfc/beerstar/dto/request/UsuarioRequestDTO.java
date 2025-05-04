@@ -1,6 +1,5 @@
 package com.tfc.beerstar.dto.request;
 
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -54,6 +53,5 @@ public class UsuarioRequestDTO {
 
     private ClienteRequestDTO clienteData;
     private ProveedorRequestDTO proveedorData;
-
 
 }

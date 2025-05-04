@@ -84,7 +84,7 @@ public class UsuarioService {
         usuario.setEmail(email);
         usuario.setPassword(passwordEncoder.encode(uDto.getPassword()));
         usuario.setRol("USER");
-        usuario.setTipoUsuario(tipoUsuario);
+        usuario.setTipoUsuario("CLIENTE");
 
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
 
