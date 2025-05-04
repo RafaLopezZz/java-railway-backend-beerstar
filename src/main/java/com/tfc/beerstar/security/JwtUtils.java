@@ -26,13 +26,13 @@ public class JwtUtils {
     /**
      * Secreto para firmar el JWT. Debe estar codificado en Base64.
      */
-    @Value("${jwt.secret}")
+    @Value("${app.jwt.secret}")
     private String jwtSecret;
     
     /**
      * Tiempo de validez del token en milisegundos.
      */
-    @Value("${jwt.expirationMs}")
+    @Value("${app.jwt.expirationMs}")
     private int jwtExpirationMs;
 
     /**
