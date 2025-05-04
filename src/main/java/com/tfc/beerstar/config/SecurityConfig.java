@@ -90,6 +90,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth
                         -> auth.requestMatchers("/beerstar/auth/**").permitAll()
                         .requestMatchers("/beerstar/usuarios/registro").permitAll()
+                        .requestMatchers("/beerstar/articulos/**").permitAll()
+                        .requestMatchers("/beerstar/lotes/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
