@@ -33,7 +33,7 @@ public class Proveedor {
     /** Identificador único del proveedor. Se genera automáticamente. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_proveedor;
+    private Long idProveedor;
 
     /**
      * Relación uno a uno con la entidad Usuario.
