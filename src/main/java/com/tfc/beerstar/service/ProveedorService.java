@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 import com.tfc.beerstar.dto.request.ProveedorRequestDTO;
 import com.tfc.beerstar.dto.response.ProveedorResponseDTO;
 import com.tfc.beerstar.dto.response.UsuarioResponseDTO;
+import com.tfc.beerstar.exception.ResourceNotFoundException;
 import com.tfc.beerstar.model.Proveedor;
 import com.tfc.beerstar.model.Usuario;
 import com.tfc.beerstar.repository.ProveedorRepository;
-import com.tfc.beerstar.exception.ResourceNotFoundException;
 
 
 /**
@@ -124,7 +124,7 @@ public class ProveedorService {
      */
     private ProveedorResponseDTO mapearResponseDTO(Proveedor proveedor) {
         ProveedorResponseDTO dto = new ProveedorResponseDTO();
-        dto.setIdProveedor(proveedor.getId_proveedor());
+        dto.setIdProveedor(proveedor.getIdProveedor());
         dto.setNombre(proveedor.getNombre());
         dto.setDireccion(proveedor.getDireccion());
         dto.setTelefono(proveedor.getTelefono());

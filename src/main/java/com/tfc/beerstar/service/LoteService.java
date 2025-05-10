@@ -168,7 +168,7 @@ public class LoteService {
         dto.setUrl(lote.getUrl());
         //dto.setFechaValidez(lote.getFechaValidez());
         if (lote.getProveedor() != null) {
-            dto.setIdProveedor(lote.getProveedor().getId_proveedor());
+            dto.setIdProveedor(lote.getProveedor().getIdProveedor());
             dto.setNombreProveedor(lote.getProveedor().getNombre());
         } else {
             dto.setIdProveedor(null);
