@@ -23,7 +23,7 @@ public interface CategoriasRepository extends JpaRepository<Categorias, Long> {
      * @param nombre Nombre de la categoría a buscar.
      * @return Lista de categorías que coinciden con el nombre proporcionado.
      */
-    List<Categorias> findByNombreContaining(String nombre);
+    List<Categorias> findByNombre(String nombre);
 
     /**
      * Busca categorías por su descripción.

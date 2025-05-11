@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,21 +22,25 @@ import com.tfc.beerstar.service.UsuarioService;
 import jakarta.validation.Valid;
 
 /**
- * Controlador REST para la gestión de usuarios en Beerstar.
+ * Controlador REST para la gestión administrativa de usuarios en Beerstar.
  *
- * <p>Proporciona endpoints para registrar, obtener, listar, actualizar y eliminar usuarios.
+ * <p>Proporciona endpoints para operaciones CRUD de usuarios, accesibles solo para administradores.
  * Utiliza {@link UsuarioService} para delegar la lógica de negocio.</p>
  *
- * <p>Se habilita CORS con {@code @CrossOrigin(origins = "*")} para permitir peticiones
- * desde cualquier origen.</p>
- *
- * Endpoints disponibles:
+ * <p>Características principales:</p>
  * <ul>
- *   <li>POST   /beerstar/usuarios/registro               → Registrar nuevo usuario</li>
- *   <li>GET    /beerstar/usuarios/obtenerUsuario/{id}    → Obtener usuario por ID</li>
- *   <li>GET    /beerstar/usuarios/listarUsuarios         → Listar todos los usuarios</li>
- *   <li>PUT    /beerstar/usuarios/actualizarUsuario/{id} → Actualizar usuario existente</li>
- *   <li>DELETE /beerstar/usuarios/eliminarUsuario/{id}   → Eliminar usuario por ID</li>
+ *   <li>Habilita CORS para todos los orígenes</li>
+ *   <li>Requiere autenticación para todas las operaciones</li>
+ *   <li>Algunos endpoints requieren rol ADMIN (especificado en cada método)</li>
+ * </ul>
+ *
+ * <p>Endpoints disponibles:</p>
+ * <ul>
+ *   <li>POST   /beerstar/usuarios/admin → Registrar nuevo usuario (requiere rol ADMIN)</li>
+ *   <li>GET    /beerstar/usuarios/{idUsuario} → Obtener usuario por ID</li>
+ *   <li>GET    /beerstar/usuarios → Listar todos los usuarios</li>
+ *   <li>PUT    /beerstar/usuarios/{idUsuario} → Actualizar usuario existente</li>
+ *   <li>DELETE /beerstar/usuarios/{idUsuario} → Eliminar usuario por ID</li>
  * </ul>
  * 
  * @author rafalopezzz
@@ -54,7 +59,8 @@ public class UsuarioController {
      * @param usuarioRequestDTO DTO con los datos del usuario a registrar. Debe pasar las validaciones de {@link Valid}.
      * @return {@code ResponseEntity<UsuarioResponseDTO>} con los datos del usuario creado y HTTP 200.
      */
-    @PostMapping("/registro")
+    @PostMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UsuarioResponseDTO> registrarUsuario(@Valid @RequestBody UsuarioRequestDTO usuarioRequestDTO) {
         UsuarioResponseDTO response = usuarioService.crearUsuario(usuarioRequestDTO);
         return ResponseEntity.ok(response);
@@ -63,12 +69,13 @@ public class UsuarioController {
     /**
      * Obtiene un usuario por su ID.
      *
-     * @param id ID del usuario a obtener.
+     * @param idUsuario ID del usuario a obtener.
      * @return {@code ResponseEntity<UsuarioResponseDTO>} con los datos del usuario encontrado y HTTP 200.
      */
-    @GetMapping("/obtenerUsuario/{id}")
-    public ResponseEntity<UsuarioResponseDTO> obtenerUsuario(@PathVariable("id") Long id) {
-        UsuarioResponseDTO response = usuarioService.obtenerUsuarioPorId(id);
+    @GetMapping("/{idUsuario}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<UsuarioResponseDTO> obtenerUsuario(@PathVariable("idUsuario") Long idUsuario) {
+        UsuarioResponseDTO response = usuarioService.obtenerUsuarioPorId(idUsuario);
         return ResponseEntity.ok(response);
     }
 
@@ -77,7 +84,7 @@ public class UsuarioController {
      *
      * @return {@code ResponseEntity<List<UsuarioResponseDTO>>} con la lista de usuarios y HTTP 200.
      */
-    @GetMapping("/listarUsuarios")
+    @GetMapping
     public ResponseEntity<List<UsuarioResponseDTO>> listarUsuarios() {
         List<UsuarioResponseDTO> lista = usuarioService.listarUsuarios();
         return ResponseEntity.ok(lista);
@@ -87,26 +94,27 @@ public class UsuarioController {
     /**
      * Actualiza un usuario existente.
      *
-     * @param id ID del usuario a actualizar.
+     * @param idUsuario ID del usuario a actualizar.
      * @param usuarioRequestDTO DTO con los nuevos datos del usuario. Debe pasar las validaciones de {@link Valid}.
      * @return {@code ResponseEntity<UsuarioResponseDTO>} con los datos del usuario actualizado y HTTP 200.
      */
-    @PutMapping("/actualizarUsuario/{id}")
-    public ResponseEntity<UsuarioResponseDTO> actualizarUsuario(@PathVariable("id") Long id,
+    @PutMapping("/{idUsuario}")
+    public ResponseEntity<UsuarioResponseDTO> actualizarUsuario(@PathVariable("idUsuario") Long idUsuario,
                                                                   @Valid @RequestBody UsuarioRequestDTO usuarioRequestDTO) {
-        UsuarioResponseDTO response = usuarioService.actualizarUsuario(id, usuarioRequestDTO);
+        UsuarioResponseDTO response = usuarioService.actualizarUsuario(idUsuario, usuarioRequestDTO);
         return ResponseEntity.ok(response);
     }
 
     /**
      * Elimina un usuario por su ID.
      *
-     * @param id ID del usuario a eliminar.
+     * @param idUsuario ID del usuario a eliminar.
      * @return {@code ResponseEntity<String>} con un mensaje de éxito y HTTP 200.
      */
-    @DeleteMapping("/eliminarUsuario/{id}")
-    public ResponseEntity<String> eliminarUsuario(@PathVariable("id") Long id) {
-        usuarioService.eliminarUsuario(id);
+    @DeleteMapping("/{idUsuario}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> eliminarUsuario(@PathVariable("idUsuario") Long idUsuario) {
+        usuarioService.eliminarUsuario(idUsuario);
         return ResponseEntity.ok("Usuario eliminado correctamente");
     }
 }

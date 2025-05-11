@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class PagoResponseDTO {
     private Long id;
-    private Long pedidoId;
+    private Long idPedido;
     private BigDecimal monto;
     private String estadoPago;
     private Instant fechaPago;

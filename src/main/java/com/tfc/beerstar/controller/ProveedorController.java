@@ -27,9 +27,9 @@ import com.tfc.beerstar.service.ProveedorService;
  *
  * Endpoints disponibles:
  * <ul>
- *   <li>GET  /beerstar/usuarios/proveedores/listarProveedores  → Listar todos los proveedores</li>
- *   <li>GET  /beerstar/usuarios/proveedores/{usuarioId}  → Obtener datos de proveedor por ID de usuario</li>
- *   <li>PUT  /beerstar/usuarios/proveedores/{proveedorId}  → Actualizar datos de proveedor por ID de cliente</li>
+ *   <li>GET  /beerstar/usuarios/proveedores  → Listar todos los proveedores</li>
+ *   <li>GET  /beerstar/usuarios/proveedores/{idUsuario}  → Obtener datos de proveedor por ID de usuario</li>
+ *   <li>PUT  /beerstar/usuarios/proveedores/{idProveedor}  → Actualizar datos de proveedor por ID de proveedor</li>
  * </ul>
  * 
  * @author rafalopezzz
@@ -48,9 +48,9 @@ public class ProveedorController {
      * @param usuarioId ID del usuario asociado al proveedor.
      * @return ProveedorResponseDTO con los datos del proveedor.
      */
-    @GetMapping("/{usuarioId}")
-    public ResponseEntity<ProveedorResponseDTO> obtenerProveedorPorUsuarioId(@PathVariable Long usuarioId) {
-        ProveedorResponseDTO proveedor = proveedorService.obtenerProveedorPorUsuarioId(usuarioId);
+    @GetMapping("/{idUsuario}")
+    public ResponseEntity<ProveedorResponseDTO> obtenerProveedorPorUsuarioId(@PathVariable Long idUsuario) {
+        ProveedorResponseDTO proveedor = proveedorService.obtenerProveedorPorUsuarioId(idUsuario);
         return ResponseEntity.ok(proveedor);
     }
 
@@ -59,7 +59,7 @@ public class ProveedorController {
      *
      * @return Lista de ProveedorResponseDTO con los datos de todos los proveedores.
      */
-    @GetMapping("/listarProveedores")
+    @GetMapping
     public ResponseEntity<List<ProveedorResponseDTO>> listarProveedores() {
         List<ProveedorResponseDTO> proveedores = proveedorService.listarProveedores();
         return ResponseEntity.ok(proveedores);
@@ -72,12 +72,11 @@ public class ProveedorController {
      * @param proveedorRequestDTO DTO con los nuevos datos del proveedor.
      * @return ProveedorResponseDTO con los datos actualizados del proveedor.
      */
-    @PutMapping("/{proveedorId}")
+    @PutMapping("/{idProveedor}")
     public ResponseEntity<ProveedorResponseDTO> actualizarProveedor(
-            @PathVariable Long proveedorId,
+            @PathVariable Long idProveedor,
             @RequestBody ProveedorRequestDTO proveedorRequestDTO) {
-        ProveedorResponseDTO proveedorActualizado = proveedorService.actualizarProveedor(proveedorId, proveedorRequestDTO);
+        ProveedorResponseDTO proveedorActualizado = proveedorService.actualizarProveedor(idProveedor, proveedorRequestDTO);
         return ResponseEntity.ok(proveedorActualizado);
     }
-
 }

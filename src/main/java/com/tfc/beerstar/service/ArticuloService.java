@@ -11,8 +11,10 @@ import com.tfc.beerstar.dto.response.ArticulosResponseDTO;
 import com.tfc.beerstar.exception.ResourceNotFoundException;
 import com.tfc.beerstar.model.Articulos;
 import com.tfc.beerstar.model.Categorias;
+import com.tfc.beerstar.model.Proveedor;
 import com.tfc.beerstar.repository.ArticulosRepository;
 import com.tfc.beerstar.repository.CategoriasRepository;
+import com.tfc.beerstar.repository.ProveedorRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,9 +41,12 @@ public class ArticuloService {
     @Autowired
     private CategoriasRepository categoriasRepository;
 
+    @Autowired
+    private ProveedorRepository proveedorRepository;
+
     /**
      * Crea un nuevo artículo en la base de datos.
-     * 
+     *
      * @param dto DTO con los datos de petición para crear un artículo.
      * @return DTO de respuesta con los datos del artículo recién creado.
      * @throws ResourceNotFoundException si la categoría indicada no existe.
@@ -67,16 +72,23 @@ public class ArticuloService {
 
         articulo.setCategoria(categoria);
 
+        Proveedor proveedor = proveedorRepository.findById(dto.getIdProveedor())
+                .orElseThrow(() -> {
+                    log.error("Proveedor no encontrado para el id: {}", dto.getIdProveedor());
+                    return new ResourceNotFoundException("Proveedor no encontrado");
+                });
+
+        articulo.setProveedor(proveedor);
+
         // Guardar y mapear a DTO de respuesta
         Articulos guardado = articuloRepository.save(articulo);
         log.info("Artículo creado con éxito, id: {}", guardado.getIdArticulo());
         return mapearResponseDTO(guardado);
     }
 
-
     /**
      * Obtiene un artículo por su id.
-     * 
+     *
      * @param id ID del artículo a buscar.
      * @return DTO de respuesta con los datos del artículo encontrado.
      * @throws ResourceNotFoundException si no existe un artículo con ese ID.
@@ -93,7 +105,7 @@ public class ArticuloService {
 
     /**
      * Obtiene todos los artículos almacenados.
-     * 
+     *
      * @return Lista de DTOs de respuesta con todos los artículos.
      */
     public List<ArticulosResponseDTO> obtenerTodosLosArticulos() {
@@ -107,19 +119,20 @@ public class ArticuloService {
 
     /**
      * Actualiza un artículo existente.
-     * 
-     * @param id  ID del artículo a actualizar.
+     *
+     * @param idArticulo ID del artículo a actualizar.
      * @param dto DTO con los nuevos datos del artículo.
      * @return DTO de respuesta con los datos actualizados.
-     * @throws ResourceNotFoundException si el artículo o la categoría no existen.
+     * @throws ResourceNotFoundException si el artículo o la categoría no
+     * existen.
      */
-    public ArticulosResponseDTO actualizarArticulo(Long id, ArticulosRequestDTO dto) {
-        log.info("Actualizando artículo id: {}", id);
+    public ArticulosResponseDTO actualizarArticulo(Long idArticulo, ArticulosRequestDTO dto) {
+        log.info("Actualizando artículo id: {}", idArticulo);
 
         // Buscar artículo por ID
-        Articulos articulo = articuloRepository.findById(id)
+        Articulos articulo = articuloRepository.findById(idArticulo)
                 .orElseThrow(() -> {
-                    log.error("Artículo no encontrado para actualizar, id: {}", id);
+                    log.error("Artículo no encontrado para actualizar, id: {}", idArticulo);
                     return new ResourceNotFoundException("Artículo no encontrado");
                 });
 
@@ -143,7 +156,7 @@ public class ArticuloService {
 
     /**
      * Elimina un artículo por su ID.
-     * 
+     *
      * @param id ID del artículo a eliminar.
      * @throws ResourceNotFoundException si no existe un artículo con ese ID.
      */
@@ -159,8 +172,9 @@ public class ArticuloService {
     }
 
     /**
-     * Mapea una entidad {@link Articulos} a su correspondiente {@link ArticulosResponseDTO}.
-     * 
+     * Mapea una entidad {@link Articulos} a su correspondiente
+     * {@link ArticulosResponseDTO}.
+     *
      * @param articulo Entidad JPA de artículo.
      * @return DTO de respuesta con los datos mapeados.
      */
@@ -172,11 +186,19 @@ public class ArticuloService {
         dto.setPrecio(articulo.getPrecio());
         dto.setStock(articulo.getStock());
         dto.setGraduacion(articulo.getGraduacion());
+        dto.setIdProveedor(articulo.getProveedor().getIdProveedor());
+        dto.setNombreProveedor(articulo.getProveedor().getNombre());
         dto.setUrl(articulo.getUrl());
+
         if (articulo.getCategoria() != null) {
             dto.setIdCategoria(articulo.getCategoria().getIdCategoria());
             dto.setNombreCategoria(articulo.getCategoria().getNombre());
             dto.setDescripcion(articulo.getCategoria().getDescripcion());
+        }
+        
+        if (articulo.getProveedor() != null) {
+            dto.setIdProveedor(articulo.getProveedor().getIdProveedor());
+            dto.setNombreProveedor(articulo.getProveedor().getNombre());
         }
         return dto;
     }

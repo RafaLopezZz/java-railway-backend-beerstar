@@ -1,7 +1,10 @@
 package com.tfc.beerstar.model;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,15 +15,19 @@ import lombok.Data;
 
 /**
  * Entidad que representa un artículo o producto dentro del sistema Beerstar.
- * 
- * Cada artículo está relacionado con una categoría, y contiene información relevante
- * para su visualización y comercialización, como nombre, descripción, precio, stock y graduación.
- * 
- * <p>Está mapeada a la tabla {@code articulos} del esquema {@code beerstar_schema}.</p>
- * 
- * <p>Se usa {@code @Data} de Lombok para generar automáticamente los métodos 
+ *
+ * Cada artículo está relacionado con una categoría, y contiene información
+ * relevante para su visualización y comercialización, como nombre, descripción,
+ * precio, stock y graduación.
+ *
+ * <p>
+ * Está mapeada a la tabla {@code articulos} del esquema
+ * {@code beerstar_schema}.</p>
+ *
+ * <p>
+ * Se usa {@code @Data} de Lombok para generar automáticamente los métodos
  * estándar como getters, setters, equals, hashCode y toString.</p>
- * 
+ *
  * @author rafalopezzz
  */
 @Data
@@ -28,34 +35,51 @@ import lombok.Data;
 @Table(name = "articulos", schema = "beerstar_schema")
 public class Articulos {
 
-    /** Identificador único del artículo. Se genera automáticamente. */
+    /**
+     * Identificador único del artículo. Se genera automáticamente.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_articulo")
     private Long idArticulo;
 
-    /** Nombre del artículo. Este campo es obligatorio. */
+    /**
+     * El proveedor que suministra este artículo. Obligatorio: cada artículo
+     * debe pertenecer a un proveedor.
+     */
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_proveedor", nullable = false)
+    private Proveedor proveedor;
+
+    /**
+     * Nombre del artículo. Este campo es obligatorio.
+     */
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
     /**
-     * Descripción larga del artículo.
-     * Se permite texto extenso gracias a {@code columnDefinition = "TEXT"}.
+     * Descripción larga del artículo. Se permite texto extenso gracias a
+     * {@code columnDefinition = "TEXT"}.
      */
     @Column(name = "descripcion", columnDefinition = "TEXT")
     private String descripcion;
 
-    /** Precio del artículo. Campo obligatorio. */
+    /**
+     * Precio del artículo. Campo obligatorio.
+     */
     @Column(name = "precio", nullable = false)
-    private Double precio;
+    private BigDecimal precio;
 
-    /** Stock disponible del artículo. Campo obligatorio. */
+    /**
+     * Stock disponible del artículo. Campo obligatorio.
+     */
     @Column(name = "stock", nullable = false)
     private Integer stock;
 
     /**
-     * Relación muchos a uno con la categoría del artículo.
-     * Un artículo pertenece a una única categoría, pero una categoría puede tener muchos artículos.
+     * Relación muchos a uno con la categoría del artículo. Un artículo
+     * pertenece a una única categoría, pero una categoría puede tener muchos
+     * artículos.
      */
     @ManyToOne
     @JoinColumn(name = "id_categoria")
@@ -68,7 +92,9 @@ public class Articulos {
     @Column(name = "graduacion")
     private Double graduacion;
 
-    /** URL asociada al artículo, normalmente usada para imágenes del producto. */
+    /**
+     * URL asociada al artículo, normalmente usada para imágenes del producto.
+     */
     @Column(name = "url")
     private String url;
 }
