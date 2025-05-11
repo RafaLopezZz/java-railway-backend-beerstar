@@ -1,6 +1,5 @@
 package com.tfc.beerstar.service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,34 +34,38 @@ public class CarritoService {
         if (request.getCantidad() <= 0) {
             throw new IllegalArgumentException("La cantidad debe ser mayor que cero.");
         }
+
         Carrito carrito = carritoRepo.findByCliente(cliente)
                 .orElseGet(() -> {
-                    Carrito c = new Carrito();
-                    c.setCliente(cliente);
-                    return carritoRepo.save(c);
+                    Carrito nuevoCarrito = new Carrito();
+                    nuevoCarrito.setCliente(cliente);
+                    return carritoRepo.save(nuevoCarrito);
                 });
+
         Articulos articulo = articuloRepo.findById(request.getArticuloId())
                 .orElseThrow(() -> new ResourceNotFoundException("Artículo no existe"));
-        DetalleCarrito detalleCarrito = carrito.getDetalleList().stream()
+
+        DetalleCarrito detalle = carrito.getDetalleList().stream()
                 .filter(d -> d.getArticulos().equals(articulo))
                 .findFirst()
                 .orElseGet(() -> {
-                    DetalleCarrito d = new DetalleCarrito();
-                    d.setCarrito(carrito);
-                    d.setArticulos(articulo);
-                    carrito.getDetalleList().add(d);
-                    return d;
+                    DetalleCarrito nuevoDetalle = new DetalleCarrito();
+                    nuevoDetalle.setCarrito(carrito);
+                    nuevoDetalle.setArticulos(articulo);
+                    carrito.getDetalleList().add(nuevoDetalle);
+                    return nuevoDetalle;
                 });
-        detalleCarrito.setCantidad(detalleCarrito.getCantidad() + request.getCantidad());
+
+        detalle.setCantidad(detalle.getCantidad() + request.getCantidad());
         carritoRepo.save(carrito);
-        return mapeaResponseDTO(carrito);
+        return mapearCarritoResponseDTO(carrito);
     }
 
     public CarritoResponseDTO verCarrito(Cliente cliente) {
         Carrito carrito = carritoRepo.findByCliente(cliente)
                 .orElseThrow(() -> new ResourceNotFoundException("Carrito vacío"));
 
-        return mapeaResponseDTO(carrito);
+        return mapearCarritoResponseDTO(carrito);
     }
 
     @Transactional
@@ -70,29 +73,26 @@ public class CarritoService {
         carritoRepo.deleteByCliente(cliente);
     }
 
-    private CarritoResponseDTO mapeaResponseDTO(Carrito carrito) {
-        CarritoResponseDTO response = new CarritoResponseDTO();
-        response.setId(carrito.getIdCarrito());
-        response.setFechaCreacion(carrito.getFechaCreacion());
+    private CarritoResponseDTO mapearCarritoResponseDTO(Carrito carrito) {
+        CarritoResponseDTO dto = new CarritoResponseDTO();
+        dto.setId(carrito.getIdCarrito());
+        dto.setFechaCreacion(carrito.getFechaCreacion());
 
         List<DetalleCarritoResponseDTO> items = carrito.getDetalleList().stream()
-                .map(dc -> {
-                    BigDecimal precioUnitario = BigDecimal.valueOf(dc.getArticulos().getPrecio());
-
-                    DetalleCarritoResponseDTO dto = new DetalleCarritoResponseDTO();
-                    dto.setId(dc.getIdDetalleCarrito());
-                    dto.setArticuloId(dc.getArticulos().getIdArticulo());
-                    dto.setNombreArticulo(dc.getArticulos().getNombre());
-                    dto.setCantidad(dc.getCantidad());
-                    dto.setPrecioUnitario(precioUnitario);
-                    dto.setCantidad(dc.getCantidad());
-                    BigDecimal totalLinea = precioUnitario.multiply(BigDecimal.valueOf(dc.getCantidad()));
-                    dto.setPrecioUnitario(totalLinea);
-                    return dto;
-                })
+                .map(this::mapearDetalleCarritoDTO)
                 .collect(Collectors.toList());
 
-        response.setItems(items);
-        return response;
+        dto.setItems(items);
+        return dto;
+    }
+
+    private DetalleCarritoResponseDTO mapearDetalleCarritoDTO(DetalleCarrito detalle) {
+        DetalleCarritoResponseDTO dto = new DetalleCarritoResponseDTO();
+        dto.setId(detalle.getIdDetalleCarrito());
+        dto.setIdArticulo(detalle.getArticulos().getIdArticulo());
+        dto.setNombreArticulo(detalle.getArticulos().getNombre());
+        dto.setCantidad(detalle.getCantidad());
+        dto.setPrecioUnitario(detalle.getArticulos().getPrecio());
+        return dto;
     }
 }

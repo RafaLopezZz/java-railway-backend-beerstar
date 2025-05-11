@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,13 +30,13 @@ import jakarta.validation.Valid;
  * <p>Se habilita CORS con {@code @CrossOrigin(origins = "*")} para permitir
  * peticiones desde cualquier origen.</p>
  * 
- * Endpoints:
+ * Endpoints disponibles:
  * <ul>
- *   <li>POST   /beerstar/articulos/crearArticulo        → Crear un nuevo artículo</li>
- *   <li>GET    /beerstar/articulos/obtenerArticulo/{id} → Obtener artículo por ID</li>
- *   <li>GET    /beerstar/articulos/listarArticulos      → Listar todos los artículos</li>
- *   <li>PUT    /beerstar/articulos/actualizarArticulo/{id} → Actualizar artículo por ID</li>
- *   <li>DELETE /beerstar/articulos/eliminarArticulo/{id}  → Eliminar artículo por ID</li>
+ *   <li>POST   /beerstar/articulos                   → Crear un nuevo artículo</li>
+ *   <li>GET    /beerstar/articulos/{idArticulo}      → Obtener artículo por ID</li>
+ *   <li>GET    /beerstar/articulos                   → Listar todos los artículos</li>
+ *   <li>PUT    /beerstar/articulos/{idArticulo}      → Actualizar artículo por ID</li>
+ *   <li>DELETE /beerstar/articulos/{idArticulo}      → Eliminar artículo por ID</li>
  * </ul>
  * 
  * @author rafalopezzz
@@ -49,62 +50,65 @@ public class ArticuloController {
     private ArticuloService articuloService;
 
     /**
-     * Endpoint para crear un nuevo artículo.
+     * Crea un nuevo artículo.
      *
-     * @param articuloRequestDTO DTO con los datos del artículo a crear. Debe ser válido.
+     * @param articuloRequestDTO DTO con los datos del artículo. Debe ser válido.
      * @return {@code ResponseEntity<ArticulosResponseDTO>} con el artículo creado y HTTP 200.
      */
-    @PostMapping("/crearArticulo")
+    @PostMapping("/{idArticulo}")
+    @PreAuthorize("hasRole('PROVEEDOR')")
     public ResponseEntity<ArticulosResponseDTO> crearArticulo(@Valid @RequestBody ArticulosRequestDTO articuloRequestDTO) {
         ArticulosResponseDTO response = articuloService.crearArticulos(articuloRequestDTO);
         return ResponseEntity.ok(response);
     }
 
     /**
-     * Endpoint para obtener un artículo por su ID.
+     * Obtiene un artículo por su ID.
      *
-     * @param articuloId ID del artículo a obtener.
+     * @param idArticulo ID del artículo a obtener.
      * @return {@code ResponseEntity<ArticulosResponseDTO>} con el artículo encontrado y HTTP 200.
      */
-    @GetMapping("/obtenerArticulo/{articuloId}")
-    public ResponseEntity<ArticulosResponseDTO> obtenerArticuloPorId(@PathVariable Long articuloId) {
-        ArticulosResponseDTO response = articuloService.obtenerArticuloPorId(articuloId);
+    @GetMapping("/{idArticulo}")
+    public ResponseEntity<ArticulosResponseDTO> obtenerArticuloPorId(@PathVariable Long idArticulo) {
+        ArticulosResponseDTO response = articuloService.obtenerArticuloPorId(idArticulo);
         return ResponseEntity.ok(response);
     }
 
     /**
-     * Endpoint para listar todos los artículos.
+     * Lista todos los artículos.
      *
      * @return {@code ResponseEntity<List<ArticulosResponseDTO>>} con la lista de artículos y HTTP 200.
      */
-    @GetMapping("/listarArticulos")
+    @GetMapping
     public ResponseEntity<List<ArticulosResponseDTO>> obtenerTodosLosArticulos() {
         List<ArticulosResponseDTO> response = articuloService.obtenerTodosLosArticulos();
         return ResponseEntity.ok(response);
     }
 
     /**
-     * Endpoint para actualizar un artículo por su ID.
+     * Actualiza un artículo por su ID.
      *
-     * @param articuloId ID del artículo a actualizar.
-     * @param articuloRequestDTO DTO con los nuevos datos del artículo. Debe ser válido.
-     * @return {@code ResponseEntity<ArticulosResponseDTO>} con el artículo actualizado y HTTP 200.
+     * @param idArticulo ID del artículo a eliminar.
+     * @param articuloRequestDTO DTO con los datos del artículo. Debe ser válido.
+     * @return {@code ResponseEntity<String>} con un mensaje de éxito y HTTP 200.
      */
-    @PutMapping("/actualizarArticulo/{articuloId}")
-    public ResponseEntity<ArticulosResponseDTO> actualizarArticulo(@PathVariable Long articuloId, @Valid @RequestBody ArticulosRequestDTO articuloRequestDTO) {
-        ArticulosResponseDTO response = articuloService.actualizarArticulo(articuloId, articuloRequestDTO);
+    @PutMapping("/{idArticulo}")
+    @PreAuthorize("hasRole('PROVEEDOR')")
+    public ResponseEntity<ArticulosResponseDTO> actualizarArticulo(@PathVariable Long idArticulo, @Valid @RequestBody ArticulosRequestDTO articuloRequestDTO) {
+        ArticulosResponseDTO response = articuloService.actualizarArticulo(idArticulo, articuloRequestDTO);
         return ResponseEntity.ok(response);
     }
 
     /**
-     * Endpoint para eliminar un artículo por su ID.
+     * Elimina un artículo por su ID.
      *
      * @param articuloId ID del artículo a eliminar.
      * @return {@code ResponseEntity<String>} con un mensaje de éxito y HTTP 200.
      */
-    @DeleteMapping("/eliminarArticulo/{articuloId}")
-    public ResponseEntity<String> eliminarArticulo(@PathVariable("articuloId") Long articuloId) {
-        articuloService.eliminarArticulo(articuloId);
+    @DeleteMapping("/{idArticulo}")
+    @PreAuthorize("hasRole('PROVEEDOR')")
+    public ResponseEntity<String> eliminarArticulo(@PathVariable("idArticulo") Long idArticulo) {
+        articuloService.eliminarArticulo(idArticulo);
         return ResponseEntity.ok("Artículo eliminado correctamente");
     }
 }

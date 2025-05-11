@@ -1,5 +1,7 @@
 package com.tfc.beerstar.dto.response;
 
+import java.math.BigDecimal;
+
 import lombok.Data;
 
 /**
@@ -35,7 +37,6 @@ public class LoteResponseDTO {
     private String descripcion;
     private Long idProveedor;
     private String nombreProveedor;
-    private Double precio;
+    private BigDecimal precio;
     private String url;
-    //private String fechaValidez;
 }

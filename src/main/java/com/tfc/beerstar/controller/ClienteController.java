@@ -27,9 +27,9 @@ import com.tfc.beerstar.service.ClienteService;
  *
  * Endpoints disponibles:
  * <ul>
- *   <li>GET  /beerstar/usuarios/clientes/listarClientes  → Listar todos los clientes</li>
- *   <li>GET  /beerstar/usuarios/clientes/{usuarioId}  → Obtener datos de cliente por ID de usuario</li>
- *   <li>PUT  /beerstar/usuarios/clientes/{clienteId}  → Actualizar datos de cliente por ID de cliente</li>
+ *   <li>GET  /beerstar/usuarios/clientes  → Listar todos los clientes</li>
+ *   <li>GET  /beerstar/usuarios/clientes/{idUsuario}  → Obtener datos de cliente por ID de usuario</li>
+ *   <li>PUT  /beerstar/usuarios/clientes/{idCliente}  → Actualizar datos de cliente por ID de cliente</li>
  * </ul>
  * 
  * @author rafalopezzz
@@ -45,12 +45,12 @@ public class ClienteController {
     /**
      * Obtiene los datos del cliente asociado al usuario indicado por su ID.
      *
-     * @param usuarioId ID del usuario cuyo cliente se desea obtener.
+     * @param idUsuario ID del usuario cuyo cliente se desea obtener.
      * @return {@code ResponseEntity<ClienteResponseDTO>} con los datos del cliente y HTTP 200.
      */
-    @GetMapping("/{usuarioId}")
-    public ResponseEntity<ClienteResponseDTO> obtenerClientePorUsuarioId(@PathVariable Long usuarioId) {
-        ClienteResponseDTO cliente = clienteService.obtenerClientePorUsuarioId(usuarioId);
+    @GetMapping("/{idUsuario}")
+    public ResponseEntity<ClienteResponseDTO> obtenerClientePorUsuarioId(@PathVariable Long idUsuario) {
+        ClienteResponseDTO cliente = clienteService.obtenerClientePorUsuarioId(idUsuario);
         return ResponseEntity.ok(cliente);
     }
 
@@ -59,7 +59,7 @@ public class ClienteController {
      *
      * @return {@code ResponseEntity<List<ClienteResponseDTO>>} con la lista de clientes y HTTP 200.
      */
-    @GetMapping("/listarClientes")
+    @GetMapping
     public ResponseEntity<List<ClienteResponseDTO>> listarClientes() {
         List<ClienteResponseDTO> clientes = clienteService.listarClientes();
         return ResponseEntity.ok(clientes);
@@ -68,15 +68,15 @@ public class ClienteController {
     /**
      * Actualiza los datos del cliente indicado por su ID.
      *
-     * @param clienteId ID del cliente a actualizar.
+     * @param idCliente ID del cliente a actualizar.
      * @param clienteRequestDTO DTO con los nuevos datos del cliente.
      * @return {@code ResponseEntity<ClienteResponseDTO>} con los datos actualizados del cliente y HTTP 200.
      */
-    @PutMapping("/{clienteId}")
+    @PutMapping("/{idCliente}")
     public ResponseEntity<ClienteResponseDTO> actualizarCliente(
-            @PathVariable Long clienteId,
+            @PathVariable Long idCliente,
             @RequestBody ClienteRequestDTO clienteRequestDTO) {
-        ClienteResponseDTO clienteActualizado = clienteService.actualizarCliente(clienteId, clienteRequestDTO);
+        ClienteResponseDTO clienteActualizado = clienteService.actualizarCliente(idCliente, clienteRequestDTO);
         return ResponseEntity.ok(clienteActualizado);
     }
 }

@@ -1,5 +1,7 @@
 package com.tfc.beerstar.dto.response;
 
+import java.math.BigDecimal;
+
 import lombok.Data;
 
 /**
@@ -19,10 +21,12 @@ public class ArticulosResponseDTO {
     private Long idArticulo;
     private String nombre;
     private String descripcion;
-    private Double precio;
+    private BigDecimal precio;
     private Integer stock;
     private Long idCategoria;
     private String nombreCategoria;
+    private Long idProveedor;
+    private String nombreProveedor;
     private Double graduacion;
     private String url;
 

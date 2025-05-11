@@ -47,7 +47,7 @@ public class PagoService {
     private PagoResponseDTO mapearResponseDto(Pago pago) {
         PagoResponseDTO response = new PagoResponseDTO();
         response.setId(pago.getId());
-        response.setPedidoId(pago.getPedido().getIdPedido());
+        response.setIdPedido(pago.getPedido().getIdPedido());
         response.setMonto(pago.getMonto());
         response.setMetodoPago(pago.getMetodoPago());
         response.setEstadoPago(pago.getEstadoPago());

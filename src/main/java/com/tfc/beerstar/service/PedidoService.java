@@ -38,7 +38,7 @@ public class PedidoService {
         BigDecimal total = BigDecimal.ZERO;
         for (DetalleCarritoResponseDTO detalle : carrito.getItems()) {
 
-        Articulos articulo = articulosRepo.getReferenceById(detalle.getArticuloId());
+        Articulos articulo = articulosRepo.getReferenceById(detalle.getIdArticulo());
 
         DetallePedido detallePedido = new DetallePedido();
         detallePedido.setPedido(pedido);

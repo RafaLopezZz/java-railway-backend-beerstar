@@ -1,6 +1,9 @@
 package com.tfc.beerstar.dto.request;
 
+import java.math.BigDecimal;
+
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -15,7 +18,6 @@ import lombok.Data;
  * Ejemplo de uso en una petición JSON:
  * <pre>
  * {
- *   "idLote": 1,
  *   "nombreLote": "Lote Primavera 2025",
  *   "descripcion": "Lote de cervezas artesanales de temporada",
  *   "idProveedor": 7,
@@ -30,12 +32,14 @@ import lombok.Data;
 @AllArgsConstructor
 public class LoteRequestDTO {
 
-    @NotBlank
-    private Long idLote;
+    @NotBlank(message = "El nombre del lote es obligatorio")
     private String nombreLote;
+    
     private String descripcion;
+    
+    @NotNull(message = "El proveedor es obligatorio")
     private Long idProveedor;
-    private Double precio;
+    private BigDecimal precio;
     private String url;
 
 }

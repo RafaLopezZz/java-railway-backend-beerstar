@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,20 +24,26 @@ import jakarta.validation.Valid;
 /**
  * Controlador REST para gestionar operaciones relacionadas con los lotes.
  *
- * <p>Este controlador expone endpoints para crear, leer, actualizar y eliminar
- * lotes en la aplicación. Todas las rutas están bajo el prefijo
- * <code>/beerstar/lotes</code>.</p>
+ * <p>Este controlador implementa una API RESTful para la gestión de lotes,
+ * siguiendo las convenciones de nomenclatura y estructura de recursos REST.
+ * Todas las rutas están bajo el prefijo <code>/api/v1/lotes</code>.</p>
  * 
  * <p>Permite acceso cross-origin desde cualquier origen (CORS: *).</p>
  * 
+ * <p>Los endpoints siguen los principios RESTful donde los verbos HTTP
+ * representan las acciones sobre el recurso 'lotes':</p>
+ * 
  * Endpoints disponibles:
  * <ul>
- *  <li> POST	/beerstar/lotes/crearLote	-> Crea un nuevo lote. </li>
- *  <li> GET	/beerstar/lotes/obtenerLote/{id}	-> Obtiene un lote por su ID. </li>
- *  <li> GET	/beerstar/lotes/listarLotes	-> Retorna todos los lotes registrados. </li>
- *  <li> PUT	/beerstar/lotes/actualizarLote/{id}	-> Actualiza un lote existente por su ID. </li>
- *  <li> DELETE	/beerstar/lotes/eliminarLote/{id}	-> Elimina un lote por su ID. </li>
+ *  <li> POST   beerstar/lotes             -> Crea un nuevo lote </li>
+ *  <li> GET    beerstar/lotes/{idLote}    -> Obtiene un lote por su ID </li>
+ *  <li> GET    beerstar/lotes             -> Retorna todos los lotes registrados </li>
+ *  <li> PUT    beerstar/lotes/{idLote}    -> Actualiza un lote existente por su ID </li>
+ *  <li> DELETE beerstar/lotes/{idLote}    -> Elimina un lote por su ID </li>
  * </ul>
+ * 
+ * <p>Cada endpoint incluye validación de datos de entrada y respuestas HTTP
+ * semánticamente correctas según el resultado de la operación.</p>
  * 
  * @author rafalopezzz
  */
@@ -54,7 +61,7 @@ public class LoteController {
      * @param lotesRequestDTO DTO con los datos del lote a crear.
      * @return DTO de respuesta con los datos del lote creado.
      */
-    @PostMapping("/crearLote")
+    @PostMapping
     public ResponseEntity<LoteResponseDTO> crearLote(@Valid @RequestBody LoteRequestDTO lotesRequestDTO) {
         LoteResponseDTO response = loteService.crearLote(lotesRequestDTO);
         return ResponseEntity.ok(response);
@@ -63,12 +70,12 @@ public class LoteController {
     /**
      * Obtiene un lote por su ID.
      *
-     * @param loteId ID del lote a recuperar.
+     * @param idLote ID del lote a recuperar.
      * @return DTO de respuesta con los datos del lote encontrado.
      */
-    @GetMapping("/obtenerLote/{loteId}")
-    public ResponseEntity<LoteResponseDTO> obtenerLotePorId(@PathVariable Long loteId) {
-        LoteResponseDTO response = loteService.obtenerLotePorId(loteId);
+    @GetMapping("/{idLote}")
+    public ResponseEntity<LoteResponseDTO> obtenerLotePorId(@PathVariable Long idLote) {
+        LoteResponseDTO response = loteService.obtenerLotePorId(idLote);
         return ResponseEntity.ok(response);
     }
 
@@ -77,7 +84,7 @@ public class LoteController {
      *
      * @return Lista de DTOs de respuesta con los datos de todos los lotes.
      */
-    @GetMapping("/listarLotes")
+    @GetMapping
     public ResponseEntity<List<LoteResponseDTO>> obtenerTodosLosLotes() {
         List<LoteResponseDTO> response = loteService.obtenerTodosLosLotes();
         return ResponseEntity.ok(response);
@@ -90,21 +97,22 @@ public class LoteController {
      * @param lotesRequestDTO DTO con los nuevos datos del lote.
      * @return DTO de respuesta con los datos del lote actualizado.
      */
-    @PutMapping("/actualizarLote/{loteId}")
-    public ResponseEntity<LoteResponseDTO> actualizarLote(@PathVariable Long loteId, @Valid @RequestBody LoteRequestDTO lotesRequestDTO) {
-        LoteResponseDTO response = loteService.actualizarLote(loteId, lotesRequestDTO);
+    @PutMapping("/{idLote}")
+    @PreAuthorize("hasRole('PROVEEDOR')")
+    public ResponseEntity<LoteResponseDTO> actualizarLote(@PathVariable Long idLote, @Valid @RequestBody LoteRequestDTO lotesRequestDTO) {
+        LoteResponseDTO response = loteService.actualizarLote(idLote, lotesRequestDTO);
         return ResponseEntity.ok(response);
     }
 
     /**
      * Elimina un lote por su ID.
      *
-     * @param loteId ID del lote a eliminar.
+     * @param idLote ID del lote a eliminar.
      * @return Mensaje de confirmación de eliminación.
      */
-    @DeleteMapping("/eliminarLote/{loteId}")
-    public ResponseEntity<String> eliminarLote(@PathVariable("loteId") Long loteId) {
-        loteService.eliminarLote(loteId);
+    @DeleteMapping("/{idLote}")
+    public ResponseEntity<String> eliminarLote(@PathVariable("idLote") Long idLote) {
+        loteService.eliminarLote(idLote);
         return ResponseEntity.ok("Lote eliminado correctamente");
     }
 }

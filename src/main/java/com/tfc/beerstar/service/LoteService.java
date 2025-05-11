@@ -45,8 +45,10 @@ public class LoteService {
      * @return DTO de respuesta con los datos del lote creado.
      */
     public LoteResponseDTO crearLote(LoteRequestDTO lDto) {
-        log.info("Creando lote: {}", lDto.getNombreLote());
+        log.info("Creando Lote {}", lDto.getNombreLote());
+
         Lotes lote = new Lotes();
+        lote.setNombreLote(lDto.getNombreLote());
         lote.setDescripcion(lDto.getDescripcion());
         lote.setPrecio(lDto.getPrecio());
         lote.setUrl(lDto.getUrl());
@@ -58,10 +60,8 @@ public class LoteService {
                 });
 
         lote.setProveedor(proveedor);
-
         Lotes guardado = loteRepository.save(lote);
-        log.info("Lote creado con éxito, id: {}", guardado.getIdLote());
-        return mapearResponseDTO(guardado);
+        return mapearResponseDTO(loteRepository.save(guardado));
     }
 
     /**
@@ -112,14 +112,15 @@ public class LoteService {
         return lotes.stream().map(this::mapearResponseDTO).toList();
     }
 
-    public LoteResponseDTO actualizarLote(Long id, LoteRequestDTO lDto) {
-        log.info("Actualizando lote id: {}", id);
-        Lotes lote = loteRepository.findById(id)
+    public LoteResponseDTO actualizarLote(Long idLote, LoteRequestDTO lDto) {
+        log.info("Actualizando lote id: {}", idLote);
+        Lotes lote = loteRepository.findById(idLote)
                 .orElseThrow(() -> {
-                    log.error("Lote no encontrado para el id: {}", id);
+                    log.error("Lote no encontrado para el id: {}", idLote);
                     return new ResourceNotFoundException("Lote no encontrado");
                 });
 
+        lote.setNombreLote(lDto.getNombreLote());        
         lote.setDescripcion(lDto.getDescripcion());
         lote.setPrecio(lDto.getPrecio());
         lote.setUrl(lDto.getUrl());
@@ -160,21 +161,22 @@ public class LoteService {
      * @return DTO de respuesta con los datos del lote.
      */
     private LoteResponseDTO mapearResponseDTO(Lotes lote) {
-        LoteResponseDTO dto = new LoteResponseDTO();
-        dto.setIdLote(lote.getIdLote());
-        dto.setNombreLote(lote.getNombreLote());
-        dto.setDescripcion(lote.getDescripcion());
-        dto.setPrecio(lote.getPrecio());
-        dto.setUrl(lote.getUrl());
-        //dto.setFechaValidez(lote.getFechaValidez());
+        LoteResponseDTO lDto = new LoteResponseDTO();
+        lDto.setIdLote(lote.getIdLote());
+        lDto.setNombreLote(lote.getNombreLote());
+        lDto.setDescripcion(lote.getDescripcion());
+        lDto.setIdProveedor(lote.getProveedor().getIdProveedor());
+        lDto.setNombreProveedor(lote.getProveedor().getNombre());
+        lDto.setPrecio(lote.getPrecio());
+        lDto.setUrl(lote.getUrl());
         if (lote.getProveedor() != null) {
-            dto.setIdProveedor(lote.getProveedor().getIdProveedor());
-            dto.setNombreProveedor(lote.getProveedor().getNombre());
+            lDto.setIdProveedor(lote.getProveedor().getIdProveedor());
+            lDto.setNombreProveedor(lote.getProveedor().getNombre());
         } else {
-            dto.setIdProveedor(null);
-            dto.setNombreProveedor(null);
+            lDto.setIdProveedor(null);
+            lDto.setNombreProveedor(null);
         }
 
-        return dto;
+        return lDto;
     }
 }

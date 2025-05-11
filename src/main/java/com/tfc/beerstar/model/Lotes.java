@@ -1,7 +1,10 @@
 package com.tfc.beerstar.model;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -50,25 +53,16 @@ public class Lotes {
      * Relación muchos a uno con el proveedor.
      * Un proveedor puede tener múltiples lotes, pero cada lote pertenece a un único proveedor.
      */
-    @ManyToOne 
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
 
     /** Precio del lote. Campo obligatorio. */
     @Column(name = "precio", nullable = false)
-    private Double precio;
+    private BigDecimal precio;
 
     /** URL asociada al lote. Puede ser una imagen, ficha de producto, etc. */
     @Column(name = "url")
     private String url;
-
-    /*
-     * Fecha de validez o vencimiento del lote.
-     * 
-     * Este campo está comentado por ahora. Si se habilita, convendría inicializarlo
-     * correctamente o gestionarlo con una anotación como @CreationTimestamp o @Temporal.
-     */
-    //@Column(name = "fecha_validez")
-    //private LocalDateTime fechaValidez = LocalDateTime.now();
 
 }

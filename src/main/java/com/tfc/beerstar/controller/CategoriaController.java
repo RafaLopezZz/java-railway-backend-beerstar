@@ -21,21 +21,15 @@ import com.tfc.beerstar.service.CategoriaService;
 import jakarta.validation.Valid;
 
 /**
- * Controlador REST para gestionar las categorías del sistema.
- * 
- * <p>Este controlador expone endpoints para crear, leer, actualizar y eliminar
- * categorías, permitiendo a los clientes interactuar con la API de forma estructurada.</p>
- * 
- * <p>Todos los métodos retornan objetos {@link ResponseEntity}, permitiendo el manejo
- * flexible del estado HTTP y la respuesta del cuerpo.</p>
- * 
- * Endpoints disponibles:
+ * Controlador REST para gestionar categorías en Beerstar.
+ *
+ * <p>Endpoints RESTful:</p>
  * <ul>
- *   <li> POST	/beerstar/categorias/crearCategoria	-> Crea una nueva categoría. </li>
- *   <li> GET	/beerstar/categorias/obtenerCategoria/{id}	-> Obtiene una categoría por su ID. </li>
- *   <li> GET	/beerstar/categorias/listarCategorias	-> Retorna todas las categorías registradas. </li>
- *   <li> PUT	/beerstar/categorias/actualizarCategoria/{id}	-> Actualiza una categoría existente por su ID. </li>
- *   <li> DELETE	/beerstar/categorias/eliminarCategoria/{id}	-> Elimina una categoría por su ID. </li>
+ *   <li>POST   /beerstar/categorias        → Crear categoría</li>
+ *   <li>GET    /beerstar/categorias/{id}   → Obtener categoría por ID</li>
+ *   <li>GET    /beerstar/categorias        → Listar categorías</li>
+ *   <li>PUT    /beerstar/categorias/{id}   → Actualizar categoría</li>
+ *   <li>DELETE /beerstar/categorias/{id}   → Eliminar categoría</li>
  * </ul>
  * 
  * @author rafalopezzz
@@ -54,7 +48,7 @@ public class CategoriaController {
      * @param categoriasRequestDTO DTO con los datos de la categoría a crear.
      * @return DTO de respuesta con los datos de la categoría creada.
      */
-    @PostMapping("/crearCategoria")
+    @PostMapping
     public ResponseEntity<CategoriasResponseDTO> crearCategoria(@Valid @RequestBody CategoriasRequestDTO categoriasRequestDTO) {
         CategoriasResponseDTO response = categoriaService.crearCategoria(categoriasRequestDTO);
         return ResponseEntity.ok(response);
@@ -66,9 +60,9 @@ public class CategoriaController {
      * @param categoriaId ID de la categoría a buscar.
      * @return DTO de respuesta con los datos de la categoría encontrada.
      */
-    @GetMapping("/obtenerCategoria/{categoriaId}")
-    public ResponseEntity<CategoriasResponseDTO> obtenerCategoriaPorId(@PathVariable Long categoriaId) {
-        CategoriasResponseDTO response = categoriaService.obtenerCategoriaPorId(categoriaId);
+    @GetMapping("/{idCategoria}")
+    public ResponseEntity<CategoriasResponseDTO> obtenerCategoriaPorId(@PathVariable Long idCategoria) {
+        CategoriasResponseDTO response = categoriaService.obtenerCategoriaPorId(idCategoria);
         return ResponseEntity.ok(response);
     }
 
@@ -77,7 +71,7 @@ public class CategoriaController {
      *
      * @return Lista de DTOs de respuesta con los datos de todas las categorías.
      */
-    @GetMapping("/listarCategorias")
+    @GetMapping
     public ResponseEntity<List<CategoriasResponseDTO>> obtenerTodasLasCategorias() {
         List<CategoriasResponseDTO> response = categoriaService.obtenerTodasLasCategorias();
         return ResponseEntity.ok(response);
@@ -86,25 +80,25 @@ public class CategoriaController {
     /**
      * Actualiza una categoría existente por su ID.
      *
-     * @param categoriaId ID de la categoría a actualizar.
+     * @param idCategoria ID de la categoría a actualizar.
      * @param categoriasRequestDTO DTO con los nuevos datos de la categoría.
      * @return DTO de respuesta con los datos actualizados de la categoría.
      */
-    @PutMapping("/actualizarCategoria/{categoriaId}")
-    public ResponseEntity<CategoriasResponseDTO> actualizarCategoria(@PathVariable Long categoriaId, @Valid @RequestBody CategoriasRequestDTO categoriasRequestDTO) {
-        CategoriasResponseDTO response = categoriaService.actualizarCategoria(categoriaId, categoriasRequestDTO);
+    @PutMapping("/{idCategoria}")
+    public ResponseEntity<CategoriasResponseDTO> actualizarCategoria(@PathVariable Long idCategoria, @Valid @RequestBody CategoriasRequestDTO categoriasRequestDTO) {
+        CategoriasResponseDTO response = categoriaService.actualizarCategoria(idCategoria, categoriasRequestDTO);
         return ResponseEntity.ok(response);
     }
 
     /**
      * Elimina una categoría por su ID.
      *
-     * @param categoriaId ID de la categoría a eliminar.
+     * @param idCategoria ID de la categoría a eliminar.
      * @return Mensaje de confirmación de eliminación.
      */
-    @DeleteMapping("/eliminarCategoria/{categoriaId}")
-    public ResponseEntity<String> eliminarCategoria(@PathVariable("categoriaId") Long categoriaId) {
-        categoriaService.eliminarCategoria(categoriaId);
+    @DeleteMapping("{idCategoria}")
+    public ResponseEntity<String> eliminarCategoria(@PathVariable("idCategoria") Long idCategoria) {
+        categoriaService.eliminarCategoria(idCategoria);
         return ResponseEntity.ok("Categoria eliminada correctamente");
 
     }
