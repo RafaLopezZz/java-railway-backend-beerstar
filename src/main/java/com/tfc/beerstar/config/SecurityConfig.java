@@ -91,10 +91,10 @@ public class SecurityConfig {
                         -> auth.requestMatchers("/beerstar/auth/**").permitAll()
                         .requestMatchers("/beerstar/**").hasRole("SUPERADMIN")
                         .requestMatchers("/beerstar/articulos").permitAll()
-                        .requestMatchers("/beerstar/lotes/**").permitAll()
-                        .requestMatchers("/beerstar/usuarios/proveedores/**").permitAll()
-                        .requestMatchers("/beerstar/usuarios/clientes/**").permitAll()
                         .requestMatchers("/beerstar/categorias").permitAll()
+                        .requestMatchers("/beerstar/lotes").permitAll()
+                        .requestMatchers("/beerstar/usuarios/proveedores").permitAll()
+                        .requestMatchers("/beerstar/usuarios/clientes/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
