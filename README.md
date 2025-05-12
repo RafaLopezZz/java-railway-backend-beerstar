@@ -38,6 +38,35 @@ GET    /beerstar/articulos                   → Listar todos los artículos
 PUT    /beerstar/articulos/{idArticulo}      → Actualizar artículo por ID
 DELETE /beerstar/articulos/{idArticulo}      → Eliminar artículo por ID
 
+JSON listar Artículos     
+    {
+        "idArticulo": 4,
+        "nombre": "Alhambra Baltic Porter",
+        "descripcion": "Cervezas oscuras y densas, con sabores a café, chocolate y maltas muy tostadas.",
+        "precio": 6.36,
+        "stock": 76,
+        "idCategoria": 5,
+        "nombreCategoria": "Stout",
+        "idProveedor": 1,
+        "nombreProveedor": null,
+        "graduacion": 7.8,
+        "url": "https://firebasestorage.googleapis.com/v0/b/imagenes-fb98d.firebasestorage.app/o/alhambra-baltic.png?alt=media&token=1ab6e299-053f-4352-991b-3863cb7c7b08"
+    }
+
+JSON crear Artículos
+    {
+        "nombre": "Orval",
+        "descripcion": "Este es un tipo de cerveza de fermentación alta, que incluye subestilos como Pale Ale, India Pale Ale (IPA), Stout, Porter, y Belgian Ale.",
+        "precio": 2.95,
+        "stock": 10,
+        "idCategoria": 1,
+        "nombreCategoria": "Ale",
+        "idProveedor": 1,
+        "nombreProveedor": "Proveedor Genérico",
+        "graduacion": 6.2,
+        "url": null
+    }
+
 *** LOTES ***
 POST   beerstar/lotes             -> Crea un nuevo lote
 GET    beerstar/lotes/{idLote}    -> Obtiene un lote por su ID
