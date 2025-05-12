@@ -17,6 +17,23 @@ GET  /beerstar/usuarios/clientes              → Listar todos los clientes
 GET  /beerstar/usuarios/clientes/{idUsuario}  → Obtener datos de cliente por ID de usuario
 PUT  /beerstar/usuarios/clientes/{idCliente}  → Actualizar datos de cliente por ID de cliente
 
+- JSON listar Clientes
+    {
+        "idCliente": 1,
+        "usuario": {
+            "idUsuario": 1,
+            "email": "pruebacliente00@cliente.es",
+            "rol": "USER",
+            "tipoUsuario": "CLIENTE"
+        },
+        "nombre": "rafa",
+        "direccion": "C/ falsa, 123",
+        "telefono": "666222222",
+        "fechaRegistro": "2025-03-30T17:14:02.463288"
+    }
+
+- JSON actualizar cliente
+
 *** USUARIOS (Sólo para administradores) ***
 POST   /beerstar/usuarios/admin         → Registrar nuevo usuario (requiere rol ADMIN)
 GET    /beerstar/usuarios/{idUsuario}   → Obtener usuario por ID
@@ -25,11 +42,24 @@ PUT    /beerstar/usuarios/{idUsuario}   → Actualizar usuario existente
 DELETE /beerstar/usuarios/{idUsuario}   → Eliminar usuario por ID
 
 *** CATEGORÍAS ***
-POST   /beerstar/categorias        → Crear categoría
-GET    /beerstar/categorias/{id}   → Obtener categoría por ID
-GET    /beerstar/categorias        → Listar categorías
-PUT    /beerstar/categorias/{id}   → Actualizar categoría
-DELETE /beerstar/categorias/{id}   → Eliminar categoría
+POST   /beerstar/categorias                 → Crear categoría
+GET    /beerstar/categorias/{idCategoria}   → Obtener categoría por ID
+GET    /beerstar/categorias                 → Listar categorías
+PUT    /beerstar/categorias/{idCategoria}   → Actualizar categoría
+DELETE /beerstar/categorias/{idCategoria}   → Eliminar categoría
+
+- JSON listar Categorías
+    {
+        "idCategoria": 1,
+        "nombre": "Amber Ale",
+        "descripcion": "Cervezas de color ámbar, con sabores maltosos y notas a caramelo, ligeramente tostadas."
+    }
+
+- JSON crear/actualizar Categorías
+    {
+        "nombre": "Amber Ale",
+        "descripcion": "Cervezas de color ámbar, con sabores maltosos y notas a caramelo, ligeramente tostadas."
+    }
 
 *** ARTÍCULOS ***
 POST   /beerstar/articulos                   → Crear un nuevo artículo
@@ -38,7 +68,7 @@ GET    /beerstar/articulos                   → Listar todos los artículos
 PUT    /beerstar/articulos/{idArticulo}      → Actualizar artículo por ID
 DELETE /beerstar/articulos/{idArticulo}      → Eliminar artículo por ID
 
-JSON listar Artículos     
+- JSON listar Artículos     
     {
         "idArticulo": 4,
         "nombre": "Alhambra Baltic Porter",
@@ -53,7 +83,7 @@ JSON listar Artículos
         "url": "https://firebasestorage.googleapis.com/v0/b/imagenes-fb98d.firebasestorage.app/o/alhambra-baltic.png?alt=media&token=1ab6e299-053f-4352-991b-3863cb7c7b08"
     }
 
-JSON crear Artículos
+- JSON crear/actualizar Artículos
     {
         "nombre": "Orval",
         "descripcion": "Este es un tipo de cerveza de fermentación alta, que incluye subestilos como Pale Ale, India Pale Ale (IPA), Stout, Porter, y Belgian Ale.",
@@ -74,4 +104,23 @@ GET    beerstar/lotes             -> Retorna todos los lotes registrados
 PUT    beerstar/lotes/{idLote}    -> Actualiza un lote existente por su ID
 DELETE beerstar/lotes/{idLote}    -> Elimina un lote por su ID
 
-                  
+- JSON listar Lotes
+    {
+        "idLote": 16,
+        "nombreLote": "Lote-Beck's",
+        "descripcion": "24 LATAS DE 0.5L BECKS GOLD 4.9%",
+        "idProveedor": 8,
+        "nombreProveedor": "Beck's",
+        "precio": 29.95,
+        "url": "https://firebasestorage.googleapis.com/v0/b/imagenes-fb98d.firebasestorage.app/o/1LoteBecks.png?alt=media&token=817db10e-109b-4f69-8d12-491eab0dcbeb"
+    }
+
+- JSON crear/actualizar Lotes
+    {
+        "nombreLote": "Lote - Test - Beck's",
+        "descripcion": "12 LATAS DE 0.5L BECKS GOLD",
+        "idProveedor": 8,
+        "nombreProveedor": "Beck's",
+        "precio": 29.95,
+        "url": "https://firebasestorage.googleapis.com/v0/b/imagenes-fb98d.firebasestorage.app/o/1LoteBecks.png?alt=media&token=817db10e-109b-4f69-8d12-491eab0dcbeb"
+    }            
