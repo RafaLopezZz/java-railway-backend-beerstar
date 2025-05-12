@@ -89,12 +89,12 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth
                         -> auth.requestMatchers("/beerstar/auth/**").permitAll()
-                        .requestMatchers("/beerstar/**").hasRole("SUPERADMIN")
                         .requestMatchers("/beerstar/articulos").permitAll()
                         .requestMatchers("/beerstar/categorias").permitAll()
                         .requestMatchers("/beerstar/lotes").permitAll()
                         .requestMatchers("/beerstar/usuarios/proveedores").permitAll()
                         .requestMatchers("/beerstar/usuarios/clientes").permitAll()
+                        .requestMatchers("/beerstar/**").hasRole("SUPERADMIN")
                         .anyRequest().authenticated()
                 );
 
