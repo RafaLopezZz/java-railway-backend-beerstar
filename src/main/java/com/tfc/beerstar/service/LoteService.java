@@ -169,6 +169,7 @@ public class LoteService {
         lDto.setNombreProveedor(lote.getProveedor().getNombre());
         lDto.setPrecio(lote.getPrecio());
         lDto.setUrl(lote.getUrl());
+
         if (lote.getProveedor() != null) {
             lDto.setIdProveedor(lote.getProveedor().getIdProveedor());
             lDto.setNombreProveedor(lote.getProveedor().getNombre());
