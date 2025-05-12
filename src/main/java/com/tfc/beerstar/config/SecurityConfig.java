@@ -94,7 +94,7 @@ public class SecurityConfig {
                         .requestMatchers("/beerstar/categorias").permitAll()
                         .requestMatchers("/beerstar/lotes").permitAll()
                         .requestMatchers("/beerstar/usuarios/proveedores").permitAll()
-                        .requestMatchers("/beerstar/usuarios/clientes/**").permitAll()
+                        .requestMatchers("/beerstar/usuarios/clientes").permitAll()
                         .anyRequest().authenticated()
                 );
 
