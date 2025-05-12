@@ -53,7 +53,7 @@ public class Lotes {
      * Relación muchos a uno con el proveedor.
      * Un proveedor puede tener múltiples lotes, pero cada lote pertenece a un único proveedor.
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
 
