@@ -29,7 +29,7 @@ public class CarritoController {
 
     @PostMapping("/add")
     @PreAuthorize("hasRole('CLIENTE')")
-    public CarritoResponseDTO agregarACarrito(@AuthenticationPrincipal Cliente cliente,@Valid @RequestBody AddToCarritoRequestDTO request) {
+    public CarritoResponseDTO agregarACarrito(@AuthenticationPrincipal Cliente cliente, @Valid @RequestBody AddToCarritoRequestDTO request) {
         return carritoService.agregarACarrito(cliente, request);
     }
 

@@ -90,7 +90,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth
                         -> auth.requestMatchers("/beerstar/auth/**").permitAll()
                         .requestMatchers("/beerstar/**").hasRole("SUPERADMIN")
-                        .requestMatchers("/beerstar/articulos/").permitAll()
+                        .requestMatchers("/beerstar/articulos").permitAll()
                         .requestMatchers("/beerstar/lotes/**").permitAll()
                         .requestMatchers("/beerstar/usuarios/proveedores/**").permitAll()
                         .requestMatchers("/beerstar/usuarios/clientes/**").permitAll()
