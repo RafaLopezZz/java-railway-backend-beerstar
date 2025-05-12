@@ -10,59 +10,122 @@ import com.tfc.beerstar.dto.request.AddToCarritoRequestDTO;
 import com.tfc.beerstar.dto.response.CarritoResponseDTO;
 import com.tfc.beerstar.dto.response.DetalleCarritoResponseDTO;
 import com.tfc.beerstar.exception.ResourceNotFoundException;
+import com.tfc.beerstar.exception.StockInsuficienteException;
 import com.tfc.beerstar.model.Articulos;
 import com.tfc.beerstar.model.Carrito;
 import com.tfc.beerstar.model.Cliente;
 import com.tfc.beerstar.model.DetalleCarrito;
 import com.tfc.beerstar.repository.ArticulosRepository;
 import com.tfc.beerstar.repository.CarritoRepository;
+import com.tfc.beerstar.repository.DetalleCarritoRepository;
 
 @Service
 public class CarritoService {
 
-    private final CarritoRepository carritoRepo;
-    private final ArticulosRepository articuloRepo;
+    private final DetalleCarritoRepository detalleCarritoRepository;
+    private final CarritoRepository carritoRepository;
+    private final ArticulosRepository articuloRepository;
 
     public CarritoService(CarritoRepository carritoRepo,
-            ArticulosRepository articuloRepo) {
-        this.carritoRepo = carritoRepo;
-        this.articuloRepo = articuloRepo;
+            ArticulosRepository articuloRepo, DetalleCarritoRepository detalleCarritoRepository) {
+        this.carritoRepository = carritoRepo;
+        this.articuloRepository = articuloRepo;
+        this.detalleCarritoRepository = detalleCarritoRepository;
     }
 
     @Transactional
     public CarritoResponseDTO agregarACarrito(Cliente cliente, AddToCarritoRequestDTO request) {
+        // Validación de cantidad
         if (request.getCantidad() <= 0) {
             throw new IllegalArgumentException("La cantidad debe ser mayor que cero.");
         }
 
-        Carrito carrito = carritoRepo.findByCliente(cliente)
+        // Buscar o crear carrito para el cliente
+        Carrito carrito = carritoRepository.findByCliente(cliente)
                 .orElseGet(() -> {
                     Carrito nuevoCarrito = new Carrito();
                     nuevoCarrito.setCliente(cliente);
-                    return carritoRepo.save(nuevoCarrito);
+                    return carritoRepository.save(nuevoCarrito);
                 });
 
-        Articulos articulo = articuloRepo.findById(request.getArticuloId())
+        // Verificar existencia del artículo
+        Articulos articulo = articuloRepository.findById(request.getArticuloId())
                 .orElseThrow(() -> new ResourceNotFoundException("Artículo no existe"));
 
+        // Verificar stock disponible
+        if (articulo.getStock() < request.getCantidad()) {
+            throw new StockInsuficienteException("Stock insuficiente para el artículo: " + articulo.getNombre());
+        }
+
+        // Buscar si ya existe el artículo en el carrito o crear nuevo detalle
         DetalleCarrito detalle = carrito.getDetalleList().stream()
-                .filter(d -> d.getArticulos().equals(articulo))
+                .filter(d -> d.getArticulos().getIdArticulo().equals(articulo.getIdArticulo()))
                 .findFirst()
                 .orElseGet(() -> {
                     DetalleCarrito nuevoDetalle = new DetalleCarrito();
                     nuevoDetalle.setCarrito(carrito);
                     nuevoDetalle.setArticulos(articulo);
+                    nuevoDetalle.setCantidad(0); // Inicializar en cero
                     carrito.getDetalleList().add(nuevoDetalle);
                     return nuevoDetalle;
                 });
 
-        detalle.setCantidad(detalle.getCantidad() + request.getCantidad());
-        carritoRepo.save(carrito);
+        // Verificar stock para cantidad total
+        int nuevaCantidad = detalle.getCantidad() + request.getCantidad();
+        if (articulo.getStock() < nuevaCantidad) {
+            throw new StockInsuficienteException("Stock insuficiente para la cantidad total solicitada");
+        }
+
+        // Actualizar cantidad
+        detalle.setCantidad(nuevaCantidad);
+
+        // Actualizar stock (opcional: implementar reserva de stock)
+        articulo.setStock(articulo.getStock() - request.getCantidad());
+        articuloRepository.save(articulo);
+
+        // Guardar carrito actualizado
+        carritoRepository.save(carrito);
+
         return mapearCarritoResponseDTO(carrito);
+
+    }
+
+    @Transactional
+    public CarritoResponseDTO decrementarArticulo(Cliente cliente, Long articuloId) {
+        // Buscar carrito del cliente
+        Carrito carrito = carritoRepository.findByCliente(cliente)
+                .orElseThrow(() -> new ResourceNotFoundException("Carrito no encontrado"));
+
+        // Buscar el detalle correspondiente al artículo
+        DetalleCarrito detalle = carrito.getDetalleList().stream()
+                .filter(d -> d.getArticulos().getIdArticulo().equals(articuloId))
+                .findFirst()
+                .orElseThrow(() -> new ResourceNotFoundException("Artículo no encontrado en el carrito"));
+
+        // Obtener referencia al artículo
+        Articulos articulo = detalle.getArticulos();
+
+        // Si solo hay una unidad, eliminar el detalle
+        if (detalle.getCantidad() == 1) {
+            carrito.getDetalleList().remove(detalle);
+            detalleCarritoRepository.delete(detalle);
+        } else {
+            // Si hay más unidades, decrementar
+            detalle.setCantidad(detalle.getCantidad() - 1);
+        }
+
+        // Devolver stock
+        articulo.setStock(articulo.getStock() + 1);
+        articuloRepository.save(articulo);
+
+        // Guardar cambios
+        Carrito carritoActualizado = carritoRepository.save(carrito);
+
+        return mapearCarritoResponseDTO(carritoActualizado);
     }
 
     public CarritoResponseDTO verCarrito(Cliente cliente) {
-        Carrito carrito = carritoRepo.findByCliente(cliente)
+        Carrito carrito = carritoRepository.findByCliente(cliente)
                 .orElseThrow(() -> new ResourceNotFoundException("Carrito vacío"));
 
         return mapearCarritoResponseDTO(carrito);
@@ -70,7 +133,7 @@ public class CarritoService {
 
     @Transactional
     public void vaciarCarrito(Cliente cliente) {
-        carritoRepo.deleteByCliente(cliente);
+        carritoRepository.deleteByCliente(cliente);
     }
 
     private CarritoResponseDTO mapearCarritoResponseDTO(Carrito carrito) {
