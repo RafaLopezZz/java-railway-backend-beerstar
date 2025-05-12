@@ -1,12 +1,17 @@
 package com.tfc.beerstar.security;
 
 import java.security.Key;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -28,7 +33,7 @@ public class JwtUtils {
      */
     @Value("${app.jwt.secret}")
     private String jwtSecret;
-    
+
     /**
      * Tiempo de validez del token en milisegundos.
      */
@@ -38,7 +43,8 @@ public class JwtUtils {
     /**
      * Genera un token JWT firmado para el user autenticado.
      *
-     * @param authentication Objeto de Spring Security con la información del usuario autenticado
+     * @param authentication Objeto de Spring Security con la información del
+     * usuario autenticado
      * @return Token JWT firmado (compact form)
      */
     public String generateJwtToken(Authentication authentication) {
@@ -46,12 +52,42 @@ public class JwtUtils {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationMs);
 
+        // Extraer roles del usuario autenticado
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+
         return Jwts.builder()
-                .setSubject(userDetails.getUsername())        // email u otro identificador
-                .setIssuedAt(now)                             // fecha de emisión
-                .setExpiration(expiryDate)                    // fecha de expiración
+                .setSubject(userDetails.getUsername()) // email u otro identificador
+                .claim("roles", roles) // añadir roles como claim
+                .setIssuedAt(now) // fecha de emisión
+                .setExpiration(expiryDate) // fecha de expiración
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();                                   // genera la cadena final
+    }
+
+    /**
+     * Obtiene los roles del usuario desde el token JWT
+     */
+    public List<String> getRolesFromJwtToken(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+        List<String> roles = new ArrayList<>();
+
+        if (claims.get("roles") != null) {
+            if (claims.get("roles") instanceof List) {
+                List<?> rawList = (List<?>) claims.get("roles");
+                roles = rawList.stream()
+                        .filter(item -> item instanceof String)
+                        .map(item -> (String) item)
+                        .collect(Collectors.toList());
+            }
+        }
+        return roles;
     }
 
     /**
@@ -78,9 +114,9 @@ public class JwtUtils {
     public boolean validateJwtToken(String authToken) {
         try {
             Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
-                .build()
-                .parseClaimsJws(authToken);
+                    .setSigningKey(getSigningKey())
+                    .build()
+                    .parseClaimsJws(authToken);
             return true;
         } catch (MalformedJwtException ex) {
             log.error("Token JWT inválido: {}", ex.getMessage());
@@ -95,7 +131,8 @@ public class JwtUtils {
     }
 
     /**
-     * Construye la clave secreta (Key) a partir de la cadena Base64 configurada.
+     * Construye la clave secreta (Key) a partir de la cadena Base64
+     * configurada.
      *
      * @return Instancia de {@link Key} para firmar/verificar JWT
      */
