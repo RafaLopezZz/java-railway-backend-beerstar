@@ -64,9 +64,9 @@ public class ProveedorService {
      * @return DTO con los datos del proveedor.
      * @throws ResourceNotFoundException si no se encuentra el proveedor.
      */
-    public ProveedorResponseDTO obtenerProveedorPorUsuarioId(Long usuarioId) {
-        Proveedor proveedor = proveedorRepository.findByUsuario_IdUsuario(usuarioId)
-                .orElseThrow(() -> new ResourceNotFoundException("Proveedor no encontrado para el usuario con ID: " + usuarioId));
+    public ProveedorResponseDTO obtenerProveedorPorUsuarioId(Long idProveedor) {
+        Proveedor proveedor = proveedorRepository.findById(idProveedor)
+                .orElseThrow(() -> new ResourceNotFoundException("Proveedor no encontrado para el usuario con ID: " + idProveedor));
         
         return mapearResponseDTO(proveedor);
     }
@@ -91,8 +91,8 @@ public class ProveedorService {
      * @return DTO actualizado del proveedor.
      * @throws RuntimeException si el proveedor no existe.
      */
-    public ProveedorResponseDTO actualizarProveedor(Long id, ProveedorRequestDTO dto) {
-        Proveedor proveedor = proveedorRepository.findById(id)
+    public ProveedorResponseDTO actualizarProveedor(Long idUsuario, ProveedorRequestDTO dto) {
+        Proveedor proveedor = proveedorRepository.findByUsuario_IdUsuario(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
 
         proveedor.setNombre(dto.getNombre());
@@ -110,8 +110,8 @@ public class ProveedorService {
      * @param id ID del proveedor a eliminar.
      * @throws RuntimeException si el proveedor no existe.
      */
-    public void eliminarProveedor(Long id) {
-        Proveedor proveedor = proveedorRepository.findById(id)
+    public void eliminarProveedor(Long idUsuario) {
+        Proveedor proveedor = proveedorRepository.findByUsuario_IdUsuario(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
         proveedorRepository.delete(proveedor);
     }

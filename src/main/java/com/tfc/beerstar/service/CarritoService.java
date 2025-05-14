@@ -49,7 +49,7 @@ public class CarritoService {
                 });
 
         // Verificar existencia del artículo
-        Articulos articulo = articuloRepository.findById(request.getArticuloId())
+        Articulos articulo = articuloRepository.findById(request.getIdArticulo())
                 .orElseThrow(() -> new ResourceNotFoundException("Artículo no existe"));
 
         // Verificar stock disponible

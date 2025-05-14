@@ -73,7 +73,7 @@ public class UsuarioController {
      * @return {@code ResponseEntity<UsuarioResponseDTO>} con los datos del usuario encontrado y HTTP 200.
      */
     @GetMapping("/{idUsuario}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPERADMIN')")
     public ResponseEntity<UsuarioResponseDTO> obtenerUsuario(@PathVariable("idUsuario") Long idUsuario) {
         UsuarioResponseDTO response = usuarioService.obtenerUsuarioPorId(idUsuario);
         return ResponseEntity.ok(response);
@@ -112,7 +112,7 @@ public class UsuarioController {
      * @return {@code ResponseEntity<String>} con un mensaje de éxito y HTTP 200.
      */
     @DeleteMapping("/{idUsuario}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN','SUPERADMIN')")
     public ResponseEntity<String> eliminarUsuario(@PathVariable("idUsuario") Long idUsuario) {
         usuarioService.eliminarUsuario(idUsuario);
         return ResponseEntity.ok("Usuario eliminado correctamente");

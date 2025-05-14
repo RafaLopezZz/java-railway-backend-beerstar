@@ -42,7 +42,7 @@ POST /beerstar/auth/registro/proveedor → Registro exclusivo para proveedores
 **_ PROVEEDORES _**
 GET /beerstar/usuarios/proveedores → Listar todos los proveedores
 GET /beerstar/usuarios/proveedores/{idUsuario} → Obtener datos de proveedor por ID de usuario
-PUT /beerstar/usuarios/proveedores/{idProveedor} → Actualizar datos de proveedor por ID de proveedor
+PUT /beerstar/usuarios/proveedores/{idUsuario} → Actualizar datos de proveedor por ID de proveedor
 
 - JSON listar Proveedor
   {
@@ -71,7 +71,7 @@ PUT /beerstar/usuarios/proveedores/{idProveedor} → Actualizar datos de proveed
 **_ CLIENTES _**
 GET /beerstar/usuarios/clientes → Listar todos los clientes
 GET /beerstar/usuarios/clientes/{idUsuario} → Obtener datos de cliente por ID de usuario
-PUT /beerstar/usuarios/clientes/{idCliente} → Actualizar datos de cliente por ID de cliente
+PUT /beerstar/usuarios/clientes/{idUsuario} → Actualizar datos de cliente por ID de cliente
 
 - JSON listar Clientes
   {
