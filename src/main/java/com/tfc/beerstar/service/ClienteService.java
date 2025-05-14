@@ -94,9 +94,9 @@ public class ClienteService {
      * @return DTO de respuesta con los datos del cliente actualizado.
      * @throws ResourceNotFoundException si no existe un cliente con el ID dado.
      */
-    public ClienteResponseDTO actualizarCliente(Long clienteId, ClienteRequestDTO clienteDTO) {
-        Cliente cliente = clienteRepository.findById(clienteId)
-                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con ID: " + clienteId));
+    public ClienteResponseDTO actualizarCliente(Long idUsuario, ClienteRequestDTO clienteDTO) {
+        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(idUsuario)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado con ID: " + idUsuario));
 
         // Actualizar los campos
         if (clienteDTO.getNombre() != null)

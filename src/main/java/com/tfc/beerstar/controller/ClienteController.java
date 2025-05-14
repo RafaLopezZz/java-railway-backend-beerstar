@@ -72,11 +72,11 @@ public class ClienteController {
      * @param clienteRequestDTO DTO con los nuevos datos del cliente.
      * @return {@code ResponseEntity<ClienteResponseDTO>} con los datos actualizados del cliente y HTTP 200.
      */
-    @PutMapping("/{idCliente}")
+    @PutMapping("/{idUsuario}")
     public ResponseEntity<ClienteResponseDTO> actualizarCliente(
-            @PathVariable Long idCliente,
+            @PathVariable Long idUsuario,
             @RequestBody ClienteRequestDTO clienteRequestDTO) {
-        ClienteResponseDTO clienteActualizado = clienteService.actualizarCliente(idCliente, clienteRequestDTO);
+        ClienteResponseDTO clienteActualizado = clienteService.actualizarCliente(idUsuario, clienteRequestDTO);
         return ResponseEntity.ok(clienteActualizado);
     }
 }

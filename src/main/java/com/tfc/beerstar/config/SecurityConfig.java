@@ -93,8 +93,8 @@ public class SecurityConfig {
                         .requestMatchers("/beerstar/categorias").permitAll()
                         .requestMatchers("/beerstar/lotes").permitAll()
                         .requestMatchers("/beerstar/usuarios/clientes").permitAll()
-                        .requestMatchers("/beerstar/usuarios/proveedores/**").hasRole("USER")
-                        .requestMatchers("/beerstar/usuarios/clientes/**").hasRole("USER")
+                        .requestMatchers("/beerstar/usuarios/proveedores/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
+                        .requestMatchers("/beerstar/usuarios/clientes/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
                         .requestMatchers("/beerstar/**").hasRole("SUPERADMIN")
                         .anyRequest().authenticated()
                 );

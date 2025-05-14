@@ -57,6 +57,13 @@ public class JwtUtils {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
+        // Añadir el tipo de usuario como un rol adicional
+        // Asumiendo que tienes un método getTipoUsuario() en UserDetailsImpl
+        if (userDetails.getTipoUsuario() != null) {
+            // Añadir el prefijo ROLE_ si estás usando hasRole() en tu configuración de seguridad
+            roles.add("ROLE_" + userDetails.getTipoUsuario());
+        }
+
         return Jwts.builder()
                 .setSubject(userDetails.getUsername()) // email u otro identificador
                 .claim("roles", roles) // añadir roles como claim

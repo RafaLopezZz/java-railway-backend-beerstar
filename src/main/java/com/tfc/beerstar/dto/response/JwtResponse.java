@@ -8,14 +8,14 @@ import lombok.Data;
 public class JwtResponse {
     private String token;
     private String type = "Bearer";
-    private Long id;
+    private Long idUsuario;
     private String email;
     private String tipoUsuario;
     private List<String> roles;
 
-    public JwtResponse(String token, Long id, String email, String tipoUsuario, List<String> roles) {
+    public JwtResponse(String token, Long idUsuario, String email, String tipoUsuario, List<String> roles) {
         this.token = token;
-        this.id = id;
+        this.idUsuario= idUsuario;
         this.email = email;
         this.tipoUsuario = tipoUsuario;
         this.roles = roles;

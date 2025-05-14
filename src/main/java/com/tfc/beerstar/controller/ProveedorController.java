@@ -45,7 +45,7 @@ public class ProveedorController {
     /**
      * Obtiene los datos de un proveedor asociado a un usuario por su ID.
      *
-     * @param usuarioId ID del usuario asociado al proveedor.
+     * @param idUsuario ID del usuario asociado al proveedor.
      * @return ProveedorResponseDTO con los datos del proveedor.
      */
     @GetMapping("/{idUsuario}")
@@ -68,15 +68,15 @@ public class ProveedorController {
     /**
      * Actualiza los datos de un proveedor por su ID.
      *
-     * @param proveedorId ID del proveedor a actualizar.
+     * @param idUsuario ID del usuario al que pertenece el proveedor a actualizar.
      * @param proveedorRequestDTO DTO con los nuevos datos del proveedor.
      * @return ProveedorResponseDTO con los datos actualizados del proveedor.
      */
-    @PutMapping("/{idProveedor}")
+    @PutMapping("/{idUsuario}")
     public ResponseEntity<ProveedorResponseDTO> actualizarProveedor(
-            @PathVariable Long idProveedor,
+            @PathVariable Long idUsuario,
             @RequestBody ProveedorRequestDTO proveedorRequestDTO) {
-        ProveedorResponseDTO proveedorActualizado = proveedorService.actualizarProveedor(idProveedor, proveedorRequestDTO);
+        ProveedorResponseDTO proveedorActualizado = proveedorService.actualizarProveedor(idUsuario, proveedorRequestDTO);
         return ResponseEntity.ok(proveedorActualizado);
     }
 }
