@@ -92,6 +92,7 @@ public class SecurityConfig {
                         .requestMatchers("/beerstar/articulos").permitAll()
                         .requestMatchers("/beerstar/categorias").permitAll()
                         .requestMatchers("/beerstar/lotes").permitAll()
+                        .requestMatchers("/beerstar/usuarios/clientes/").permitAll()
                         .requestMatchers("/beerstar/usuarios/proveedores/**").hasRole("USER")
                         .requestMatchers("/beerstar/usuarios/clientes/**").hasRole("USER")
                         .requestMatchers("/beerstar/**").hasRole("SUPERADMIN")
