@@ -55,7 +55,7 @@ public class ArticuloController {
      * @param articuloRequestDTO DTO con los datos del artículo. Debe ser válido.
      * @return {@code ResponseEntity<ArticulosResponseDTO>} con el artículo creado y HTTP 200.
      */
-    @PostMapping("/{idArticulo}")
+    @PostMapping
     @PreAuthorize("hasRole('PROVEEDOR')")
     public ResponseEntity<ArticulosResponseDTO> crearArticulo(@Valid @RequestBody ArticulosRequestDTO articuloRequestDTO) {
         ArticulosResponseDTO response = articuloService.crearArticulos(articuloRequestDTO);
