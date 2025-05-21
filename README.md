@@ -160,11 +160,11 @@ DELETE /beerstar/articulos/{idArticulo} → Eliminar artículo por ID
   }
 
 **_ LOTES _**
-POST beerstar/lotes -> Crea un nuevo lote
-GET beerstar/lotes/{idLote} -> Obtiene un lote por su ID
-GET beerstar/lotes -> Retorna todos los lotes registrados
-PUT beerstar/lotes/{idLote} -> Actualiza un lote existente por su ID
-DELETE beerstar/lotes/{idLote} -> Elimina un lote por su ID
+POST beerstar/lotes → Crea un nuevo lote
+GET beerstar/lotes/{idLote} → Obtiene un lote por su ID
+GET beerstar/lotes → Retorna todos los lotes registrados
+PUT beerstar/lotes/{idLote} → Actualiza un lote existente por su ID
+DELETE beerstar/lotes/{idLote} → Elimina un lote por su ID
 
 - JSON listar Lotes
   {
@@ -186,3 +186,88 @@ DELETE beerstar/lotes/{idLote} -> Elimina un lote por su ID
   "precio": 29.95,
   "url": "https://firebasestorage.googleapis.com/v0/b/imagenes-fb98d.firebasestorage.app/o/1LoteBecks.png?alt=media&token=817db10e-109b-4f69-8d12-491eab0dcbeb"
   }
+
+**_ CARRITO _**
+POST beerstar/carrito → Agrega un artículo al carrito
+GET beerstar/carrito → Lista el carrito con sus detalles
+POST beerstar/carrito/{idArticulo} → Elimina un artículo del carrito
+DELETE beerstar/carrito → Vacia el carrito
+
+- JSON Agregar al carrito (POST)
+{
+  "idArticulo": 1,
+  "cantidad": 1
+}
+
+- JSON Listar carrito
+{
+    "id": 8,
+    "items": [
+        {
+            "id": 21,
+            "idArticulo": 1,
+            "nombreArticulo": "Orval02",
+            "cantidad": 1,
+            "precioUnitario": 2.95,
+            "totalLinea": 2.95
+        }
+    ],
+    "subtotal": 2.95,
+    "impuestos": 0.62,
+    "gastosEnvio": 4.99,
+    "total": 8.56
+}
+
+**_ PEDIDOS _**
+POST /beerstar/pedidos → Crea un pedido
+GET  /beerstar/pedidos → Lista los pedidos de un usuario cliente
+
+- JSON Crear pedido
+{
+    "idPedido": 18,
+    "nombreCliente": "rafa",
+    "emailUsuario": "a@b.es",
+    "direccionCliente": "c/ tal, 69",
+    "fechaPedido": "2025-05-21T20:46:09.037355600Z",
+    "estadoPedido": "PENDIENTE",
+    "subTotal": 2.95,
+    "iva": 0.6195,
+    "gastosEnvio": 4.99,
+    "total": 8.5595,
+    "metodoPago": "TARJETA",
+    "idTransaccion": "TX-1747860369037",
+    "detalles": [
+        {
+            "idPedido": 18,
+            "idArticulo": 1,
+            "nombreArticulo": "Orval02",
+            "cantidad": 1,
+            "precioUnitario": 2.95,
+            "totalLinea": 2.95
+        }
+    ],
+    "idCliente": 5
+}
+
+-JSON Listar pedidos
+    {
+        "idPedido": 9,
+        "estadoPedido": "PENDIENTE",
+        "subTotal": 2.95,
+        "iva": 0.62,
+        "gastosEnvio": null,
+        "total": 8.56,
+        "metodoPago": "TARJETA",
+        "idTransaccion": "TX-1747822135637",
+        "detalles": [
+            {
+                "idPedido": 9,
+                "idArticulo": 1,
+                "nombreArticulo": "Orval02",
+                "cantidad": 1,
+                "precioUnitario": 2.95,
+                "totalLinea": 2.95
+            }
+        ],
+        "idCliente": 4
+    }

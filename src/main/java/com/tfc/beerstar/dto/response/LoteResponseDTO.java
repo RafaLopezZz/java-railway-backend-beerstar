@@ -37,6 +37,7 @@ public class LoteResponseDTO {
     private String descripcion;
     private Long idProveedor;
     private String nombreProveedor;
+    private Integer stock;
     private BigDecimal precio;
     private String url;
 }

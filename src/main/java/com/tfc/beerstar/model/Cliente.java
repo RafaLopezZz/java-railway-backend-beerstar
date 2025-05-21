@@ -11,6 +11,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 /**
  * Entidad que representa un cliente en el sistema Beerstar.
@@ -43,6 +45,8 @@ public class Cliente {
      */
     @OneToOne
     @JoinColumn(name = "id_usuario", unique = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Usuario usuario;
 
     /** Nombre del cliente. Campo opcional. */

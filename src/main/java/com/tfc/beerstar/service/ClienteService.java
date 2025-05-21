@@ -14,6 +14,7 @@ import com.tfc.beerstar.exception.ResourceNotFoundException;
 import com.tfc.beerstar.model.Cliente;
 import com.tfc.beerstar.model.Usuario;
 import com.tfc.beerstar.repository.ClienteRepository;
+import com.tfc.beerstar.repository.UsuarioRepository;
 
 /**
  * Servicio que encapsula la lógica de negocio para la gestión de clientes.
@@ -32,6 +33,9 @@ public class ClienteService {
     
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     /**
      * Crea un nuevo cliente asociado a un {@link Usuario}.
@@ -121,6 +125,25 @@ public class ClienteService {
                 .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
         clienteRepository.delete(cliente);
     }
+
+    public Cliente findByEmail(String email) {
+        // 1. Primero buscar el Usuario por email
+        Usuario usuario = usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con email: " + email));
+        
+        // 2. Verificar que el usuario es de tipo CLIENTE
+        if (!"CLIENTE".equals(usuario.getTipoUsuario())) {
+            throw new ResourceNotFoundException("El usuario no es un cliente");
+        }
+        
+        // 3. Obtener el Cliente asociado al Usuario
+        if (usuario.getCliente() == null) {
+            throw new ResourceNotFoundException("No existe un cliente asociado al usuario con email: " + email);
+        }
+        
+        return usuario.getCliente();
+    }
+
 
     /**
      * Mapea una entidad {@link Cliente} a un DTO de respuesta {@link ClienteResponseDTO}.
