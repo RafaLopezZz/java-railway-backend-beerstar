@@ -11,6 +11,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 
 /**
@@ -75,6 +77,8 @@ public class Usuario {
      * se propaga a Cliente.
      */
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Cliente cliente;
     
     /**
@@ -82,6 +86,8 @@ public class Usuario {
      * Similar al caso del Cliente.
      */
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Proveedor proveedor;
 
     /**
