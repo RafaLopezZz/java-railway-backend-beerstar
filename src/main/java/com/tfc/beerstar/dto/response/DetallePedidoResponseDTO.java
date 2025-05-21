@@ -7,13 +7,12 @@ import lombok.Data;
 @Data
 public class DetallePedidoResponseDTO {
 
-    private Long id;
-    private Long articuloId;
+    private Long idPedido;
+    private Long idArticulo;
     private String nombreArticulo;
     private Integer cantidad;
     private BigDecimal precioUnitario;
     private BigDecimal totalLinea;
-
 
     public BigDecimal getTotalLinea() {
         return totalLinea;

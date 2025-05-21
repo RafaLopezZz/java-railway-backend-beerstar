@@ -50,6 +50,7 @@ public class LoteService {
         Lotes lote = new Lotes();
         lote.setNombreLote(lDto.getNombreLote());
         lote.setDescripcion(lDto.getDescripcion());
+        lote.setStock(lDto.getStock());
         lote.setPrecio(lDto.getPrecio());
         lote.setUrl(lDto.getUrl());
 
@@ -122,6 +123,7 @@ public class LoteService {
 
         lote.setNombreLote(lDto.getNombreLote());        
         lote.setDescripcion(lDto.getDescripcion());
+        lote.setStock(lDto.getStock());
         lote.setPrecio(lDto.getPrecio());
         lote.setUrl(lDto.getUrl());
 
@@ -167,6 +169,7 @@ public class LoteService {
         lDto.setDescripcion(lote.getDescripcion());
         lDto.setIdProveedor(lote.getProveedor().getIdProveedor());
         lDto.setNombreProveedor(lote.getProveedor().getNombre());
+        lDto.setStock(lote.getStock());
         lDto.setPrecio(lote.getPrecio());
         lDto.setUrl(lote.getUrl());
 

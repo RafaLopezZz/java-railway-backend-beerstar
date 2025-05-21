@@ -10,7 +10,7 @@ public class DetalleCarritoResponseDTO {
     private Long id;
     private Long idArticulo;
     private String nombreArticulo;
-    private Integer cantidad;
+    private int cantidad;
     private BigDecimal precioUnitario;
-
+    private BigDecimal totalLinea;
 }

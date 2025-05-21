@@ -1,6 +1,7 @@
 package com.tfc.beerstar.security;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,18 +27,23 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Filtro de servlet que se ejecuta una vez por petición para procesar
- * y validar JWT (JSON Web Token) enviado en la cabecera HTTP Authorization.
+ * Filtro de servlet que se ejecuta una vez por petición para procesar y validar
+ * JWT (JSON Web Token) enviado en la cabecera HTTP Authorization.
  *
- * <p>Este filtro extiende {@link OncePerRequestFilter} de Spring Framework y realiza:
+ * <p>
+ * Este filtro extiende {@link OncePerRequestFilter} de Spring Framework y
+ * realiza:
  * <ol>
- *   <li>Extracción del token JWT del encabezado Authorization.</li>
- *   <li>Validación de la firma y tiempos del token usando {@link JwtUtils}.</li>
- *   <li>Recuperación del usuario (email) dentro del token.</li>
- *   <li>Carga de los detalles del usuario desde la base de datos mediante {@link UserDetailsServiceImpl}.</li>
- *   <li>Construcción de un objeto {@link org.springframework.security.authentication.UsernamePasswordAuthenticationToken}
- *       con las autoridades del usuario.</li>
- *   <li>Establecimiento de la autenticación en el contexto de seguridad de Spring.</li>
+ * <li>Extracción del token JWT del encabezado Authorization.</li>
+ * <li>Validación de la firma y tiempos del token usando {@link JwtUtils}.</li>
+ * <li>Recuperación del usuario (email) dentro del token.</li>
+ * <li>Carga de los detalles del usuario desde la base de datos mediante
+ * {@link UserDetailsServiceImpl}.</li>
+ * <li>Construcción de un objeto
+ * {@link org.springframework.security.authentication.UsernamePasswordAuthenticationToken}
+ * con las autoridades del usuario.</li>
+ * <li>Establecimiento de la autenticación en el contexto de seguridad de
+ * Spring.</li>
  * </ol>
  */
 @Slf4j
@@ -50,9 +56,9 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUtils jwtUtils;
 
-
     /**
-     * Servicio para cargar datos de usuario (credenciales y autoridades) desde la BBDD.
+     * Servicio para cargar datos de usuario (credenciales y autoridades) desde
+     * la BBDD.
      */
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
@@ -65,20 +71,34 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     /**
      * Método que procesa cada petición HTTP una sola vez.
      *
-     * @param request     Petición HTTP entrante
-     * @param response    Respuesta HTTP saliente
+     * @param request Petición HTTP entrante
+     * @param response Respuesta HTTP saliente
      * @param filterChain Cadena de filtros para continuar el procesamiento
      * @throws ServletException En caso de error en el filtro
-     * @throws IOException      En caso de error de E/S
+     * @throws IOException En caso de error de E/S
      */
     @Override
-    protected void doFilterInternal(@NonNull HttpServletRequest request, 
-                                    @NonNull HttpServletResponse response, 
-                                    @NonNull FilterChain filterChain)
+    protected void doFilterInternal(@NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull FilterChain filterChain)
             throws ServletException, IOException {
+        // 1) Logea método y URI para identificar la petición
+        logs.debug(">>> Petición entrante: {} {}", request.getMethod(), request.getRequestURI());
+
+        // 2) Logea todos los headers para diagnosticar
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String name = headerNames.nextElement();
+            logs.debug("    Header: {} = {}", name, request.getHeader(name));
+        }
+
+        // 3) Ahora extrae y logea el Authorization raw
+        String headerAuth = request.getHeader("Authorization");
+        logs.debug(">>> Authorization header raw: [{}]", headerAuth);
         try {
             // Extrae el token JWT del encabezado Authorization
             String jwt = parseJwt(request);
+            logs.debug(">>> Token extraído: [{}]", jwt);
             // Si el token no es nulo y es válido, establece la autenticación en el contexto de seguridad
             if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
                 // Obtiene el nombre de usuario (email) del token
@@ -87,8 +107,8 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 // Carga los detalles del usuario desde la base de datos
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 // Crea un objeto Authentication para Spring Security
-                UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(
+                UsernamePasswordAuthenticationToken authentication
+                        = new UsernamePasswordAuthenticationToken(
                                 userDetails,
                                 null,
                                 userDetails.getAuthorities());
@@ -107,16 +127,18 @@ public class AuthTokenFilter extends OncePerRequestFilter {
     }
 
     /**
-     * Extrae el token JWT de la cabecera Authorization si existe y comienza con "Bearer ".
+     * Extrae el token JWT de la cabecera Authorization si existe y comienza con
+     * "Bearer ".
      *
      * @param request Petición HTTP
-     * @return Cadena del token sin el prefijo, o {@code null} si no se encuentra
+     * @return Cadena del token sin el prefijo, o {@code null} si no se
+     * encuentra
      */
     private String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");
 
         if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
-            return headerAuth.substring(7);
+            return headerAuth.substring(7).trim();
         }
 
         return null;

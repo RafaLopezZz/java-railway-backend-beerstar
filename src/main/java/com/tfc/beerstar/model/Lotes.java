@@ -57,6 +57,12 @@ public class Lotes {
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
 
+    /**
+     * Stock disponible del artículo. Campo obligatorio.
+     */
+    @Column(name = "stock", nullable = true)
+    private Integer stock;
+
     /** Precio del lote. Campo obligatorio. */
     @Column(name = "precio", nullable = false)
     private BigDecimal precio;

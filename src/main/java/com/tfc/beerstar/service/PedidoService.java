@@ -1,66 +1,87 @@
 package com.tfc.beerstar.service;
 
-import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.tfc.beerstar.dto.response.CarritoResponseDTO;
-import com.tfc.beerstar.dto.response.DetalleCarritoResponseDTO;
 import com.tfc.beerstar.dto.response.DetallePedidoResponseDTO;
 import com.tfc.beerstar.dto.response.PedidoResponseDTO;
+import com.tfc.beerstar.exception.ResourceNotFoundException;
 import com.tfc.beerstar.model.Articulos;
+import com.tfc.beerstar.model.Carrito;
 import com.tfc.beerstar.model.Cliente;
+import com.tfc.beerstar.model.DetalleCarrito;
 import com.tfc.beerstar.model.DetallePedido;
 import com.tfc.beerstar.model.Pedido;
-import com.tfc.beerstar.repository.ArticulosRepository;
+import com.tfc.beerstar.repository.CarritoRepository;
 import com.tfc.beerstar.repository.PedidoRepository;
 
 @Service
 public class PedidoService {
 
-    private final PedidoRepository pedidoRepo;
-    private final ArticulosRepository articulosRepo;
+    private final PedidoRepository pedidoRepository;
+    private final CarritoRepository carritoRepository;
     private final CarritoService carritoService;
 
-    public PedidoService(PedidoRepository pedidoRepo, ArticulosRepository articulosRepo, CarritoService carritoService) {
-        this.pedidoRepo = pedidoRepo;
-        this.articulosRepo = articulosRepo;
+    public PedidoService(PedidoRepository pedidoRepository, CarritoRepository carritoRepository, CarritoService carritoService) {
+        this.pedidoRepository = pedidoRepository;
+        this.carritoRepository = carritoRepository;
         this.carritoService = carritoService;
     }
 
-    public PedidoResponseDTO crearPedido(Cliente cliente) {
-        CarritoResponseDTO carrito = carritoService.verCarrito(cliente);
+    @Transactional
+    public PedidoResponseDTO crearPedido(Cliente cliente, String metodoPago) {
+        // Obtener el carrito del cliente
+        Carrito carrito = carritoRepository.findByCliente(cliente)
+                .orElseThrow(() -> new ResourceNotFoundException("Carrito no encontrado"));
+
+        // Verificar que el carrito no esté vacío
+        if (carrito.getDetalleList().isEmpty()) {
+            throw new IllegalStateException("No se puede crear un pedido con un carrito vacío");
+        }
+
+        // Asegurar que los totales estén actualizados
+        carrito.recalcularTotales();
+
+        // Crear el pedido
         Pedido pedido = new Pedido();
         pedido.setCliente(cliente);
-        pedido.setEstado("PENDIENTE");
-        BigDecimal total = BigDecimal.ZERO;
-        for (DetalleCarritoResponseDTO detalle : carrito.getItems()) {
+        pedido.setEstadoPedido("PENDIENTE");
+        pedido.setFechaPedido(Instant.now());
+        pedido.setSubtotal(carrito.getSubtotal());
+        pedido.setIva(carrito.getImpuestos());
+        pedido.setGastosEnvio(carrito.getGastosEnvio());
+        pedido.setTotal(carrito.getTotal());
+        pedido.setMetodoPago(metodoPago);
 
-        Articulos articulo = articulosRepo.getReferenceById(detalle.getIdArticulo());
+        // Generar ID de transacción único (simulado)
+        pedido.setIdTransaccion("TX-" + System.currentTimeMillis());
 
-        DetallePedido detallePedido = new DetallePedido();
-        detallePedido.setPedido(pedido);
-        detallePedido.setArticulo(articulo);
-        detallePedido.setCantidad(detalle.getCantidad());
-        detallePedido.setPrecioUnitario(detalle.getPrecioUnitario());
+        // Crear detalles del pedido a partir del carrito
+        for (DetalleCarrito detalleCarrito : carrito.getDetalleList()) {
+            DetallePedido detallePedido = new DetallePedido();
+            detallePedido.setPedido(pedido);
+            detallePedido.setArticulo(detalleCarrito.getArticulos());
+            detallePedido.setCantidad(detalleCarrito.getCantidad());
+            detallePedido.setPrecioUnitario(detalleCarrito.getPrecioUnitario());
+            detallePedido.setTotalLinea(detalleCarrito.getTotalLinea());
+            pedido.getDetallePedido().add(detallePedido);
+        }
 
-        pedido.getDetallePedido().add(detallePedido);
+        // Guardar el pedido
+        pedidoRepository.save(pedido);
 
-        total = total.add(detalle.getPrecioUnitario()
-                         .multiply(BigDecimal.valueOf(detalle.getCantidad())));
-    }
-
-        pedido.setTotal(total.doubleValue());
-        pedidoRepo.save(pedido);
+        // Vaciar el carrito
         carritoService.vaciarCarrito(cliente);
-        return mapearResponseDTO(pedido);
 
+        return mapearResponseDTO(pedido);
     }
 
     public List<PedidoResponseDTO> listarPorCliente(Cliente cliente) {
-        List<Pedido> pedidos = pedidoRepo.findByCliente(cliente);
+        List<Pedido> pedidos = pedidoRepository.findByCliente(cliente);
         return pedidos.stream()
                 .map(this::mapearResponseDTO)
                 .collect(Collectors.toList());
@@ -68,29 +89,33 @@ public class PedidoService {
 
     private PedidoResponseDTO mapearResponseDTO(Pedido pedido) {
         PedidoResponseDTO response = new PedidoResponseDTO();
-        BigDecimal total = BigDecimal.valueOf(pedido.getTotal());
+        //BigDecimal total = BigDecimal.valueOf(pedido.getTotal());
 
-        response.setId(pedido.getIdPedido());
-        response.setClienteId(pedido.getCliente().getIdCliente());
+        response.setIdPedido(pedido.getIdPedido());
+        response.setIdCliente(pedido.getCliente().getIdCliente());
+        response.setEmailUsuario(pedido.getCliente().getUsuario().getEmail());
+        response.setNombreCliente(pedido.getCliente().getNombre());
+        response.setDireccionCliente(pedido.getCliente().getDireccion());
         response.setFechaPedido(pedido.getFechaPedido());
-        response.setEstado(pedido.getEstado());
-        response.setTotal(total);
+        response.setEstadoPedido(pedido.getEstadoPedido());
+        response.setSubTotal(pedido.getSubtotal());
+        response.setIva(pedido.getIva());
+        response.setGastosEnvio(pedido.getGastosEnvio());
+        response.setTotal(pedido.getTotal());
+        response.setMetodoPago(pedido.getMetodoPago());
+        response.setIdTransaccion(pedido.getIdTransaccion());
 
         List<DetallePedidoResponseDTO> detalles = pedido.getDetallePedido().stream()
                 .map(dp -> {
                     DetallePedidoResponseDTO dto = new DetallePedidoResponseDTO();
-                    dto.setId(dp.getIdDetallePedido());
+                    dto.setIdPedido(dp.getIdDetallePedido());
 
                     Articulos art = dp.getArticulo();
-                    dto.setArticuloId(art.getIdArticulo());
+                    dto.setIdArticulo(art.getIdArticulo());
                     dto.setNombreArticulo(art.getNombre());
-
                     dto.setCantidad(dp.getCantidad());
                     dto.setPrecioUnitario(dp.getPrecioUnitario());
-
-                    BigDecimal subtotal = dp.getPrecioUnitario()
-                            .multiply(BigDecimal.valueOf(dp.getCantidad()));
-                    dto.setTotalLinea(subtotal);
+                    dto.setTotalLinea(dp.getTotalLinea());
 
                     return dto;
                 })
@@ -99,5 +124,4 @@ public class PedidoService {
         response.setDetalles(detalles);
         return response;
     }
-
 }
