@@ -17,6 +17,8 @@ public class PedidoRequestDTO {
     @NotBlank
     private Long idCliente;
 
+    private Long idUsuario;
+
     private String estadoPedido;
     private List<DetallePedido> detallePedido;
     

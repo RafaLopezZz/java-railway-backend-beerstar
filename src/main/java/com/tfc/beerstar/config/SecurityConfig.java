@@ -99,6 +99,13 @@ public class SecurityConfig {
                         .requestMatchers("/beerstar/carrito/**").hasAnyRole("SUPERADMIN", "ADMIN", "USER", "CLIENTE")
                         .requestMatchers("/beerstar/pedidos/**").hasAnyRole("SUPERADMIN", "ADMIN", "USER", "CLIENTE")
                         .requestMatchers("/beerstar/**").hasRole("SUPERADMIN")
+                        .requestMatchers(
+                                "/v3/api-docs",
+                                "/v3/api-docs/**", // spec JSON
+                                "/swagger-ui.html", // UI estática
+                                "/swagger-ui/**", // recursos de UI
+                                "/webjars/**" // dependencias de Swagger
+                        ).permitAll()
                         .anyRequest().authenticated()
                 );
 

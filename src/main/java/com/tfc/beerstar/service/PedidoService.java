@@ -92,6 +92,7 @@ public class PedidoService {
         //BigDecimal total = BigDecimal.valueOf(pedido.getTotal());
 
         response.setIdPedido(pedido.getIdPedido());
+        response.setIdUsuario(pedido.getCliente().getUsuario().getIdUsuario());
         response.setIdCliente(pedido.getCliente().getIdCliente());
         response.setEmailUsuario(pedido.getCliente().getUsuario().getEmail());
         response.setNombreCliente(pedido.getCliente().getNombre());
