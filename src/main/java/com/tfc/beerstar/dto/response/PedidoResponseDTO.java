@@ -10,6 +10,7 @@ import lombok.Data;
 public class PedidoResponseDTO {
 
     private Long idPedido;
+    private Long idUsuario;
     private Long IdCliente;
     private String nombreCliente;
     private String emailUsuario;

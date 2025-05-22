@@ -19,13 +19,19 @@ import com.tfc.beerstar.security.UserDetailsImpl;
 import com.tfc.beerstar.service.CarritoService;
 import com.tfc.beerstar.service.ClienteService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
 
 @RestController
 @RequestMapping("/beerstar/carrito")
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
+@Tag(name = "Carrito", description = "Operaciones sobre el carrito de compras")
 public class CarritoController {
 
     @Autowired
@@ -34,6 +40,14 @@ public class CarritoController {
     @Autowired
     private ClienteService clienteService;
 
+    @Operation(summary = "Añadir artículo al carrito",
+               description = "Valida stock, crea o recupera el carrito activo y retorna el estado actualizado")
+    @ApiResponses({
+      @ApiResponse(responseCode = "200", description = "Carrito devuelto correctamente"),
+      @ApiResponse(responseCode = "400", description = "Cantidad inválida"),
+      @ApiResponse(responseCode = "404", description = "Artículo no encontrado"),
+      @ApiResponse(responseCode = "409", description = "Stock insuficiente")
+    })
     @PostMapping
     public ResponseEntity<CarritoResponseDTO> agregarAlCarrito(
             @AuthenticationPrincipal UserDetailsImpl userDetails,

@@ -2,6 +2,7 @@ package com.tfc.beerstar.dto.request;
 
 import java.math.BigDecimal;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -37,21 +38,33 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@Schema(description = "Datos para la creación o actualización de un artículo")
 public class ArticulosRequestDTO {
 
     @NotBlank
+    @Schema(description = "Nombre del artículo", example = "Estrella de Levante", required = true)
     private String nombre;
 
+    @Schema(description = "Descripción detallada del artículo", example = "Cerveza artesanal de tipo rubia con 5% de alcohol")
     private String descripcion;
 
     @DecimalMin(value = "0.0")
+    @Schema(description = "Precio del artículo", example = "4.99", required = true)
     private BigDecimal precio;
 
     @Min(0)
+    @Schema(description = "Cantidad disponible en stock", example = "50", required = true)
     private Integer stock;
     
+    @Schema(description = "ID de la categoría a la que pertenece el artículo", example = "1", required = true)
     private Long idCategoria;
+
+    @Schema(description= "ID del proveedor del artículo", example = "1", required = true)
     private long idProveedor;
+
+    @Schema(description= "Graduación del artículo", example = "5.0")
     private Double graduacion;
+
+    @Schema(description= "URL de la imagen del artículo", example = "https://example.com/imagen.jpg")
     private String url;
 }
