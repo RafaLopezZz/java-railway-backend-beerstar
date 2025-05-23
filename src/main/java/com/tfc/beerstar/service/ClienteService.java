@@ -68,10 +68,10 @@ public class ClienteService {
      * @return DTO de respuesta con los datos del cliente encontrado.
      * @throws ResourceNotFoundException si no existe un cliente para el usuario dado.
      */
-    public ClienteResponseDTO obtenerClientePorUsuarioId(Long usuarioId) {
-        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(usuarioId)
+    public ClienteResponseDTO obtenerClientePorUsuarioId(Long idUsuario) {
+        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(idUsuario)
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "Cliente no encontrado para el usuario con ID: " + usuarioId));
+                        "Cliente no encontrado para el usuario con ID: " + idUsuario));
 
         return mapearResponseDTO(cliente);
     }

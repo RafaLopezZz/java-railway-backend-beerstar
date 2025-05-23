@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tfc.beerstar.dto.response.PedidoResponseDTO;
-import com.tfc.beerstar.model.Cliente;
 import com.tfc.beerstar.security.UserDetailsImpl;
-import com.tfc.beerstar.service.ClienteService;
 import com.tfc.beerstar.service.PedidoService;
 
 @RestController
@@ -23,28 +21,20 @@ import com.tfc.beerstar.service.PedidoService;
 @CrossOrigin(origins = "*")
 public class PedidoController {
 
-     @Autowired
-    private ClienteService clienteService;
-
-    private final PedidoService pedidoService;
-    
-    public PedidoController(PedidoService pedidoService) {
-        this.pedidoService = pedidoService;
-    }
+    @Autowired
+    private PedidoService pedidoService;
 
     @PostMapping
     public ResponseEntity<PedidoResponseDTO> crear(
             @AuthenticationPrincipal UserDetailsImpl userDetails,
             @RequestParam(required = false, defaultValue = "TARJETA") String metodoPago) {
-            Cliente cliente = clienteService.findByEmail(userDetails.getUsername());
-        PedidoResponseDTO pedidoCreado = pedidoService.crearPedido(cliente, metodoPago);
+        PedidoResponseDTO pedidoCreado = pedidoService.crearPedido(userDetails.getId(), metodoPago);
         return ResponseEntity.ok(pedidoCreado);
     }
 
     @GetMapping
     public ResponseEntity<List<PedidoResponseDTO>> listar(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        Cliente cliente = clienteService.findByEmail(userDetails.getUsername());
-        List<PedidoResponseDTO> pedidos = pedidoService.listarPorCliente(cliente);
+        List<PedidoResponseDTO> pedidos = pedidoService.listarPorCliente(userDetails.getId());
         return ResponseEntity.ok(pedidos);
     }
 }

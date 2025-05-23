@@ -1,6 +1,7 @@
 package com.tfc.beerstar.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,4 +24,6 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long> {
      * Lista paginada de pedidos de un cliente, útil para historiales muy largos.
      */
     Page<Pedido> findByCliente(Cliente cliente, Pageable pageable);
+
+    Optional<Pedido> findByCliente_Usuario_IdUsuario(Long idUsuario);
 }

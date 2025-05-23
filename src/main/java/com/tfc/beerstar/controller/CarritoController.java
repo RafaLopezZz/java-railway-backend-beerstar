@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tfc.beerstar.dto.request.AddToCarritoRequestDTO;
 import com.tfc.beerstar.dto.response.CarritoResponseDTO;
-import com.tfc.beerstar.model.Cliente;
 import com.tfc.beerstar.security.UserDetailsImpl;
 import com.tfc.beerstar.service.CarritoService;
-import com.tfc.beerstar.service.ClienteService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -37,9 +35,6 @@ public class CarritoController {
     @Autowired
     private CarritoService carritoService;
 
-    @Autowired
-    private ClienteService clienteService;
-
     @Operation(summary = "Añadir artículo al carrito",
                description = "Valida stock, crea o recupera el carrito activo y retorna el estado actualizado")
     @ApiResponses({
@@ -52,30 +47,26 @@ public class CarritoController {
     public ResponseEntity<CarritoResponseDTO> agregarAlCarrito(
             @AuthenticationPrincipal UserDetailsImpl userDetails,
             @Valid @RequestBody AddToCarritoRequestDTO request) {
-        Cliente cliente = clienteService.findByEmail(userDetails.getUsername());
-        CarritoResponseDTO response = carritoService.agregarACarrito(cliente, request);
+        CarritoResponseDTO response = carritoService.agregarACarrito(userDetails.getId(), request);
         return ResponseEntity.ok(response);
     }
 
     @GetMapping
     public CarritoResponseDTO verCarrito(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        Cliente cliente = clienteService.findByEmail(userDetails.getUsername());
-        return carritoService.verCarrito(cliente);
+        return carritoService.verCarrito(userDetails.getId());
     }
 
     @PostMapping("/{idArticulo}")
     public ResponseEntity<CarritoResponseDTO> decrementarArticulo(
             @AuthenticationPrincipal UserDetailsImpl userDetails,
             @PathVariable Long idArticulo) {
-        Cliente cliente = clienteService.findByEmail(userDetails.getUsername());
-        CarritoResponseDTO response = carritoService.decrementarArticulo(cliente, idArticulo);
+        CarritoResponseDTO response = carritoService.decrementarArticulo(userDetails.getId(), idArticulo);
         return ResponseEntity.ok(response);
     }
 
     @DeleteMapping
     public ResponseEntity<Void> vaciarCarrito(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        Cliente cliente = clienteService.findByEmail(userDetails.getUsername());
-        carritoService.vaciarCarrito(cliente);
+        carritoService.vaciarCarrito(userDetails.getId());
         return ResponseEntity.noContent().build();
     }
 

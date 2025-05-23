@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -100,6 +102,45 @@ public class AuthController {
                 roles));
     }
 
+    @PostMapping("/login/proveedor")
+    public ResponseEntity<?> authenticateProveedor(@Valid @RequestBody LoginRequest loginRequest) {
+
+        // Autenticar usuario
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginRequest.getEmail(),
+                        loginRequest.getPassword()
+                )
+        );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        // Obtener detalles
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
+        // Comprobar tipo de usuario
+        if (!"PROVEEDOR".equalsIgnoreCase(userDetails.getTipoUsuario())) {
+            return ResponseEntity
+                    .status(HttpStatus.FORBIDDEN)
+                    .body("Acceso sólo permitido a usuarios PROVEEDOR");
+        }
+
+        // Generar JWT y roles
+        String jwt = jwtUtils.generateJwtToken(authentication);
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+
+        // Responder igual que en /login
+        JwtResponse body = new JwtResponse(
+                jwt,
+                userDetails.getId(),
+                userDetails.getEmail(),
+                userDetails.getTipoUsuario(),
+                roles
+        );
+        return ResponseEntity.ok(body);
+    }
+
     /**
      * Registra un nuevo cliente en el sistema.
      * <p>
@@ -112,7 +153,8 @@ public class AuthController {
      * @throws EmailAlreadyExistsException Si el email ya está registrado
      */
     @PostMapping("/registro/cliente")
-    public ResponseEntity<?> registrarCliente(@Valid @RequestBody UsuarioRequestDTO usuarioRequestDTO) {
+    public ResponseEntity<?> registrarCliente(@Valid
+            @RequestBody UsuarioRequestDTO usuarioRequestDTO) {
         try {
             // Forzar tipo CLIENTE independientemente de lo que envíe el usuario
             usuarioRequestDTO.setTipoUsuario("CLIENTE");
@@ -136,12 +178,14 @@ public class AuthController {
      * tipo de usuario se establece automáticamente como "PROVEEDOR".
      * </p>
      *
-     * @param usuarioRequestDTO DTO con datos del usuario y proveedor a registrar
+     * @param usuarioRequestDTO DTO con datos del usuario y proveedor a
+     * registrar
      * @return ResponseEntity con mensaje de éxito (200) o error (400)
      * @throws EmailAlreadyExistsException Si el email ya está registrado
      */
     @PostMapping("/registro/proveedor")
-    public ResponseEntity<?> registrarProveedor(@Valid @RequestBody UsuarioRequestDTO usuarioRequestDTO) {
+    public ResponseEntity<?> registrarProveedor(@Valid
+            @RequestBody UsuarioRequestDTO usuarioRequestDTO) {
         try {
             // Forzar tipo PROVEEDOR independientemente de lo que envíe el usuario
             usuarioRequestDTO.setTipoUsuario("PROVEEDOR");
