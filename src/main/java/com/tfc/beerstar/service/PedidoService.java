@@ -17,23 +17,29 @@ import com.tfc.beerstar.model.DetalleCarrito;
 import com.tfc.beerstar.model.DetallePedido;
 import com.tfc.beerstar.model.Pedido;
 import com.tfc.beerstar.repository.CarritoRepository;
+import com.tfc.beerstar.repository.ClienteRepository;
 import com.tfc.beerstar.repository.PedidoRepository;
 
 @Service
 public class PedidoService {
 
     private final PedidoRepository pedidoRepository;
+    private final ClienteRepository clienteRepository;
     private final CarritoRepository carritoRepository;
     private final CarritoService carritoService;
 
-    public PedidoService(PedidoRepository pedidoRepository, CarritoRepository carritoRepository, CarritoService carritoService) {
+    public PedidoService(PedidoRepository pedidoRepository, CarritoRepository carritoRepository,
+     CarritoService carritoService, ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
         this.pedidoRepository = pedidoRepository;
         this.carritoRepository = carritoRepository;
         this.carritoService = carritoService;
     }
 
     @Transactional
-    public PedidoResponseDTO crearPedido(Cliente cliente, String metodoPago) {
+    public PedidoResponseDTO crearPedido(Long idUsuario, String metodoPago) {
+        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(idUsuario)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
         // Obtener el carrito del cliente
         Carrito carrito = carritoRepository.findByCliente(cliente)
                 .orElseThrow(() -> new ResourceNotFoundException("Carrito no encontrado"));
@@ -75,12 +81,14 @@ public class PedidoService {
         pedidoRepository.save(pedido);
 
         // Vaciar el carrito
-        carritoService.vaciarCarrito(cliente);
+        carritoService.vaciarCarrito(idUsuario);
 
         return mapearResponseDTO(pedido);
     }
 
-    public List<PedidoResponseDTO> listarPorCliente(Cliente cliente) {
+    public List<PedidoResponseDTO> listarPorCliente(Long idUsuario) {
+        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(idUsuario)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
         List<Pedido> pedidos = pedidoRepository.findByCliente(cliente);
         return pedidos.stream()
                 .map(this::mapearResponseDTO)

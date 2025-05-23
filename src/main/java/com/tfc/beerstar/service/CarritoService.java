@@ -20,6 +20,7 @@ import com.tfc.beerstar.model.Cliente;
 import com.tfc.beerstar.model.DetalleCarrito;
 import com.tfc.beerstar.repository.ArticulosRepository;
 import com.tfc.beerstar.repository.CarritoRepository;
+import com.tfc.beerstar.repository.ClienteRepository;
 import com.tfc.beerstar.repository.DetalleCarritoRepository;
 
 @Service
@@ -28,16 +29,21 @@ public class CarritoService {
     private final DetalleCarritoRepository detalleCarritoRepository;
     private final CarritoRepository carritoRepository;
     private final ArticulosRepository articuloRepository;
+    private final ClienteRepository clienteRepository;
 
     public CarritoService(CarritoRepository carritoRepository,
-            ArticulosRepository articuloRepository, DetalleCarritoRepository detalleCarritoRepository) {
+            ArticulosRepository articuloRepository, DetalleCarritoRepository detalleCarritoRepository, 
+            ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
         this.carritoRepository = carritoRepository;
         this.articuloRepository = articuloRepository;
         this.detalleCarritoRepository = detalleCarritoRepository;
     }
 
     @Transactional
-    public CarritoResponseDTO agregarACarrito(Cliente cliente, AddToCarritoRequestDTO request) {
+    public CarritoResponseDTO agregarACarrito(Long idUsuario, AddToCarritoRequestDTO request) {
+        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(idUsuario)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
         // Validación de cantidad
         if (request.getCantidad() <= 0) {
             throw new IllegalArgumentException("La cantidad debe ser mayor que cero.");
@@ -140,7 +146,9 @@ public class CarritoService {
     }
 
     @Transactional
-    public CarritoResponseDTO decrementarArticulo(Cliente cliente, Long articuloId) {
+    public CarritoResponseDTO decrementarArticulo(Long idUsuario, Long articuloId) {
+        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(idUsuario)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
         // Buscar carrito del cliente
         Carrito carrito = carritoRepository.findByCliente(cliente)
                 .orElseThrow(() -> new ResourceNotFoundException("Carrito no encontrado"));
@@ -177,7 +185,9 @@ public class CarritoService {
         return mapearCarritoResponseDTO(carritoActualizado);
     }
 
-    public CarritoResponseDTO verCarrito(Cliente cliente) {
+    public CarritoResponseDTO verCarrito(Long idUsuario) {
+        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(idUsuario)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
         Carrito carrito = carritoRepository.findByCliente(cliente)
                 .orElseGet(() -> {
                     Carrito nuevoCarrito = new Carrito();
@@ -194,7 +204,9 @@ public class CarritoService {
     }
 
     @Transactional
-    public void vaciarCarrito(Cliente cliente) {
+    public void vaciarCarrito(Long idUsuario) {
+        Cliente cliente = clienteRepository.findByUsuario_IdUsuario(idUsuario)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
         // Recuperar carrito junto con sus detalles
         Carrito carrito = carritoRepository
                 .findByClienteConDetalles(cliente)

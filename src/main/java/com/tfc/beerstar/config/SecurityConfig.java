@@ -96,8 +96,8 @@ public class SecurityConfig {
                         .requestMatchers("/beerstar/usuarios/proveedores").permitAll()
                         .requestMatchers("/beerstar/usuarios/proveedores/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
                         .requestMatchers("/beerstar/usuarios/clientes/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
-                        .requestMatchers("/beerstar/carrito/**").hasAnyRole("SUPERADMIN", "ADMIN", "USER", "CLIENTE")
-                        .requestMatchers("/beerstar/pedidos/**").hasAnyRole("SUPERADMIN", "ADMIN", "USER", "CLIENTE")
+                        .requestMatchers("/beerstar/carrito").hasAnyRole("SUPERADMIN", "ADMIN", "USER", "CLIENTE")
+                        .requestMatchers("/beerstar/pedidos").hasAnyRole("SUPERADMIN", "ADMIN", "USER", "CLIENTE")
                         .requestMatchers("/beerstar/**").hasRole("SUPERADMIN")
                         .requestMatchers(
                                 "/v3/api-docs",

@@ -26,7 +26,7 @@ public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
 
     /** Identificador único del usuario. */
-    private final Long id;
+    private final Long idUsuario;
 
     /** Email utilizado como nombre de usuario para autenticación. */
     private final String email;
@@ -44,18 +44,18 @@ public class UserDetailsImpl implements UserDetails {
     /**
      * Construye la instancia con todos los atributos.
      *
-     * @param id            Identificador del usuario
+     * @param idUsuario     Identificador del usuario
      * @param email         Email del usuario (username)
      * @param password      Contraseña cifrada
      * @param tipoUsuario   Tipo de usuario (CLIENTE o PROVEEDOR)
      * @param authorities   Autoridades (roles y tipos)
      */
-    public UserDetailsImpl(Long id,
+    public UserDetailsImpl(Long idUsuario,
                            String email,
                            String password,
                            String tipoUsuario,
                            Collection<? extends GrantedAuthority> authorities) {
-        this.id = id;
+        this.idUsuario = idUsuario;
         this.email = email;
         this.password = password;
         this.tipoUsuario = tipoUsuario;
@@ -103,7 +103,7 @@ public class UserDetailsImpl implements UserDetails {
      * @return Identificador único del usuario
      */
     public Long getId() {
-        return id;
+        return idUsuario;
     }
 
     /**
@@ -159,11 +159,11 @@ public class UserDetailsImpl implements UserDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDetailsImpl that = (UserDetailsImpl) o;
-        return Objects.equals(id, that.id);
+        return Objects.equals(idUsuario, that.idUsuario);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(idUsuario);
     }
 }
