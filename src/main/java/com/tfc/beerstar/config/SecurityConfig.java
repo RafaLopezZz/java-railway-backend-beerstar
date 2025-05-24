@@ -88,24 +88,26 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth
-                        -> auth.requestMatchers("/beerstar/auth/**").permitAll()
-                        .requestMatchers("/beerstar/articulos").permitAll()
-                        .requestMatchers("/beerstar/categorias").permitAll()
+                        -> auth.requestMatchers("/rlp/auth/**").permitAll()
+                        .requestMatchers(
+                                "/v3/api-docs",
+                                "/v3/api-docs/**",
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/swagger-resources/**",
+                                "/webjars/**",
+                                "/configuration/**"
+                        ).permitAll()
+                        .requestMatchers("/rlp/articulos").permitAll()
+                        .requestMatchers("/rlp/categorias").permitAll()
                         .requestMatchers("/beerstar/lotes").permitAll()
                         .requestMatchers("/beerstar/usuarios/clientes").permitAll()
                         .requestMatchers("/beerstar/usuarios/proveedores").permitAll()
                         .requestMatchers("/beerstar/usuarios/proveedores/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
                         .requestMatchers("/beerstar/usuarios/clientes/**").hasAnyRole("USER", "ADMIN", "SUPERADMIN")
-                        .requestMatchers("/beerstar/carrito").hasAnyRole("SUPERADMIN", "ADMIN", "USER", "CLIENTE")
+                        .requestMatchers("/rlp/carrito").hasAnyRole("SUPERADMIN", "ADMIN", "USER", "CLIENTE")
                         .requestMatchers("/beerstar/pedidos").hasAnyRole("SUPERADMIN", "ADMIN", "USER", "CLIENTE")
                         .requestMatchers("/beerstar/**").hasRole("SUPERADMIN")
-                        .requestMatchers(
-                                "/v3/api-docs",
-                                "/v3/api-docs/**", // spec JSON
-                                "/swagger-ui.html", // UI estática
-                                "/swagger-ui/**", // recursos de UI
-                                "/webjars/**" // dependencias de Swagger
-                        ).permitAll()
                         .anyRequest().authenticated()
                 );
 
