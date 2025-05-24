@@ -26,7 +26,7 @@ import lombok.RequiredArgsConstructor;
 
 
 @RestController
-@RequestMapping("/beerstar/carrito")
+@RequestMapping("/rlp/carrito")
 @CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 @Tag(name = "Carrito", description = "Operaciones sobre el carrito de compras")
