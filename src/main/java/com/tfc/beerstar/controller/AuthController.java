@@ -27,6 +27,12 @@ import com.tfc.beerstar.security.JwtUtils;
 import com.tfc.beerstar.security.UserDetailsImpl;
 import com.tfc.beerstar.service.UsuarioService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 /**
@@ -40,10 +46,9 @@ import jakarta.validation.Valid;
  * <p>
  * Endpoints disponibles:</p>
  * <ul>
- * <li>POST /beerstar/auth/login → Autenticación y generación de token JWT</li>
- * <li>POST /beerstar/auth/registro/cliente → Registro exclusivo para
- * clientes</li>
- * <li>POST /beerstar/auth/registro/proveedor → Registro exclusivo para
+ * <li>POST /rlp/auth/login → Autenticación y generación de token JWT</li>
+ * <li>POST /rlp/auth/registro/cliente → Registro exclusivo para clientes</li>
+ * <li>POST /rlp/auth/registro/proveedor → Registro exclusivo para
  * proveedores</li>
  * </ul>
  *
@@ -51,7 +56,8 @@ import jakarta.validation.Valid;
  */
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/beerstar/auth")
+@RequestMapping("/rlp/auth")
+@Tag(name = "Autenticación", description = "Endpoints públicos para autenticación y registro de usuarios")
 public class AuthController {
 
     @Autowired
@@ -77,6 +83,32 @@ public class AuthController {
      * @param loginRequest DTO con email y password del usuario
      * @return ResponseEntity con JWT e información del usuario autenticado
      */
+    @Operation(
+            summary = "Iniciar sesión",
+            description = "Autentica las credenciales del usuario y devuelve un token JWT válido para acceder a endpoints protegidos"
+    )
+    @ApiResponses(value = {
+        @ApiResponse(
+                responseCode = "200",
+                description = "Autenticación exitosa",
+                content = @Content(
+                        mediaType = "application/json",
+                        schema = @Schema(implementation = JwtResponse.class)
+                )
+        ),
+        @ApiResponse(
+                responseCode = "401",
+                description = "Credenciales inválidas",
+                content = @Content(
+                        mediaType = "application/json",
+                        schema = @Schema(implementation = MessageResponse.class)
+                )
+        ),
+        @ApiResponse(
+                responseCode = "400",
+                description = "Datos de entrada inválidos"
+        )
+    })
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         // Autenticar credenciales del usuario
@@ -102,6 +134,32 @@ public class AuthController {
                 roles));
     }
 
+    @Operation(
+            summary = "Iniciar sesión como proveedor",
+            description = "Autentica específicamente a usuarios de tipo PROVEEDOR y devuelve un token JWT"
+    )
+    @ApiResponses(value = {
+        @ApiResponse(
+                responseCode = "200",
+                description = "Autenticación exitosa para proveedor",
+                content = @Content(
+                        mediaType = "application/json",
+                        schema = @Schema(implementation = JwtResponse.class)
+                )
+        ),
+        @ApiResponse(
+                responseCode = "401",
+                description = "Credenciales inválidas"
+        ),
+        @ApiResponse(
+                responseCode = "403",
+                description = "Usuario no es de tipo PROVEEDOR",
+                content = @Content(
+                        mediaType = "text/plain",
+                        schema = @Schema(type = "string", example = "Acceso sólo permitido a usuarios PROVEEDOR")
+                )
+        )
+    })
     @PostMapping("/login/proveedor")
     public ResponseEntity<?> authenticateProveedor(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -152,6 +210,28 @@ public class AuthController {
      * @return ResponseEntity con mensaje de éxito (200) o error (400)
      * @throws EmailAlreadyExistsException Si el email ya está registrado
      */
+    @Operation(
+            summary = "Registrar cliente",
+            description = "Crea una nueva cuenta de usuario con tipo CLIENTE. El tipo de usuario se establece automáticamente."
+    )
+    @ApiResponses(value = {
+        @ApiResponse(
+                responseCode = "200",
+                description = "Cliente registrado exitosamente",
+                content = @Content(
+                        mediaType = "application/json",
+                        schema = @Schema(implementation = UsuarioResponseDTO.class)
+                )
+        ),
+        @ApiResponse(
+                responseCode = "400",
+                description = "Error en los datos de entrada o email ya existe",
+                content = @Content(
+                        mediaType = "application/json",
+                        schema = @Schema(implementation = MessageResponse.class)
+                )
+        )
+    })
     @PostMapping("/registro/cliente")
     public ResponseEntity<?> registrarCliente(@Valid
             @RequestBody UsuarioRequestDTO usuarioRequestDTO) {
@@ -183,6 +263,28 @@ public class AuthController {
      * @return ResponseEntity con mensaje de éxito (200) o error (400)
      * @throws EmailAlreadyExistsException Si el email ya está registrado
      */
+    @Operation(
+            summary = "Registrar proveedor",
+            description = "Crea una nueva cuenta de usuario con tipo PROVEEDOR. El tipo de usuario se establece automáticamente."
+    )
+    @ApiResponses(value = {
+        @ApiResponse(
+                responseCode = "200",
+                description = "Proveedor registrado exitosamente",
+                content = @Content(
+                        mediaType = "application/json",
+                        schema = @Schema(implementation = UsuarioResponseDTO.class)
+                )
+        ),
+        @ApiResponse(
+                responseCode = "400",
+                description = "Error en los datos de entrada o email ya existe",
+                content = @Content(
+                        mediaType = "application/json",
+                        schema = @Schema(implementation = MessageResponse.class)
+                )
+        )
+    })
     @PostMapping("/registro/proveedor")
     public ResponseEntity<?> registrarProveedor(@Valid
             @RequestBody UsuarioRequestDTO usuarioRequestDTO) {

@@ -3,6 +3,7 @@ package com.tfc.beerstar.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,7 +28,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 /**
- * Controlador REST para la gestión de artículos en Beerstar.
+ * Controlador REST para la gestión de artículos en RLP eCommerce.
  *
  * <p>
  * Proporciona endpoints para crear, obtener, listar, actualizar y eliminar
@@ -40,19 +41,19 @@ import jakarta.validation.Valid;
  *
  * Endpoints disponibles:
  * <ul>
- * <li>POST /beerstar/articulos → Crear un nuevo artículo</li>
- * <li>GET /beerstar/articulos/{idArticulo} → Obtener artículo por ID</li>
- * <li>GET /beerstar/articulos → Listar todos los artículos</li>
- * <li>PUT /beerstar/articulos/{idArticulo} → Actualizar artículo por ID</li>
- * <li>DELETE /beerstar/articulos/{idArticulo} → Eliminar artículo por ID</li>
+ * <li>POST /rlp/articulos → Crear un nuevo artículo</li>
+ * <li>GET /rlp/articulos/{idArticulo} → Obtener artículo por ID</li>
+ * <li>GET /rlp/articulos → Listar todos los artículos</li>
+ * <li>PUT /rlp/articulos/{idArticulo} → Actualizar artículo por ID</li>
+ * <li>DELETE /rlp/articulos/{idArticulo} → Eliminar artículo por ID</li>
  * </ul>
  *
  * @author rafalopezzz
  */
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("beerstar/articulos")
-@Tag(name = "Artículos", description = "API para gestionar los artículos de Beerstar")
+@RequestMapping("rlp/articulos")
+@Tag(name = "Artículos", description = "API para gestionar los artículos de RLP eCommerce")
 public class ArticuloController {
 
     @Autowired
@@ -79,7 +80,7 @@ public class ArticuloController {
     @PostMapping
     public ResponseEntity<ArticulosResponseDTO> crearArticulo(@Valid @RequestBody ArticulosRequestDTO articuloRequestDTO) {
         ArticulosResponseDTO response = articuloService.crearArticulos(articuloRequestDTO);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     /**
