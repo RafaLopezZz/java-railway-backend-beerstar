@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +18,7 @@ import com.tfc.beerstar.dto.request.LoteRequestDTO;
 import com.tfc.beerstar.dto.response.LoteResponseDTO;
 import com.tfc.beerstar.service.LoteService;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.validation.Valid;
 
 /**
@@ -35,11 +35,11 @@ import jakarta.validation.Valid;
  * 
  * Endpoints disponibles:
  * <ul>
- *  <li> POST   beerstar/lotes             -> Crea un nuevo lote </li>
- *  <li> GET    beerstar/lotes/{idLote}    -> Obtiene un lote por su ID </li>
- *  <li> GET    beerstar/lotes             -> Retorna todos los lotes registrados </li>
- *  <li> PUT    beerstar/lotes/{idLote}    -> Actualiza un lote existente por su ID </li>
- *  <li> DELETE beerstar/lotes/{idLote}    -> Elimina un lote por su ID </li>
+ *  <li> POST   /rlp/lotes             -> Crea un nuevo lote </li>
+ *  <li> GET    /rlp/lotes/{idLote}    -> Obtiene un lote por su ID </li>
+ *  <li> GET    /rlp/lotes             -> Retorna todos los lotes registrados </li>
+ *  <li> PUT    /rlp/lotes/{idLote}    -> Actualiza un lote existente por su ID </li>
+ *  <li> DELETE /rlp/lotes/{idLote}    -> Elimina un lote por su ID </li>
  * </ul>
  * 
  * <p>Cada endpoint incluye validación de datos de entrada y respuestas HTTP
@@ -47,9 +47,10 @@ import jakarta.validation.Valid;
  * 
  * @author rafalopezzz
  */
+@Hidden
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("beerstar/lotes")
+@RequestMapping("rlp/lotes")
 public class LoteController {
 
     @Autowired
@@ -98,7 +99,6 @@ public class LoteController {
      * @return DTO de respuesta con los datos del lote actualizado.
      */
     @PutMapping("/{idLote}")
-    @PreAuthorize("hasRole('PROVEEDOR')")
     public ResponseEntity<LoteResponseDTO> actualizarLote(@PathVariable Long idLote, @Valid @RequestBody LoteRequestDTO lotesRequestDTO) {
         LoteResponseDTO response = loteService.actualizarLote(idLote, lotesRequestDTO);
         return ResponseEntity.ok(response);

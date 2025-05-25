@@ -26,6 +26,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 /**
@@ -46,6 +47,7 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/rlp/categorias")
+@Tag(name = "Categorías", description = "Operaciones para la gestión de categorías")
 public class CategoriaController {
 
     @Autowired

@@ -2,6 +2,7 @@ package com.tfc.beerstar.dto.response;
 
 import java.math.BigDecimal;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.Data;
 
 /**
@@ -29,6 +30,7 @@ import lombok.Data;
  * 
  * @author rafalopezzz
  */
+@Hidden
 @Data
 public class LoteResponseDTO {
 

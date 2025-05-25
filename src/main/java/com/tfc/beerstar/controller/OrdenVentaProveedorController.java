@@ -13,7 +13,7 @@ import com.tfc.beerstar.model.OrdenVentaProveedor;
 import com.tfc.beerstar.repository.OrdenVentaProveedorRepository;
 
 @RestController
-@RequestMapping("/beerstar/proveedores/{idProveedor}/ordenes")
+@RequestMapping("/rlp/proveedores/{idProveedor}/ordenes")
 @CrossOrigin(origins = "*")
 public class OrdenVentaProveedorController {
 
@@ -22,6 +22,6 @@ public class OrdenVentaProveedorController {
 
     @GetMapping
     public List<OrdenVentaProveedor> listarPorProveedor(@PathVariable Long idProveedor) {
-        return ordenVentaProveedorRepository.findByProveedor_IdProveedor(idProveedor);
+        return ordenVentaProveedorRepository.findByProveedor_IdProveedorOrderByFechaCreacionDesc(idProveedor);
     }
 }

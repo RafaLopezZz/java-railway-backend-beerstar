@@ -2,8 +2,15 @@ package com.tfc.beerstar.dto.response;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.Data;
 
+/**
+ * DTO de respuesta para la autenticación JWT.
+ * 
+ * <p>Contiene el token JWT, tipo de token, ID del usuario, email, tipo de usuario y roles asociados.</p>
+ */
+@Hidden
 @Data
 public class JwtResponse {
     private String token;
