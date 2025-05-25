@@ -9,11 +9,11 @@
 		<version>3.4.4</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.tfc</groupId>
-	<artifactId>beerstar</artifactId>
+	<groupId>com.rlp</groupId>
+	<artifactId>ecommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>beerstar</name>
-	<description>Backend for eShop BeerStar</description>
+	<description>Backend for eShop RLP</description>
 	<url />
 	<licenses>
 		<license />
