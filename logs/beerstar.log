@@ -4547,3 +4547,444 @@ Caused by: org.springframework.data.mapping.PropertyReferenceException: No prope
 2025-05-25T10:24:38.633+02:00 DEBUG 23156 --- [beerstar] [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
 2025-05-25T10:24:38.637+02:00 DEBUG 23156 --- [beerstar] [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 49, 46, 48, 34, 44, 34, 105, 110, 10 (truncated)...]
 2025-05-25T10:24:38.639+02:00 DEBUG 23156 --- [beerstar] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-05-25T10:29:29.952+02:00  INFO 23412 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Starting BeerstarApplication using Java 17.0.8 with PID 23412 (E:\Proyectos_2025\BeerStar_CLIEAN03\target\classes started by rlpmu in E:\Proyectos_2025\BeerStar_CLIEAN03)
+2025-05-25T10:29:29.955+02:00  INFO 23412 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : The following 1 profile is active: "prod"
+2025-05-25T10:29:30.967+02:00  INFO 23412 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-25T10:29:31.029+02:00  INFO 23412 --- [beerstar] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 12 JPA repository interfaces.
+2025-05-25T10:29:31.759+02:00  INFO 23412 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-25T10:29:31.771+02:00  INFO 23412 --- [beerstar] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-25T10:29:31.772+02:00  INFO 23412 --- [beerstar] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-05-25T10:29:31.833+02:00  INFO 23412 --- [beerstar] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-25T10:29:31.834+02:00  INFO 23412 --- [beerstar] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1846 ms
+2025-05-25T10:29:32.162+02:00  INFO 23412 --- [beerstar] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-25T10:29:32.217+02:00  INFO 23412 --- [beerstar] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-05-25T10:29:32.255+02:00  INFO 23412 --- [beerstar] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-25T10:29:32.419+02:00  INFO 23412 --- [beerstar] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-25T10:29:32.438+02:00  INFO 23412 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-25T10:29:32.554+02:00  INFO 23412 --- [beerstar] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@229514ff
+2025-05-25T10:29:32.556+02:00  INFO 23412 --- [beerstar] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-25T10:29:32.582+02:00  WARN 23412 --- [beerstar] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-25T10:29:32.597+02:00  INFO 23412 --- [beerstar] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-25T10:29:33.469+02:00  INFO 23412 --- [beerstar] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-25T10:29:34.124+02:00  INFO 23412 --- [beerstar] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-25T10:29:34.525+02:00 DEBUG 23412 --- [beerstar] [main] c.tfc.beerstar.security.AuthTokenFilter  : Filter 'authTokenFilter' configured for use
+2025-05-25T10:29:34.526+02:00 DEBUG 23412 --- [beerstar] [main] o.s.w.f.ServerHttpObservationFilter      : Filter 'webMvcObservationFilter' configured for use
+2025-05-25T10:29:34.527+02:00 DEBUG 23412 --- [beerstar] [main] c.tfc.beerstar.security.AuthTokenFilter  : Filter 'authenticationJwtTokenFilter' configured for use
+2025-05-25T10:29:34.687+02:00  INFO 23412 --- [beerstar] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-05-25T10:29:34.689+02:00  WARN 23412 --- [beerstar] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-05-25T10:29:34.935+02:00  INFO 23412 --- [beerstar] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-25T10:29:35.523+02:00  WARN 23412 --- [beerstar] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-25T10:29:35.768+02:00 DEBUG 23412 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 43 mappings in 'requestMappingHandlerMapping'
+2025-05-25T10:29:35.904+02:00 DEBUG 23412 --- [beerstar] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**, /swagger-ui*/*swagger-initializer.js, /swagger-ui*/**] in 'resourceHandlerMapping'
+2025-05-25T10:29:36.085+02:00  INFO 23412 --- [beerstar] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoints beneath base path '/actuator'
+2025-05-25T10:29:36.108+02:00  INFO 23412 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configurando seguridad HTTP
+2025-05-25T10:29:36.150+02:00  WARN 23412 --- [beerstar] [main] thorizationManagerRequestMatcherRegistry : One of the patterns in [/beerstar/**, rlp/**] is missing a leading slash. This is discouraged; please include the leading slash in all your request matcher patterns. In future versions of Spring Security, leaving out the leading slash will result in an exception.
+2025-05-25T10:29:36.154+02:00  INFO 23412 --- [beerstar] [main] com.tfc.beerstar.config.SecurityConfig   : Configuración de seguridad HTTP completada
+2025-05-25T10:29:36.188+02:00 DEBUG 23412 --- [beerstar] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-05-25T10:29:36.293+02:00 DEBUG 23412 --- [beerstar] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-05-25T10:29:36.332+02:00 DEBUG 23412 --- [beerstar] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-05-25T10:29:36.848+02:00  INFO 23412 --- [beerstar] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-25T10:29:36.863+02:00  INFO 23412 --- [beerstar] [main] com.tfc.beerstar.BeerstarApplication     : Started BeerstarApplication in 7.297 seconds (process running for 7.763)
+2025-05-25T10:29:38.823+02:00  INFO 23412 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-25T10:29:38.823+02:00  INFO 23412 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-25T10:29:38.823+02:00 DEBUG 23412 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-05-25T10:29:38.824+02:00 DEBUG 23412 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-05-25T10:29:38.824+02:00 DEBUG 23412 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-05-25T10:29:38.825+02:00 DEBUG 23412 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7190b5ce
+2025-05-25T10:29:38.825+02:00 DEBUG 23412 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@15a1911e
+2025-05-25T10:29:38.826+02:00 DEBUG 23412 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-05-25T10:29:38.826+02:00  INFO 23412 --- [beerstar] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-05-25T10:30:33.625+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.html
+2025-05-25T10:30:33.633+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/index.html
+2025-05-25T10:30:33.634+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.634+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.634+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: cache-control = max-age=0
+2025-05-25T10:30:33.635+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.635+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.635+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.635+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: upgrade-insecure-requests = 1
+2025-05-25T10:30:33.636+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.636+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8
+2025-05-25T10:30:33.636+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.636+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.636+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.637+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = navigate
+2025-05-25T10:30:33.637+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-user = ?1
+2025-05-25T10:30:33.637+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = document
+2025-05-25T10:30:33.637+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.637+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.637+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.638+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.639+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-25T10:30:33.643+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.html
+2025-05-25T10:30:33.644+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/index.html
+2025-05-25T10:30:33.644+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.644+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.644+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: cache-control = max-age=0
+2025-05-25T10:30:33.644+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.645+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.645+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.645+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: upgrade-insecure-requests = 1
+2025-05-25T10:30:33.645+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.645+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8
+2025-05-25T10:30:33.645+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.645+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.646+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.646+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = navigate
+2025-05-25T10:30:33.646+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-user = ?1
+2025-05-25T10:30:33.646+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = document
+2025-05-25T10:30:33.646+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.646+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.647+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.647+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.649+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.html", parameters={}
+2025-05-25T10:30:33.651+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-05-25T10:30:33.669+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-05-25T10:30:33.736+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui.css
+2025-05-25T10:30:33.737+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/swagger-ui.css
+2025-05-25T10:30:33.738+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.738+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.738+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.738+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.739+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.739+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.739+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = text/css,*/*;q=0.1
+2025-05-25T10:30:33.739+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.740+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.740+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.740+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.740+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = style
+2025-05-25T10:30:33.740+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.740+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.741+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.741+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.741+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.741+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-25T10:30:33.742+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.css
+2025-05-25T10:30:33.742+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui.css
+2025-05-25T10:30:33.742+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/swagger-ui.css
+2025-05-25T10:30:33.742+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/index.css
+2025-05-25T10:30:33.743+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.743+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.743+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.743+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.743+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.743+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.743+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.743+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.744+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.744+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.744+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.744+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.744+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = text/css,*/*;q=0.1
+2025-05-25T10:30:33.745+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.745+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = text/css,*/*;q=0.1
+2025-05-25T10:30:33.745+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.745+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.745+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.745+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.746+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.746+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-05-25T10:30:33.746+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.746+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = style
+2025-05-25T10:30:33.746+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-initializer.js
+2025-05-25T10:30:33.746+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.746+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.746+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-bundle.js
+2025-05-25T10:30:33.747+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.747+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-05-25T10:30:33.748+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.747+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = style
+2025-05-25T10:30:33.747+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/swagger-initializer.js
+2025-05-25T10:30:33.748+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.749+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.749+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.748+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/swagger-ui-bundle.js
+2025-05-25T10:30:33.748+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.749+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.749+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.749+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.749+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.749+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.750+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.749+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.750+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.749+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.750+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui.css", parameters={}
+2025-05-25T10:30:33.750+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.750+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.750+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.750+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.750+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.751+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.751+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.751+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.751+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-05-25T10:30:33.751+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.751+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.752+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = */*
+2025-05-25T10:30:33.752+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.751+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.751+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.752+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = */*
+2025-05-25T10:30:33.752+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-25T10:30:33.753+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.752+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.752+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = */*
+2025-05-25T10:30:33.753+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.753+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.753+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.753+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.753+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.754+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.753+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.css
+2025-05-25T10:30:33.753+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.754+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = script
+2025-05-25T10:30:33.754+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.754+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = script
+2025-05-25T10:30:33.754+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/index.css
+2025-05-25T10:30:33.754+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.754+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.754+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.755+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.755+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.755+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.755+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = script
+2025-05-25T10:30:33.755+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.755+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-05-25T10:30:33.755+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.755+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.755+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.756+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.756+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.756+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.756+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.756+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.756+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.756+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.756+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.756+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.757+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.757+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.757+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-25T10:30:33.757+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-25T10:30:33.757+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-25T10:30:33.757+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.758+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = text/css,*/*;q=0.1
+2025-05-25T10:30:33.758+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.758+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-bundle.js
+2025-05-25T10:30:33.758+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.758+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.758+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/swagger-ui-bundle.js
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-initializer.js
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/swagger-initializer.js
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = style
+2025-05-25T10:30:33.759+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.760+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.760+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.760+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.760+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.760+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.760+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.760+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.761+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.760+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.760+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.761+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.761+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.761+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.761+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.761+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.761+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.762+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.761+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.762+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.762+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = */*
+2025-05-25T10:30:33.762+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = */*
+2025-05-25T10:30:33.762+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/index.css", parameters={}
+2025-05-25T10:30:33.762+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = */*
+2025-05-25T10:30:33.762+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.762+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.763+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.763+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.763+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.763+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.763+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.763+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-05-25T10:30:33.763+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.764+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.764+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.764+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.764+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.764+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = script
+2025-05-25T10:30:33.764+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = script
+2025-05-25T10:30:33.764+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = script
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.765+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.766+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.766+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.766+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.766+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.766+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.766+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-bundle.js", parameters={}
+2025-05-25T10:30:33.766+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-ui-standalone-preset.js", parameters={}
+2025-05-25T10:30:33.766+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/swagger-initializer.js", parameters={}
+2025-05-25T10:30:33.767+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-05-25T10:30:33.767+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-05-25T10:30:33.767+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-05-25T10:30:33.767+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-05-25T10:30:33.772+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-05-25T10:30:33.779+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-05-25T10:30:33.782+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-05-25T10:30:33.936+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/favicon-32x32.png
+2025-05-25T10:30:33.937+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs/swagger-config
+2025-05-25T10:30:33.937+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/favicon-32x32.png
+2025-05-25T10:30:33.937+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.937+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.937+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /v3/api-docs/swagger-config
+2025-05-25T10:30:33.937+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.938+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = */*
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = image
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = cors
+2025-05-25T10:30:33.939+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.940+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = empty
+2025-05-25T10:30:33.940+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.940+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.940+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.940+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.940+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.941+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.941+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.941+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-25T10:30:33.941+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.941+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-25T10:30:33.941+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/favicon-32x32.png
+2025-05-25T10:30:33.941+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs/swagger-config
+2025-05-25T10:30:33.941+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /swagger-ui/favicon-32x32.png
+2025-05-25T10:30:33.941+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /v3/api-docs/swagger-config
+2025-05-25T10:30:33.942+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.942+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.942+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.942+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.942+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.942+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.942+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.942+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.943+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.943+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.943+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.943+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = */*
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = no-cors
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = cors
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = image
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = empty
+2025-05-25T10:30:33.944+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.945+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.945+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.945+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.945+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.945+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.945+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.945+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.945+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.945+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/swagger-ui/favicon-32x32.png", parameters={}
+2025-05-25T10:30:33.946+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs/swagger-config", parameters={}
+2025-05-25T10:30:33.946+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2025-05-25T10:30:33.946+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-05-25T10:30:33.949+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-05-25T10:30:33.962+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json]
+2025-05-25T10:30:33.965+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing [{configUrl=/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8080/swagger-ui/oauth2-re (truncated)...]
+2025-05-25T10:30:33.969+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-05-25T10:30:33.976+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs
+2025-05-25T10:30:33.977+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /v3/api-docs
+2025-05-25T10:30:33.977+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.977+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.977+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.977+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.978+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = application/json,*/*
+2025-05-25T10:30:33.978+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.978+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.978+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.978+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.978+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.978+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = cors
+2025-05-25T10:30:33.978+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = empty
+2025-05-25T10:30:33.979+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.979+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.979+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.979+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.979+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.979+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-05-25T10:30:33.980+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs
+2025-05-25T10:30:33.980+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  : >>> Petición entrante: GET /v3/api-docs
+2025-05-25T10:30:33.980+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: host = localhost:8080
+2025-05-25T10:30:33.980+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: connection = keep-alive
+2025-05-25T10:30:33.981+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-platform = "Windows"
+2025-05-25T10:30:33.981+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: user-agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36
+2025-05-25T10:30:33.981+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept = application/json,*/*
+2025-05-25T10:30:33.981+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua = "Chromium";v="136", "Brave";v="136", "Not.A/Brand";v="99"
+2025-05-25T10:30:33.981+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-ch-ua-mobile = ?0
+2025-05-25T10:30:33.981+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-gpc = 1
+2025-05-25T10:30:33.981+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-language = es-ES,es;q=0.6
+2025-05-25T10:30:33.981+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-site = same-origin
+2025-05-25T10:30:33.982+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-mode = cors
+2025-05-25T10:30:33.982+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: sec-fetch-dest = empty
+2025-05-25T10:30:33.982+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: referer = http://localhost:8080/swagger-ui/index.html
+2025-05-25T10:30:33.982+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: accept-encoding = gzip, deflate, br, zstd
+2025-05-25T10:30:33.982+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  :     Header: dnt = 1
+2025-05-25T10:30:33.982+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  : >>> Authorization header raw: [null]
+2025-05-25T10:30:33.982+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] c.tfc.beerstar.security.AuthTokenFilter  : >>> Token extraído: [null]
+2025-05-25T10:30:33.983+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/v3/api-docs", parameters={}
+2025-05-25T10:30:33.983+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2025-05-25T10:30:34.599+02:00  INFO 23412 --- [beerstar] [http-nio-8080-exec-9] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 607 ms
+2025-05-25T10:30:34.621+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, */*] and supported [application/json]
+2025-05-25T10:30:34.625+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 49, 46, 48, 34, 44, 34, 105, 110, 10 (truncated)...]
+2025-05-25T10:30:34.627+02:00 DEBUG 23412 --- [beerstar] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
