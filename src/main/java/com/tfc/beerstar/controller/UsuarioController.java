@@ -19,6 +19,7 @@ import com.tfc.beerstar.dto.request.UsuarioRequestDTO;
 import com.tfc.beerstar.dto.response.UsuarioResponseDTO;
 import com.tfc.beerstar.service.UsuarioService;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.validation.Valid;
 
 /**
@@ -45,6 +46,7 @@ import jakarta.validation.Valid;
  * 
  * @author rafalopezzz
  */
+@Hidden
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/beerstar/usuarios")

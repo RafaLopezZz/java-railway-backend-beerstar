@@ -11,7 +11,6 @@ import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
-import io.swagger.v3.oas.models.tags.Tag;
 
 @Configuration
 public class OpenAPIConfig {
@@ -42,36 +41,15 @@ public class OpenAPIConfig {
                 .url("https://opensource.org/licenses/MIT");
 
         Info info = new Info()
-                .title("BeerStar API")
+                .title("RLP eCommerce API")
                 .version("1.0.0")
-                .description("API para la plataforma BeerStar - Gestión de clientes y proveedores")
+                .description("API para la plataforma RLP eCommerce - Gestión de clientes, proveedores, artículos y pedidos.")
                 .termsOfService("https://www.rlp.com/terminos")
                 .contact(contact)
                 .license(mitLicense);
 
         return new OpenAPI()
                 .servers(List.of(devServer, prodServer))
-                .info(info)
-                .addTagsItem(new Tag()
-                        .name("Autenticación")
-                        .description("Endpoints públicos para login y registro de usuarios"))
-                .addTagsItem(new Tag()
-                        .name("Usuarios")
-                        .description("Gestión de perfiles y datos de usuarios"))
-                .addTagsItem(new Tag()
-                        .name("Clientes")
-                        .description("Operaciones específicas para usuarios tipo cliente"))
-                .addTagsItem(new Tag()
-                        .name("Proveedores")
-                        .description("Operaciones específicas para usuarios tipo proveedor"))
-                .addTagsItem(new Tag()
-                        .name("Productos")
-                        .description("Gestión del catálogo de productos"))
-                .addTagsItem(new Tag()
-                        .name("Pedidos")
-                        .description("Gestión de pedidos y transacciones"))
-                .addTagsItem(new Tag()
-                        .name("Administración")
-                        .description("Endpoints administrativos del sistema"));
+                .info(info);
     }
 }

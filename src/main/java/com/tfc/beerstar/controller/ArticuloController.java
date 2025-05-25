@@ -53,7 +53,7 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("rlp/articulos")
-@Tag(name = "Artículos", description = "API para gestionar los artículos de RLP eCommerce")
+@Tag(name = "Artículos", description = "Operaciones para la gestión de artículos")
 public class ArticuloController {
 
     @Autowired

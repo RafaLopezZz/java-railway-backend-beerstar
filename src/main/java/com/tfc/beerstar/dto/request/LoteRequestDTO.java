@@ -2,6 +2,7 @@ package com.tfc.beerstar.dto.request;
 
 import java.math.BigDecimal;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -30,6 +31,7 @@ import lombok.Data;
  * 
  * @author rafalopezzz
  */
+@Hidden
 @Data
 @AllArgsConstructor
 public class LoteRequestDTO {
